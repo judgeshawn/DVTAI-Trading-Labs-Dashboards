@@ -642,3 +642,68 @@ tr:last-child td {
   border-left: 2px solid var(--green);
   padding-left: 8px;
 }
+
+.day-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.day-selector-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.day-selector-buttons {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
+.day-selector-buttons::-webkit-scrollbar {
+  display: none;
+}
+
+.day-selector-buttons {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.day-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.day-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.day-btn.active {
+  background: var(--green-dim);
+  border-color: var(--green);
+  color: var(--green);
+  box-shadow: 0 0 12px rgba(0, 240, 153, 0.2);
+}

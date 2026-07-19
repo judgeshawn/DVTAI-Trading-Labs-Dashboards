@@ -86,6 +86,14 @@
     <!-- TAB 1: DAILY DOSE PANEL -->
     <div id="panel-daily-dose" class="tab-panel active">
       
+      <!-- Day Selector (Last 10 Session Dates) -->
+      <div class="day-selector-container">
+        <div class="day-selector-label">Session Date:</div>
+        <div class="day-selector-buttons" id="day-selector-strip">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
       <!-- GRID ROW 1: SCORECARD -->
       <div class="grid-gap grid-cols-1">
         <div class="card">
@@ -623,6 +631,7 @@
     let displayMode = 'usd';
     let sessionsData = null; // Stores parsed JSON database
     let activePeriod = 'all';
+    let activeDayOffset = 0; // Index of selected day from the last 10 sessions (0 is latest, up to 9)
 
     // Multipliers for Points to Dollars scaling (USD per point per contract)
     const POINT_VALUES = {
@@ -669,26 +678,58 @@
         if (!response.ok) throw new Error('Failed to load database file.');
         sessionsData = await response.json();
         
-        // Find latest date in MNQ database
-        const mnqList = sessionsData['MNQ'] || [];
-        if (mnqList.length > 0) {
-          const latestSession = mnqList[mnqList.length - 1];
-          const latestDate = new Date(latestSession.date);
-          document.getElementById('scorecard-date').textContent = 'Session: ' + 
-            latestDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-        }
-        
         document.getElementById('last-updated').textContent = 'Last Updated: ' + 
           new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' +
           new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
+        renderDaySelector();
         updateDisplay();
       } catch (e) {
         console.error('Error fetching sessions_db.json, using fallback data:', e);
         document.getElementById('last-updated').textContent = 'Last Updated: ' + 
           new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' (Static Fallback)';
+        renderDaySelector();
         updateDisplay();
       }
+    }
+
+    // ── RENDER DAY SELECTOR ───────────────────────────────────────────────────
+    function renderDaySelector() {
+      const container = document.getElementById('day-selector-strip');
+      if (!container) return;
+      
+      const mnqList = sessionsData ? (sessionsData['MNQ'] || []) : [];
+      if (mnqList.length === 0) {
+        // Fallback static buttons if database not loaded
+        container.innerHTML = '';
+        const weekdays = ['Fri', 'Thu', 'Wed', 'Tue', 'Mon', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon'];
+        const dayNums = [17, 16, 15, 14, 13, 10, 9, 8, 7, 6];
+        for (let i = 0; i < 10; i++) {
+          const dateStr = `${weekdays[i]} 7/${dayNums[i]}`;
+          const activeClass = i === activeDayOffset ? 'active' : '';
+          container.innerHTML += `<button class="day-btn ${activeClass}" onclick="selectDay(${i})">${dateStr}</button>`;
+        }
+        return;
+      }
+      
+      // Get the last 10 session dates
+      const last10 = mnqList.slice(-10).reverse(); // Reverse so latest is first
+      
+      container.innerHTML = '';
+      last10.forEach((session, idx) => {
+        const dateObj = new Date(session.date);
+        const dayStr = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
+        const dateStr = dateObj.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' });
+        const label = `${dayStr} ${dateStr}`;
+        const activeClass = idx === activeDayOffset ? 'active' : '';
+        container.innerHTML += `<button class="day-btn ${activeClass}" onclick="selectDay(${idx})">${label}</button>`;
+      });
+    }
+
+    function selectDay(offset) {
+      activeDayOffset = offset;
+      renderDaySelector();
+      updateDisplay();
     }
 
     // ── TAB CONTROLLER ────────────────────────────────────────────────────────
@@ -895,9 +936,37 @@
     // ── UPDATE RENDER ────────────────────────────────────────────────────────
     function updateDisplay() {
       // Find sessions for active filter
-      const filteredMNQ = getFilteredSessions('MNQ');
-      const filteredMES = getFilteredSessions('MES');
+      let filteredMNQ = getFilteredSessions('MNQ');
+      let filteredMES = getFilteredSessions('MES');
+
+      // If day selector toggled a previous day, slice both lists up to that offset
+      if (sessionsData && activeDayOffset > 0) {
+        const mnqLength = filteredMNQ.length;
+        if (mnqLength > activeDayOffset) {
+          filteredMNQ = filteredMNQ.slice(0, mnqLength - activeDayOffset);
+        }
+        const mesLength = filteredMES.length;
+        if (mesLength > activeDayOffset) {
+          filteredMES = filteredMES.slice(0, mesLength - activeDayOffset);
+        }
+      }
+
       const activeFiltered = currentInst === 'MES' ? filteredMES : filteredMNQ;
+
+      // Update the main scorecard date header based on the selected day
+      const latestSess = activeFiltered[activeFiltered.length - 1];
+      if (latestSess) {
+        const latestDate = new Date(latestSess.date);
+        document.getElementById('scorecard-date').textContent = 'Session: ' + 
+          latestDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      } else {
+        // Fallback for static mock mode
+        const staticDates = [
+          'Fri, July 17, 2026', 'Thu, July 16, 2026', 'Wed, July 15, 2026', 'Tue, July 14, 2026', 'Mon, July 13, 2026',
+          'Fri, July 10, 2026', 'Thu, July 9, 2026', 'Wed, July 8, 2026', 'Tue, July 7, 2026', 'Mon, July 6, 2026'
+        ];
+        document.getElementById('scorecard-date').textContent = 'Session: ' + (staticDates[activeDayOffset] || 'Static Fallback');
+      }
 
       // Update placeholders for other panels showing live stats count
       const placeholderText = `Calculating statistics across ${activeFiltered.length} session dates in the selected period.`;
@@ -992,7 +1061,6 @@
 
       // Extract details for the latest session of the active instrument
       const latestSession = activeFiltered[activeFiltered.length - 1];
-      if (!latestSession) return;
 
       // 1. Session Ranges & ALN Flow
       let ovnRange, asiaRange, londonRange, nyRange;
