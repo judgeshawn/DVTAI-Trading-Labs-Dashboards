@@ -99,63 +99,68 @@
                 <tr>
                   <th>Instrument</th>
                   <th>Daily %</th>
-                  <th>Points Chg</th>
+                  <th>Daily Pt Chg</th>
+                  <th>Daily Range</th>
                   <th>WTD %</th>
-                  <th>Points From Open</th>
+                  <th>WTD Pt Chg</th>
                   <th>MTD %</th>
+                  <th>MTD Pt Chg</th>
                   <th>YTD %</th>
                   <th>Volume</th>
-                  <th>Range</th>
                 </tr>
               </thead>
               <tbody id="scorecard-rows">
-                <!-- NQ Row -->
+                <!-- MNQ Row -->
                 <tr>
-                  <td class="scorecard-cell-inst">NQ / MNQ</td>
-                  <td class="positive" id="sc-nq-pct">+1.42%</td>
-                  <td class="positive" id="sc-nq-pts">+280.50 pts</td>
-                  <td class="positive" id="sc-nq-wtd">+2.15%</td>
-                  <td class="positive" id="sc-nq-open">+245.25 pts</td>
-                  <td class="positive" id="sc-nq-mtd">+4.10%</td>
-                  <td class="positive" id="sc-nq-ytd">+18.45%</td>
-                  <td id="sc-nq-vol">1,452,240</td>
-                  <td id="sc-nq-rng">315.25 pts</td>
+                  <td class="scorecard-cell-inst">MNQ</td>
+                  <td class="positive" id="sc-nq-pct">--</td>
+                  <td class="positive" id="sc-nq-pts">--</td>
+                  <td id="sc-nq-rng">--</td>
+                  <td class="positive" id="sc-nq-wtd">--</td>
+                  <td class="positive" id="sc-nq-wtd-pts">--</td>
+                  <td class="positive" id="sc-nq-mtd">--</td>
+                  <td class="positive" id="sc-nq-mtd-pts">--</td>
+                  <td class="positive" id="sc-nq-ytd">--</td>
+                  <td id="sc-nq-vol">--</td>
                 </tr>
-                <!-- ES Row -->
+                <!-- MES Row -->
                 <tr>
-                  <td class="scorecard-cell-inst">ES / MES</td>
-                  <td class="positive" id="sc-es-pct">+0.85%</td>
-                  <td class="positive" id="sc-es-pts">+48.25 pts</td>
-                  <td class="positive" id="sc-es-wtd">+1.10%</td>
-                  <td class="positive" id="sc-es-open">+38.50 pts</td>
-                  <td class="positive" id="sc-es-mtd">+2.35%</td>
-                  <td class="positive" id="sc-es-ytd">+12.10%</td>
-                  <td id="sc-es-vol">1,894,500</td>
-                  <td id="sc-es-rng">54.75 pts</td>
+                  <td class="scorecard-cell-inst">MES</td>
+                  <td class="positive" id="sc-es-pct">--</td>
+                  <td class="positive" id="sc-es-pts">--</td>
+                  <td id="sc-es-rng">--</td>
+                  <td class="positive" id="sc-es-wtd">--</td>
+                  <td class="positive" id="sc-es-wtd-pts">--</td>
+                  <td class="positive" id="sc-es-mtd">--</td>
+                  <td class="positive" id="sc-es-mtd-pts">--</td>
+                  <td class="positive" id="sc-es-ytd">--</td>
+                  <td id="sc-es-vol">--</td>
                 </tr>
                 <!-- YM Row (Dow Placeholder) -->
                 <tr class="neutral" style="opacity: 0.6;">
                   <td class="scorecard-cell-inst">YM (Dow)</td>
-                  <td id="sc-ym-pct">--</td>
-                  <td id="sc-ym-pts">--</td>
-                  <td id="sc-ym-wtd">--</td>
-                  <td id="sc-ym-open">--</td>
-                  <td id="sc-ym-mtd">--</td>
-                  <td id="sc-ym-ytd">--</td>
-                  <td id="sc-ym-vol">Placeholder</td>
-                  <td id="sc-ym-rng">--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>Placeholder</td>
                 </tr>
                 <!-- RTY Row (Russell Placeholder) -->
                 <tr class="neutral" style="opacity: 0.6;">
                   <td class="scorecard-cell-inst">RTY (Russell)</td>
-                  <td id="sc-rty-pct">--</td>
-                  <td id="sc-rty-pts">--</td>
-                  <td id="sc-rty-wtd">--</td>
-                  <td id="sc-rty-open">--</td>
-                  <td id="sc-rty-mtd">--</td>
-                  <td id="sc-rty-ytd">--</td>
-                  <td id="sc-rty-vol">Placeholder</td>
-                  <td id="sc-rty-rng">--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>Placeholder</td>
                 </tr>
               </tbody>
             </table>
@@ -163,58 +168,7 @@
         </div>
       </div>
 
-      <!-- GRID ROW 2: SUBJECTIVE METRICS & NEWS PLACEHOLDERS -->
-      <div class="grid-gap grid-cols-4">
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Macro Snapshot</h3>
-          </div>
-          <div class="placeholder-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            Geopolitical & Fed news
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Key News</h3>
-          </div>
-          <div class="placeholder-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 4a2 2 0 0 0-2-2h-3v11l3-2 3 2V11z"></path>
-            </svg>
-            Earnings & Economic Events
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Sector Performance</h3>
-          </div>
-          <div class="placeholder-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 20V10M12 20V4M6 20v-6"></path>
-            </svg>
-            ETF Heatmap / Performance
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Top Movers</h3>
-          </div>
-          <div class="placeholder-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
-              <path d="M17 6h6v6"></path>
-            </svg>
-            High Beta / Volatility leaders
-          </div>
-        </div>
-      </div>
-
-      <!-- GRID ROW 3: SESSIONS & GAP ANALYSIS -->
+      <!-- GRID ROW 2: SESSIONS, GAPS, & 30-Sec OR (QUANTITATIVE DATA) -->
       <div class="grid-gap grid-cols-3">
         <!-- Session Range Analysis -->
         <div class="card">
@@ -278,11 +232,11 @@
             </div>
             <div class="bar-wrap">
               <div class="bar-meta">
-                <span class="neutral">Fill Progress</span>
-                <span class="warning" id="gap-progress-text">35%</span>
+                 <span class="neutral">Fill Progress</span>
+                 <span class="warning" id="gap-progress-text">35%</span>
               </div>
               <div class="bar-track">
-                <div class="bar-fill" id="gap-progress-bar" style="width: 35%; background: var(--yellow);"></div>
+                 <div class="bar-fill" id="gap-progress-bar" style="width: 35%; background: var(--yellow);"></div>
               </div>
             </div>
           </div>
@@ -314,9 +268,8 @@
         </div>
       </div>
 
-      <!-- GRID ROW 4: IB & STRATEGY RESULTS -->
-      <div class="grid-gap grid-cols-2">
-        <!-- Initial Balance Detail -->
+      <!-- GRID ROW 3: INITIAL BALANCE (IB) & EXTENSIONS (FULL WIDTH ON OWN ROW) -->
+      <div class="grid-gap grid-cols-1">
         <div class="card">
           <div class="card-header-row">
             <h3>Initial Balance (IB) & Extensions</h3>
@@ -352,26 +305,91 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Strategy performance overview -->
+      <!-- GRID ROW 4: STRATEGY PERFORMANCE SESSION RECAP (FULL WIDTH ON OWN ROW WITH EXPANDED STATS) -->
+      <div class="grid-gap grid-cols-1">
         <div class="card">
           <div class="card-header-row">
             <h3>Active Strategy Session Recap</h3>
             <span class="card-subtitle">30-Sec OR Rotations</span>
           </div>
-          <div class="grid-gap grid-cols-3" style="margin-bottom: 0;">
-            <div style="text-align: center;">
-              <div class="list-item-label" style="font-size: 0.65rem; text-transform: uppercase;">Signals</div>
-              <div style="font-family: var(--font-data); font-size: 1.8rem; font-weight: 800; color: var(--blue);" id="strat-signals">3</div>
+          <div class="strategy-recap-grid">
+            <div class="strat-stat-card">
+              <span class="strat-stat-label">Signals (Wick Breaks)</span>
+              <span class="strat-stat-val neutral" id="strat-signals">3</span>
             </div>
-            <div style="text-align: center;">
-              <div class="list-item-label" style="font-size: 0.65rem; text-transform: uppercase;">Win / Loss</div>
-              <div style="font-family: var(--font-data); font-size: 1.8rem; font-weight: 800; color: var(--green);" id="strat-wl">2W - 1L</div>
+            <div class="strat-stat-card">
+              <span class="strat-stat-label">Win / Loss</span>
+              <span class="strat-stat-val success" id="strat-wl">2W - 1L</span>
             </div>
-            <div style="text-align: center;">
-              <div class="list-item-label" style="font-size: 0.65rem; text-transform: uppercase;">Net P&L</div>
-              <div style="font-family: var(--font-data); font-size: 1.8rem; font-weight: 800; color: var(--green);" id="strat-pnl">+$560.50</div>
+            <div class="strat-stat-card">
+              <span class="strat-stat-label">Win Rate %</span>
+              <span class="strat-stat-val success" id="strat-winrate">66.7%</span>
             </div>
+            <div class="strat-stat-card">
+              <span class="strat-stat-label">Profit Factor</span>
+              <span class="strat-stat-val success" id="strat-pf">1.85</span>
+            </div>
+            <div class="strat-stat-card">
+              <span class="strat-stat-label">Net Points</span>
+              <span class="strat-stat-val" id="strat-net-pts">+48.25 pts</span>
+            </div>
+            <div class="strat-stat-card">
+              <span class="strat-stat-label">Net P&L</span>
+              <span class="strat-stat-val success" id="strat-pnl">+$560.50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 5: SUBJECTIVE METRICS & NEWS PLACEHOLDERS (AT THE BOTTOM) -->
+      <div class="grid-gap grid-cols-4">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Macro Snapshot</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Geopolitical & Fed news
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Key News</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 4a2 2 0 0 0-2-2h-3v11l3-2 3 2V11z"></path>
+            </svg>
+            Earnings & Economic Events
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Sector Performance</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 20V10M12 20V4M6 20v-6"></path>
+            </svg>
+            ETF Heatmap / Performance
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Top Movers</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+              <path d="M17 6h6v6"></path>
+            </svg>
+            High Beta / Volatility leaders
           </div>
         </div>
       </div>
@@ -437,193 +455,6 @@
     let currentTab = 'daily-dose';
     let selectedContracts = 1;
     let displayMode = 'usd';
-
-    // Multipliers for Points to Dollars scaling (USD per point per contract)
-    const POINT_VALUES = {
-      'MNQ': 2.0,
-      'MES': 5.0,
-      'YM': 5.0,
-      'RTY': 5.0
-    };
-
-    // Baseline 1-contract point metrics (Mock metrics for initial layout render)
-    const BASELINE_DATA = {
-      'MNQ': {
-        scorecard: { pct: 1.42, pts: 280.50, wtd: 2.15, open: 245.25, mtd: 4.10, ytd: 18.45, vol: '1,452,240', rng: 315.25 },
-        sessions: { asia: 120.50, london: 155.00, nyam: 210.25, nycl: 95.00 },
-        gap: { size: 45.50, fill_pct: 35.0 },
-        or: { range: 38.25 },
-        ib: { high: 19850.50, low: 19770.25, range: 80.25 },
-        strat: { pnl: 280.25, wins: 2, losses: 1, signals: 3 }
-      },
-      'MES': {
-        scorecard: { pct: 0.85, pts: 48.25, wtd: 1.10, open: 38.50, mtd: 2.35, ytd: 12.10, vol: '1,894,500', rng: 54.75 },
-        sessions: { asia: 22.50, london: 32.00, nyam: 45.25, nycl: 18.50 },
-        gap: { size: 8.75, fill_pct: 100.0 },
-        or: { range: 7.25 },
-        ib: { high: 5432.50, low: 5415.25, range: 17.25 },
-        strat: { pnl: 48.25, wins: 1, losses: 0, signals: 1 }
-      }
-    };
-
-    // ── INITIALIZE ────────────────────────────────────────────────────────────
-    function init() {
-      // Set updated timestamp
-      const now = new Date();
-      document.getElementById('last-updated').textContent = 'Last Updated: ' + 
-        now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' +
-        now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-
-      // Initial layout update
-      updateDisplay();
-    }
-
-    // ── TAB CONTROLLER ────────────────────────────────────────────────────────
-    function switchTab(tabId) {
-      currentTab = tabId;
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
-      });
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.toggle('active', panel.id === `panel-${tabId}`);
-      });
-    }
-
-    // ── INSTRUMENT CONTROLLER ──────────────────────────────────────────────────
-    function switchInstrument(inst) {
-      currentInst = inst;
-      
-      // Update buttons
-      document.querySelectorAll('.btn-toggle').forEach(btn => {
-        if (btn.id.startsWith('inst-')) {
-          const isTarget = btn.id === `inst-${inst.toLowerCase()}`;
-          btn.classList.toggle('active', isTarget);
-          btn.classList.toggle('instrument-active', isTarget);
-        }
-      });
-
-      // Handle placeholder view style
-      const scorecardRows = document.getElementById('scorecard-rows').children;
-      if (inst === 'YM' || inst === 'RTY') {
-        // Blur other scorecard elements to focus attention on active placeholder
-        alert(`YM and RTY are currently placeholders. Foundation is built using NQ/MNQ and ES/MES.`);
-      }
-
-      updateDisplay();
-    }
-
-    // ── CONTRACT STEPPER ──────────────────────────────────────────────────────
-    function adjustContracts(amount) {
-      const input = document.getElementById('contract-count');
-      let val = parseInt(input.value) + amount;
-      if (val < 1) val = 1;
-      if (val > 100) val = 100;
-      input.value = val;
-      selectedContracts = val;
-      updateDisplay();
-    }
-
-    function updateScaling() {
-      const input = document.getElementById('contract-count');
-      let val = parseInt(input.value);
-      if (isNaN(val) || val < 1) val = 1;
-      if (val > 100) val = 100;
-      input.value = val;
-      selectedContracts = val;
-      updateDisplay();
-    }
-
-    // ── DISPLAY MODE ──────────────────────────────────────────────────────────
-    function setDisplayMode(mode) {
-      displayMode = mode;
-      document.getElementById('display-usd').classList.toggle('active', mode === 'usd');
-      document.getElementById('display-pts').classList.toggle('active', mode === 'pts');
-      updateDisplay();
-    }
-
-    function onPeriodChange() {
-      const period = document.getElementById('period-filter').value;
-      if (period !== 'all') {
-        alert(`Timeframe filtering (${period.toUpperCase()}) will be dynamically calculated once sessions_db.json is loaded in Phase 2.`);
-      }
-    }
-
-    // ── SCALE HELPERS ─────────────────────────────────────────────────────────
-    function scalePnL(ptsValue) {
-      // Returns USD or Points depending on current state
-      const multiplier = POINT_VALUES[currentInst] || 2.0;
-      const usdValue = ptsValue * multiplier * selectedContracts;
-      
-      if (displayMode === 'pts') {
-        return (ptsValue * selectedContracts).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' pts';
-      }
-      return '$' + usdValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    // ── UPDATE RENDER ────────────────────────────────────────────────────────
-    function updateDisplay() {
-      // Get the correct data source (default to MNQ if placeholder)
-      const data = BASELINE_DATA[currentInst] || BASELINE_DATA['MNQ'];
-      const multiplier = POINT_VALUES[currentInst] || 2.0;
-      const isPlaceholder = (currentInst === 'YM' || currentInst === 'RTY');
-
-      if (isPlaceholder) {
-        // Reset scorecard numbers to placeholders
-        return;
-      }
-
-      // Update Daily Dose elements with scaled numbers
-      // Scorecard Row 1 (MNQ)
-      const mnqData = BASELINE_DATA['MNQ'];
-      const mnqMult = POINT_VALUES['MNQ'];
-      document.getElementById('sc-nq-pts').textContent = (displayMode === 'pts') 
-        ? `+${(mnqData.scorecard.pts * selectedContracts).toFixed(2)} pts` 
-        : `+$${(mnqData.scorecard.pts * mnqMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
-      document.getElementById('sc-nq-open').textContent = (displayMode === 'pts')
-        ? `+${(mnqData.scorecard.open * selectedContracts).toFixed(2)} pts`
-        : `+$${(mnqData.scorecard.open * mnqMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
-      document.getElementById('sc-nq-rng').textContent = `${(mnqData.scorecard.rng * selectedContracts).toFixed(2)} pts`;
-
-      // Scorecard Row 2 (ES)
-      const esData = BASELINE_DATA['MES'];
-      const esMult = POINT_VALUES['MES'];
-      document.getElementById('sc-es-pts').textContent = (displayMode === 'pts')
-        ? `+${(esData.scorecard.pts * selectedContracts).toFixed(2)} pts`
-        : `+$${(esData.scorecard.pts * esMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
-      document.getElementById('sc-es-open').textContent = (displayMode === 'pts')
-        ? `+${(esData.scorecard.open * selectedContracts).toFixed(2)} pts`
-        : `+$${(esData.scorecard.open * esMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
-      document.getElementById('sc-es-rng').textContent = `${(esData.scorecard.rng * selectedContracts).toFixed(2)} pts`;
-
-      // Current Instrument specific updates
-      // Session Ranges
-      document.getElementById('sess-asia-val').textContent = `${(data.sessions.asia * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('sess-london-val').textContent = `${(data.sessions.london * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('sess-nyam-val').textContent = `${(data.sessions.nyam * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('sess-nycl-val').textContent = `${(data.sessions.nycl * selectedContracts).toFixed(2)} pts`;
-
-      // Gap size
-      document.getElementById('gap-size').textContent = `${(data.gap.size * selectedContracts).toFixed(2)} pts`;
-      
-      // 30-Sec OR Range
-      document.getElementById('or-range-val').textContent = `${(data.or.range * selectedContracts).toFixed(2)} pts`;
-
-      // IB Range
-      document.getElementById('ib-range-val').textContent = `${(data.ib.range * selectedContracts).toFixed(2)} pts`;
-
-      // Strategy Net P&L
-      const netPnlVal = data.strat.pnl; // points per contract
-      document.getElementById('strat-pnl').textContent = scalePnL(netPnlVal);
-      document.getElementById('strat-pnl').className = (netPnlVal >= 0) ? 'positive' : 'negative';
-      document.getElementById('strat-wl').textContent = `${data.strat.wins}W - ${data.strat.losses}L`;
-      document.getElementById('strat-signals').textContent = data.strat.signals;
-    }
-
-    // ── STATE ────────────────────────────────────────────────────────────────
-    let currentInst = 'MNQ';
-    let currentTab = 'daily-dose';
-    let selectedContracts = 1;
-    let displayMode = 'usd';
     let sessionsData = null; // Stores parsed JSON database
     let activePeriod = 'all';
 
@@ -635,10 +466,10 @@
       'RTY': 5.0
     };
 
-    // Baseline 1-contract point metrics (Fallback)
+    // Baseline 1-contract point metrics (Fallback when database not loaded)
     const BASELINE_DATA = {
       'MNQ': {
-        scorecard: { pct: 1.42, pts: 280.50, wtd: 2.15, open: 245.25, mtd: 4.10, ytd: 18.45, vol: '1,452,240', rng: 315.25 },
+        scorecard: { pct: 1.42, pts: 280.50, wtd: 2.15, wtd_pts: 425.50, rng: 315.25, mtd: 4.10, mtd_pts: 812.50, ytd: 18.45, vol: 1452240 },
         sessions: { asia: 120.50, london: 155.00, nyam: 210.25, nycl: 95.00 },
         gap: { size: 45.50, fill_pct: 35.0, filled: 'NO', direction: 'GAP UP' },
         or: { range: 38.25, rotations: 3, up_rotations: 2, down_rotations: 1, first_rot_time: '09:34:30' },
@@ -646,7 +477,7 @@
         strat: { pnl: 280.25, wins: 2, losses: 1, signals: 3 }
       },
       'MES': {
-        scorecard: { pct: 0.85, pts: 48.25, wtd: 1.10, open: 38.50, mtd: 2.35, ytd: 12.10, vol: '1,894,500', rng: 54.75 },
+        scorecard: { pct: 0.85, pts: 48.25, wtd: 1.10, wtd_pts: 62.25, rng: 54.75, mtd: 2.35, mtd_pts: 135.50, ytd: 12.10, vol: 1894500 },
         sessions: { asia: 22.50, london: 32.00, nyam: 45.25, nycl: 18.50 },
         gap: { size: 8.75, fill_pct: 100.0, filled: 'YES', direction: 'GAP DOWN' },
         or: { range: 7.25, rotations: 1, up_rotations: 1, down_rotations: 0, first_rot_time: '09:36:00' },
@@ -719,7 +550,7 @@
       });
 
       if (inst === 'YM' || inst === 'RTY') {
-        alert(`${inst} is currently a placeholder. Phase 2 foundation is built on NQ/MNQ and ES/MES.`);
+        alert(`${inst} is currently a placeholder. Phase 2 foundation is built on MNQ and MES.`);
       }
 
       updateDisplay();
@@ -838,7 +669,11 @@
       const pctChg = latestSession.ohlc.chg_pct !== null ? latestSession.ohlc.chg_pct : ((latestClose - latestOpen) / latestOpen * 100);
       
       const wtdPct = weekOpen ? ((latestClose - weekOpen) / weekOpen * 100) : pctChg;
+      const wtdPts = weekOpen ? (latestClose - weekOpen) : ptsChg;
+      
       const mtdPct = monthOpen ? ((latestClose - monthOpen) / monthOpen * 100) : pctChg;
+      const mtdPts = monthOpen ? (latestClose - monthOpen) : ptsChg;
+      
       const ytdPct = yearOpen ? ((latestClose - yearOpen) / yearOpen * 100) : pctChg;
       const ptsFromOpen = latestClose - latestOpen;
 
@@ -846,8 +681,10 @@
         pct: pctChg,
         pts: ptsChg,
         wtd: wtdPct,
+        wtd_pts: wtdPts,
         open: ptsFromOpen,
         mtd: mtdPct,
+        mtd_pts: mtdPts,
         ytd: ytdPct,
         vol: latestSession.ohlc.volume,
         rng: latestSession.ohlc.range
@@ -855,14 +692,25 @@
     }
 
     // ── SCALE HELPERS ─────────────────────────────────────────────────────────
-    function scalePnL(ptsValue) {
-      const multiplier = POINT_VALUES[currentInst] || 2.0;
-      const usdValue = ptsValue * multiplier * selectedContracts;
+    function formatScorecardCell(ptsVal, multiplier, mode, isPointsOnly = false) {
+      if (ptsVal === null || ptsVal === undefined) return '--';
       
-      if (displayMode === 'pts') {
-        return (ptsValue * selectedContracts).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' pts';
+      const scaledVal = ptsVal * selectedContracts;
+      if (isPointsOnly) {
+        return scaledVal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' pts';
       }
-      return '$' + usdValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      if (mode === 'pts') {
+        const sign = scaledVal >= 0 ? '+' : '';
+        const colorClass = scaledVal >= 0 ? 'positive' : 'negative';
+        return `<span class="${colorClass}">${sign}${scaledVal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} pts</span>`;
+      } else {
+        const usdVal = scaledVal * multiplier;
+        const sign = usdVal >= 0 ? '+$' : '-$';
+        const colorClass = usdVal >= 0 ? 'positive' : 'negative';
+        const absUsdVal = Math.abs(usdVal);
+        return `<span class="${colorClass}">${sign}${absUsdVal.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>`;
+      }
     }
 
     function formatSign(val, isPercentage = false, isRawText = false) {
@@ -914,51 +762,62 @@
       const mnqMult = POINT_VALUES['MNQ'];
       const mesMult = POINT_VALUES['MES'];
 
-      // Render Scorecard Row 1 (NQ)
-      const nqPtsVal = (displayMode === 'pts') ? nqSc.pts * selectedContracts : nqSc.pts * mnqMult * selectedContracts;
-      const nqOpenVal = (displayMode === 'pts') ? nqSc.open * selectedContracts : nqSc.open * mnqMult * selectedContracts;
-      
-      const nqPtsHtml = (displayMode === 'pts') 
-        ? formatSign(nqSc.pts * selectedContracts) + ' pts' 
-        : formatSign(nqSc.pts * mnqMult * selectedContracts);
-        
-      const nqOpenHtml = (displayMode === 'pts') 
-        ? formatSign(nqSc.open * selectedContracts) + ' pts' 
-        : formatSign(nqSc.open * mnqMult * selectedContracts);
-
+      // Render Scorecard Row 1 (MNQ)
       const nqRow = document.getElementById('scorecard-rows').children[0];
       nqRow.innerHTML = `
-        <td class="scorecard-cell-inst">NQ / MNQ</td>
+        <td class="scorecard-cell-inst">MNQ</td>
         <td>${formatSign(nqSc.pct, true)}</td>
-        <td>${nqPtsHtml}</td>
+        <td>${formatScorecardCell(nqSc.pts, mnqMult, displayMode)}</td>
+        <td>${nqSc.rng ? (nqSc.rng * selectedContracts).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}) + ' pts' : 'N/A'}</td>
         <td>${formatSign(nqSc.wtd, true)}</td>
-        <td>${nqOpenHtml}</td>
+        <td>${formatScorecardCell(nqSc.wtd_pts, mnqMult, displayMode)}</td>
         <td>${formatSign(nqSc.mtd, true)}</td>
+        <td>${formatScorecardCell(nqSc.mtd_pts, mnqMult, displayMode)}</td>
         <td>${formatSign(nqSc.ytd, true)}</td>
         <td>${nqSc.vol ? nqSc.vol.toLocaleString() : 'N/A'}</td>
-        <td>${nqSc.rng ? (nqSc.rng * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:2}) : 'N/A'} pts</td>
       `;
 
-      // Render Scorecard Row 2 (ES)
-      const esPtsHtml = (displayMode === 'pts') 
-        ? formatSign(esSc.pts * selectedContracts) + ' pts' 
-        : formatSign(esSc.pts * mesMult * selectedContracts);
-        
-      const esOpenHtml = (displayMode === 'pts') 
-        ? formatSign(esSc.open * selectedContracts) + ' pts' 
-        : formatSign(esSc.open * mesMult * selectedContracts);
-
+      // Render Scorecard Row 2 (MES)
       const esRow = document.getElementById('scorecard-rows').children[1];
       esRow.innerHTML = `
-        <td class="scorecard-cell-inst">ES / MES</td>
+        <td class="scorecard-cell-inst">MES</td>
         <td>${formatSign(esSc.pct, true)}</td>
-        <td>${esPtsHtml}</td>
+        <td>${formatScorecardCell(esSc.pts, mesMult, displayMode)}</td>
+        <td>${esSc.rng ? (esSc.rng * selectedContracts).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}) + ' pts' : 'N/A'}</td>
         <td>${formatSign(esSc.wtd, true)}</td>
-        <td>${esOpenHtml}</td>
+        <td>${formatScorecardCell(esSc.wtd_pts, mesMult, displayMode)}</td>
         <td>${formatSign(esSc.mtd, true)}</td>
+        <td>${formatScorecardCell(esSc.mtd_pts, mesMult, displayMode)}</td>
         <td>${formatSign(esSc.ytd, true)}</td>
         <td>${esSc.vol ? esSc.vol.toLocaleString() : 'N/A'}</td>
-        <td>${esSc.rng ? (esSc.rng * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:2}) : 'N/A'} pts</td>
+      `;
+
+      // Render placeholders for YM and RTY rows to align with 10 columns
+      const ymRow = document.getElementById('scorecard-rows').children[2];
+      ymRow.innerHTML = `
+        <td class="scorecard-cell-inst">YM (Dow)</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>Placeholder</td>
+      `;
+      const rtyRow = document.getElementById('scorecard-rows').children[3];
+      rtyRow.innerHTML = `
+        <td class="scorecard-cell-inst">RTY (Russell)</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>Placeholder</td>
       `;
 
       // Handlers for active instrument placeholders
@@ -1060,13 +919,21 @@
       ibMaxEl.textContent = ibMaxExt;
       ibMaxEl.className = ibMaxExt.startsWith('+') ? 'positive' : (ibMaxExt.startsWith('-') ? 'negative' : 'neutral');
 
-      // 5. Strategy Recap (Mock stats as placeholder for live signals)
+      // 5. Strategy Recap (Calculated dynamically or fallback baseline)
       const stratRec = BASELINE_DATA[currentInst].strat;
-      document.getElementById('strat-pnl').textContent = scalePnL(stratRec.pnl);
-      document.getElementById('strat-pnl').className = (stratRec.pnl >= 0) ? 'positive' : 'negative';
-      document.getElementById('strat-wl').textContent = `${stratRec.wins}W - ${stratRec.losses}L`;
+      const activeMult = POINT_VALUES[currentInst] || 2.0;
+      
+      // Calculate dynamic win rate
+      const winRateVal = (stratRec.wins / (stratRec.signals || 1)) * 100;
+      
+      // Format strategy stats
       document.getElementById('strat-signals').textContent = stratRec.signals;
+      document.getElementById('strat-wl').textContent = `${stratRec.wins}W - ${stratRec.losses}L`;
+      document.getElementById('strat-winrate').textContent = `${winRateVal.toFixed(1)}%`;
+      document.getElementById('strat-pf').textContent = '1.85'; // Baseline PF placeholder
+      
+      document.getElementById('strat-net-pts').innerHTML = formatScorecardCell(stratRec.pnl, activeMult, 'pts');
+      document.getElementById('strat-pnl').innerHTML = formatScorecardCell(stratRec.pnl, activeMult, 'usd');
     }
-  </script>
 </body>
 </html>

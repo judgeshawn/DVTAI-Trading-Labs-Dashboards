@@ -427,6 +427,7 @@ td {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text);
+  text-align: right;
 }
 
 tr:hover td {
@@ -574,4 +575,59 @@ tr:last-child td {
   border-radius: 3px;
   width: 0;
   transition: width 0.4s ease;
+}
+
+/* Strategy Performance Session Recap Layout */
+.strategy-recap-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.strat-stat-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.strat-stat-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.strat-stat-val {
+  font-family: var(--font-data);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.strat-stat-val.success {
+  color: var(--green);
+}
+
+.strat-stat-val.neutral {
+  color: var(--blue);
+}
+
+@media (max-width: 1024px) {
+  .strategy-recap-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .strategy-recap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
