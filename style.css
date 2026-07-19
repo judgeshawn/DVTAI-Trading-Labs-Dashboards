@@ -849,3 +849,24 @@ tr:last-child td {
   margin-top: 12px;
 }
 
+/* Initial Balance Cohort Card Visuals */
+.ib-cohort-card {
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+}
+.ib-cohort-card:hover {
+  transform: translateY(-4px);
+}
+.ib-cohort-card.up { border-color: rgba(0, 240, 153, 0.35); box-shadow: 0 4px 20px rgba(0, 240, 153, 0.05); }
+.ib-cohort-card.up:hover { border-color: var(--green); box-shadow: 0 0 20px rgba(0, 240, 153, 0.25); }
+.ib-cohort-card.dn { border-color: rgba(255, 75, 96, 0.35); box-shadow: 0 4px 20px rgba(255, 75, 96, 0.05); }
+.ib-cohort-card.dn:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255, 75, 96, 0.25); }
+

@@ -105,7 +105,7 @@
               </svg>
               System Key Insights
             </h3>
-            <span class="card-subtitle" style="color: var(--yellow); font-weight: 700;">Weekly Summary &amp; Daily Outlook</span>
+            <span class="card-subtitle" style="color: var(--yellow); font-weight: 700;">Period Summary &amp; Daily Outlook</span>
           </div>
           <div id="key-insights-content" style="font-size: 0.82rem; line-height: 1.5; color: var(--text-muted); display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
             <!-- Left: Daily Outlook -->
@@ -116,9 +116,9 @@
                 <li id="insight-daily-2">--</li>
               </ul>
             </div>
-            <!-- Right: Weekly Summary -->
+            <!-- Right: Period Summary -->
             <div style="border-left: 1px solid var(--border); padding-left: 20px;">
-              <div style="font-weight: 700; color: var(--text); margin-bottom: 6px; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em;">Weekly System Summaries</div>
+              <div style="font-weight: 700; color: var(--text); margin-bottom: 6px; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em;">Period System Summaries</div>
               <ul style="padding-left: 18px; margin: 0; list-style-type: square;">
                 <li id="insight-weekly-1">--</li>
                 <li id="insight-weekly-2">--</li>
@@ -770,12 +770,121 @@
     </div>
 
     <div id="panel-ib" class="tab-panel">
+      <div class="aln-sessions-header">
+        <h2 style="color: var(--green); margin-bottom: 4px; font-size: 1.5rem; text-transform: uppercase;">Initial Balance &amp; Extensions</h2>
+        <div style="color: var(--text-muted); font-size: 0.85rem;"><span id="ib-sessions-count">--</span> sessions &middot; May 05, 2019 - Jul 17, 2026</div>
+      </div>
+
+      <!-- IB Upside/Downside Breakout Visual Cards -->
+      <div class="grid-gap grid-cols-2" style="margin-bottom: 24px;">
+        <!-- Upside Breakout Card (UL) -->
+        <div class="ib-cohort-card up">
+          <div>
+            <div class="aln-card-title p3" style="color: var(--green);">UPSIDE BREAKOUTS</div>
+            <div class="aln-card-subtitle">Price breaks above IB High first</div>
+            <div class="aln-card-desc">Upside momentum confirmed. Displays extension realized touch rates for this period.</div>
+          </div>
+          <div>
+            <div class="aln-card-pct p3" id="ib-visual-up-pct">--%</div>
+            <div class="aln-card-count" id="ib-visual-up-count">-- sessions</div>
+          </div>
+          <div>
+            <div class="aln-card-divider">UL Extensions Hit Rate (of breaks):</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <!-- UL 25% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">UL 25% (Ext 1)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-ul25-bar" style="height: 100%; background: var(--green); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-ul25-pct" style="width: 45px; text-align: right; color: var(--green); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+              <!-- UL 50% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">UL 50% (Ext 2)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-ul50-bar" style="height: 100%; background: var(--green); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-ul50-pct" style="width: 45px; text-align: right; color: var(--green); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+              <!-- UL 75% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">UL 75% (Ext 3)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-ul75-bar" style="height: 100%; background: var(--green); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-ul75-pct" style="width: 45px; text-align: right; color: var(--green); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+              <!-- UL 100% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">UL 100% (Ext 4)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-ul100-bar" style="height: 100%; background: var(--green); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-ul100-pct" style="width: 45px; text-align: right; color: var(--green); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Downside Breakout Card (DL) -->
+        <div class="ib-cohort-card dn">
+          <div>
+            <div class="aln-card-title p4" style="color: var(--red);">DOWNSIDE BREAKOUTS</div>
+            <div class="aln-card-subtitle">Price breaks below IB Low first</div>
+            <div class="aln-card-desc">Downside momentum confirmed. Displays extension realized touch rates for this period.</div>
+          </div>
+          <div>
+            <div class="aln-card-pct p4" id="ib-visual-dn-pct">--%</div>
+            <div class="aln-card-count" id="ib-visual-dn-count">-- sessions</div>
+          </div>
+          <div>
+            <div class="aln-card-divider">DL Extensions Hit Rate (of breaks):</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <!-- DL 25% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">DL 25% (Ext 1)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-dl25-bar" style="height: 100%; background: var(--red); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-dl25-pct" style="width: 45px; text-align: right; color: var(--red); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+              <!-- DL 50% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">DL 50% (Ext 2)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-dl50-bar" style="height: 100%; background: var(--red); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-dl50-pct" style="width: 45px; text-align: right; color: var(--red); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+              <!-- DL 75% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">DL 75% (Ext 3)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-dl75-bar" style="height: 100%; background: var(--red); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-dl75-pct" style="width: 45px; text-align: right; color: var(--red); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+              <!-- DL 100% -->
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+                <span style="font-weight:600;">DL 100% (Ext 4)</span>
+                <div style="flex-grow: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 0 12px; position: relative;">
+                  <div id="ib-visual-dl100-bar" style="height: 100%; background: var(--red); width: 0%; transition: width 0.6s ease; border-radius:3px;"></div>
+                </div>
+                <span id="ib-visual-dl100-pct" style="width: 45px; text-align: right; color: var(--red); font-weight: 700; font-family: var(--font-data);">--%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IB Breakout Matrix & Retest Stats Tables (Moved to bottom) -->
       <div class="grid-gap grid-cols-2">
         <!-- IB Breakout Probabilities Matrix Card -->
         <div class="card">
           <div class="card-header-row">
             <h3>Initial Balance (IB) Breakout Matrix</h3>
-            <span class="card-subtitle">Break rate percentages based on structural shape & close location</span>
+            <span class="card-subtitle">Break rate percentages based on structural shape &amp; close location</span>
           </div>
           <div class="table-container" style="margin-top: 15px;">
             <table>
@@ -872,99 +981,6 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- Extensions Hit Rate Card -->
-      <div class="grid-gap grid-cols-1" style="margin-top: 24px;">
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Initial Balance (IB) Extensions Realized Touch Rates</h3>
-            <span class="card-subtitle">Touch probabilities for extension multipliers (25%, 50%, 75%, 100%) during the RTH session</span>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 20px;">
-            <!-- Upper Extensions Grid -->
-            <div>
-              <h4 class="section-title" style="color: var(--green); border-bottom: 2px solid var(--green-dim); padding-bottom: 6px; margin-bottom: 16px;">Upper Extensions (UL) Touch Rates</h4>
-              
-              <!-- UL 25% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">UL 25% (Ext 1)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-ul25-bar" style="height: 100%; background: linear-gradient(90deg, rgba(0,240,153,0.3) 0%, var(--green) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-ul25-pct" style="color: var(--green); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-
-              <!-- UL 50% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">UL 50% (Ext 2)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-ul50-bar" style="height: 100%; background: linear-gradient(90deg, rgba(0,240,153,0.3) 0%, var(--green) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-ul50-pct" style="color: var(--green); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-
-              <!-- UL 75% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">UL 75% (Ext 3)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-ul75-bar" style="height: 100%; background: linear-gradient(90deg, rgba(0,240,153,0.3) 0%, var(--green) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-ul75-pct" style="color: var(--green); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-
-              <!-- UL 100% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">UL 100% (Ext 4)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-ul100-bar" style="height: 100%; background: linear-gradient(90deg, rgba(0,240,153,0.3) 0%, var(--green) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-ul100-pct" style="color: var(--green); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-            </div>
-
-            <!-- Lower Extensions Grid -->
-            <div>
-              <h4 class="section-title" style="color: var(--red); border-bottom: 2px solid var(--red-dim); padding-bottom: 6px; margin-bottom: 16px;">Lower Extensions (DL) Touch Rates</h4>
-              
-              <!-- DL 25% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">DL 25% (Ext 1)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-dl25-bar" style="height: 100%; background: linear-gradient(90deg, rgba(255,75,96,0.3) 0%, var(--red) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-dl25-pct" style="color: var(--red); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-
-              <!-- DL 50% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">DL 50% (Ext 2)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-dl50-bar" style="height: 100%; background: linear-gradient(90deg, rgba(255,75,96,0.3) 0%, var(--red) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-dl50-pct" style="color: var(--red); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-
-              <!-- DL 75% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">DL 75% (Ext 3)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-dl75-bar" style="height: 100%; background: linear-gradient(90deg, rgba(255,75,96,0.3) 0%, var(--red) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-dl75-pct" style="color: var(--red); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-
-              <!-- DL 100% -->
-              <div class="list-item-row" style="display: flex; align-items: center; justify-content: space-between; height: 32px;">
-                <span class="list-item-label" style="width: 130px; font-weight:600;">DL 100% (Ext 4)</span>
-                <div style="flex-grow: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin: 0 16px; position: relative;">
-                  <div id="ib-ext-dl100-bar" style="height: 100%; background: linear-gradient(90deg, rgba(255,75,96,0.3) 0%, var(--red) 100%); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
-                </div>
-                <span class="list-item-value font-bold" id="ib-ext-dl100-pct" style="color: var(--red); width: 60px; text-align: right; font-family: var(--font-data); font-size: 0.95rem;">--%</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1429,21 +1445,64 @@
 
       // Populate System Key Insights dynamically based on active selected session
       if (latestSess) {
-        const isJuly17 = latestSess.date === '2026-07-17';
-        if (isJuly17) {
-          document.getElementById('insight-daily-1').innerHTML = `<strong>${currentInst} Distribution:</strong> MNQ experienced a severe sell-off, closing down <strong>-1.53%</strong> (-448.75 pts) with an unfilled opening gap of <strong>31.00 pts</strong>, confirming full trend day down behavior.`;
-          document.getElementById('insight-daily-2').innerHTML = `<strong>Breakout Success:</strong> ALN P4 (Bearish Lean) hit its London Low breakout target at 09:55:30. 30-Sec OR broke Low and trended lower all session.`;
-          document.getElementById('insight-weekly-1').innerHTML = `<strong>Weekly ALN Summary:</strong> Heavy bias toward P4 (Bearish Lean) and P1 (Engulfing) setups. Short-side breakouts achieved a <strong>82.5%</strong> follow-through rate.`;
-          document.getElementById('insight-weekly-2').innerHTML = `<strong>Weekly IB Summary:</strong> Initial Balance extensions hit 100% DL extensions on 3/5 sessions. Weekly median IB range remains elevated at <strong>124.2 pts</strong>.`;
+        if (latestSess.insights && latestSess.insights.length >= 2) {
+          document.getElementById('insight-daily-1').innerHTML = `<strong>${currentInst} Analysis:</strong> ${latestSess.insights[0]}`;
+          document.getElementById('insight-daily-2').innerHTML = `<strong>System Signals:</strong> ${latestSess.insights[1]}`;
         } else {
           // Standard day default insights
-          const dailyPct = currentInst === 'MES' ? esSc.pct : nqSc.pct;
-          const pctDirectionStr = dailyPct < 0 ? 'consolidating down' : 'rallying up';
-          document.getElementById('insight-daily-1').innerHTML = `<strong>${currentInst} Price Action:</strong> Closed ${pctDirectionStr} at <strong>${formatSign(dailyPct, true)}</strong>. Price remained within regular deviation bands, favoring range-play.`;
-          document.getElementById('insight-daily-2').innerHTML = `<strong>System Signals:</strong> ALN session setup was a coiling pattern. No major opening gap remained unfilled.`;
-          document.getElementById('insight-weekly-1').innerHTML = `<strong>Weekly ALN Summary:</strong> Coiling P2 patterns dominated 60% of sessions. Wait for secondary London breaks before committing to size.`;
-          document.getElementById('insight-weekly-2').innerHTML = `<strong>Weekly IB Summary:</strong> Mean IB range is <strong>125.2 pts</strong>. 50% target extensions hit 72% of the time across NQ/ES.`;
+          const ohlc = latestSess.ohlc || {};
+          const chgPct = ohlc.chg_pct !== undefined ? ohlc.chg_pct : 0;
+          const chgPts = ohlc.chg !== undefined ? ohlc.chg : 0;
+          const dirStr = chgPct < 0 ? 'down' : 'up';
+          const colorStr = chgPct < 0 ? 'var(--red)' : 'var(--green)';
+          document.getElementById('insight-daily-1').innerHTML = `<strong>${currentInst} Price Action:</strong> Closed ${dirStr} at <strong style="color: ${colorStr}">${chgPct.toFixed(2)}%</strong> (${(chgPts * selectedContracts).toFixed(2)} pts) with a range of ${(ohlc.range * selectedContracts).toFixed(2)} pts.`;
+          
+          const orIb = latestSess.or_ib || {};
+          const breakTime = orIb.ib_break_time || 'None';
+          const breakDir = orIb.ib_break_dir || 'None';
+          let breakStr = 'no breakout';
+          if (breakDir !== 'None' && breakDir !== 'neither') {
+            breakStr = `a <strong>${breakDir.toUpperCase()}</strong> breakout at <strong>${breakTime}</strong>`;
+          }
+          const upExt = orIb.ib_max_ext_up || 0;
+          const dnExt = orIb.ib_max_ext_dn || 0;
+          const maxExt = Math.max(upExt, dnExt);
+          document.getElementById('insight-daily-2').innerHTML = `<strong>System Breakouts:</strong> Initial Balance registered ${breakStr}. Max RTH extension reached was <strong>${maxExt}%</strong>.`;
         }
+
+        // Calculate ALN and IB Period Summaries dynamically based on activeFiltered
+        const alnSess = activeFiltered.filter(s => s.aln);
+        const totalAln = alnSess.length;
+        let alnHighBreaks = 0;
+        let alnLowBreaks = 0;
+        alnSess.forEach(s => {
+          if (s.aln.london_broke_asia_h === 1) alnHighBreaks++;
+          if (s.aln.london_broke_asia_l === 1) alnLowBreaks++;
+        });
+        const alnBreakRate = totalAln > 0 ? (((alnHighBreaks + alnLowBreaks) / totalAln) * 100).toFixed(1) : '0.0';
+        document.getElementById('insight-weekly-1').innerHTML = `<strong>ALN Period Summary (${activePeriod.toUpperCase()}):</strong> London broke Asia ranges on <strong>${alnBreakRate}%</strong> of sessions (${alnHighBreaks + alnLowBreaks} breakouts: ${alnHighBreaks} High / ${alnLowBreaks} Low) out of ${totalAln} dates.`;
+
+        const ibSess = activeFiltered.filter(s => s.or_ib);
+        const totalIb = ibSess.length;
+        let ibBreaks = 0;
+        let ibExt50Hits = 0;
+        let sumIbRange = 0;
+        let countIbRange = 0;
+        ibSess.forEach(s => {
+          const bDir = s.or_ib.ib_break_dir ? s.or_ib.ib_break_dir.toLowerCase() : 'neither';
+          if (bDir !== 'neither' && bDir !== 'none') ibBreaks++;
+          if ((s.or_ib.ib_ext_up50_break && s.or_ib.ib_ext_up50_break !== 'None') || 
+              (s.or_ib.ib_ext_dn50_break && s.or_ib.ib_ext_dn50_break !== 'None')) {
+            ibExt50Hits++;
+          }
+          if (s.or_ib.ib_range > 0) {
+            sumIbRange += s.or_ib.ib_range;
+            countIbRange++;
+          }
+        });
+        const avgIbRangeVal = countIbRange > 0 ? (sumIbRange / countIbRange) : 0;
+        const ibExt50Rate = totalIb > 0 ? ((ibExt50Hits / totalIb) * 100).toFixed(1) : '0.0';
+        document.getElementById('insight-weekly-2').innerHTML = `<strong>IB Period Summary (${activePeriod.toUpperCase()}):</strong> Mean IB range was <strong>${(avgIbRangeVal * selectedContracts).toFixed(1)} pts</strong>. Extensions reached the 50% target on <strong>${ibExt50Rate}%</strong> of sessions.`;
       }
 
       // Update placeholders for other panels showing live stats count
@@ -2202,22 +2261,27 @@
     function renderIbProbabilities(activeFiltered) {
       if (!activeFiltered || activeFiltered.length === 0) return;
 
-      // 1. Matrix rows count
+      const totalValid = activeFiltered.length;
+      document.getElementById('ib-sessions-count').textContent = totalValid;
+
+      // 1. Breakout Side Counts (High vs Low)
+      let upBreaksCount = 0;
+      let dnBreaksCount = 0;
+      
+      let ul25HitsOfUp = 0, ul50HitsOfUp = 0, ul75HitsOfUp = 0, ul100HitsOfUp = 0;
+      let dl25HitsOfDn = 0, dl50HitsOfDn = 0, dl75HitsOfDn = 0, dl100HitsOfDn = 0;
+
+      // Matrix rows count
       let mCounts = [0, 0, 0, 0, 0, 0];
       let mHighs = [0, 0, 0, 0, 0, 0];
       let mLows = [0, 0, 0, 0, 0, 0];
       let mNeithers = [0, 0, 0, 0, 0, 0];
 
-      // 2. Retest rows count
+      // Retest rows count
       let rCounts = [0, 0, 0, 0];
       let rRetests = [0, 0, 0, 0];
       let rConfirms = [0, 0, 0, 0];
       let rReversals = [0, 0, 0, 0];
-
-      // 3. Extensions totals
-      let ul25Hits = 0, ul50Hits = 0, ul75Hits = 0, ul100Hits = 0;
-      let dl25Hits = 0, dl50Hits = 0, dl75Hits = 0, dl100Hits = 0;
-      let totalValid = 0;
 
       activeFiltered.forEach(s => {
         if (s.ohlc && s.or_ib) {
@@ -2225,18 +2289,21 @@
           const midPrice = (s.ohlc.h + s.ohlc.l) / 2;
           const isAboveMid = s.ohlc.c > midPrice;
           const bDir = s.or_ib.ib_break_dir ? s.or_ib.ib_break_dir.toLowerCase() : 'neither';
-          
-          // Extension tracking
-          totalValid++;
-          if (s.or_ib.ib_ext_up25_break && s.or_ib.ib_ext_up25_break !== 'None') ul25Hits++;
-          if (s.or_ib.ib_ext_up50_break && s.or_ib.ib_ext_up50_break !== 'None') ul50Hits++;
-          if (s.or_ib.ib_ext_up75_break && s.or_ib.ib_ext_up75_break !== 'None') ul75Hits++;
-          if (s.or_ib.ib_ext_up100_break && s.or_ib.ib_ext_up100_break !== 'None') ul100Hits++;
-          
-          if (s.or_ib.ib_ext_dn25_break && s.or_ib.ib_ext_dn25_break !== 'None') dl25Hits++;
-          if (s.or_ib.ib_ext_dn50_break && s.or_ib.ib_ext_dn50_break !== 'None') dl50Hits++;
-          if (s.or_ib.ib_ext_dn75_break && s.or_ib.ib_ext_dn75_break !== 'None') dl75Hits++;
-          if (s.or_ib.ib_ext_dn100_break && s.or_ib.ib_ext_dn100_break !== 'None') dl100Hits++;
+
+          // Track breaks
+          if (bDir.includes('high')) {
+            upBreaksCount++;
+            if (s.or_ib.ib_ext_up25_break && s.or_ib.ib_ext_up25_break !== 'None') ul25HitsOfUp++;
+            if (s.or_ib.ib_ext_up50_break && s.or_ib.ib_ext_up50_break !== 'None') ul50HitsOfUp++;
+            if (s.or_ib.ib_ext_up75_break && s.or_ib.ib_ext_up75_break !== 'None') ul75HitsOfUp++;
+            if (s.or_ib.ib_ext_up100_break && s.or_ib.ib_ext_up100_break !== 'None') ul100HitsOfUp++;
+          } else if (bDir.includes('low')) {
+            dnBreaksCount++;
+            if (s.or_ib.ib_ext_dn25_break && s.or_ib.ib_ext_dn25_break !== 'None') dl25HitsOfDn++;
+            if (s.or_ib.ib_ext_dn50_break && s.or_ib.ib_ext_dn50_break !== 'None') dl50HitsOfDn++;
+            if (s.or_ib.ib_ext_dn75_break && s.or_ib.ib_ext_dn75_break !== 'None') dl75HitsOfDn++;
+            if (s.or_ib.ib_ext_dn100_break && s.or_ib.ib_ext_dn100_break !== 'None') dl100HitsOfDn++;
+          }
 
           // Matrix grouping
           let mIdx = -1;
@@ -2278,6 +2345,35 @@
         }
       });
 
+      // 2. Render visual cards breakout percentages
+      const upBreakPct = totalValid > 0 ? ((upBreaksCount / totalValid) * 100).toFixed(1) : '0.0';
+      const dnBreakPct = totalValid > 0 ? ((dnBreaksCount / totalValid) * 100).toFixed(1) : '0.0';
+
+      document.getElementById('ib-visual-up-pct').textContent = `${upBreakPct}%`;
+      document.getElementById('ib-visual-up-count').textContent = `${upBreaksCount} sessions`;
+      document.getElementById('ib-visual-dn-pct').textContent = `${dnBreakPct}%`;
+      document.getElementById('ib-visual-dn-count').textContent = `${dnBreaksCount} sessions`;
+
+      // Helper to update progress bars
+      const setBarAndPct = (idPrefix, hits, total) => {
+        const pct = total > 0 ? (hits / total) * 100 : 0;
+        const pctStr = pct > 0 ? `${pct.toFixed(1)}%` : '--%';
+        const textEl = document.getElementById(`${idPrefix}-pct`);
+        const barEl = document.getElementById(`${idPrefix}-bar`);
+        if (textEl) textEl.textContent = pctStr;
+        if (barEl) barEl.style.width = `${pct}%`;
+      };
+
+      setBarAndPct('ib-visual-ul25', ul25HitsOfUp, upBreaksCount);
+      setBarAndPct('ib-visual-ul50', ul50HitsOfUp, upBreaksCount);
+      setBarAndPct('ib-visual-ul75', ul75HitsOfUp, upBreaksCount);
+      setBarAndPct('ib-visual-ul100', ul100HitsOfUp, upBreaksCount);
+
+      setBarAndPct('ib-visual-dl25', dl25HitsOfDn, dnBreaksCount);
+      setBarAndPct('ib-visual-dl50', dl50HitsOfDn, dnBreaksCount);
+      setBarAndPct('ib-visual-dl75', dl75HitsOfDn, dnBreaksCount);
+      setBarAndPct('ib-visual-dl100', dl100HitsOfDn, dnBreaksCount);
+
       // Render Matrix Table
       for (let i = 0; i < 6; i++) {
         const count = mCounts[i];
@@ -2289,26 +2385,6 @@
         document.getElementById(`ib-matrix-r${i+1}-n`).textContent = count;
       }
 
-      // Render Extension Touch Rates & Update Progress Bars
-      const setBarAndPct = (idPrefix, hits, total) => {
-        const pct = total > 0 ? (hits / total) * 100 : 0;
-        const pctStr = pct > 0 ? `${pct.toFixed(1)}%` : '--%';
-        const textEl = document.getElementById(`${idPrefix}-pct`);
-        const barEl = document.getElementById(`${idPrefix}-bar`);
-        if (textEl) textEl.textContent = pctStr;
-        if (barEl) barEl.style.width = `${pct}%`;
-      };
-      
-      setBarAndPct('ib-ext-ul25', ul25Hits, totalValid);
-      setBarAndPct('ib-ext-ul50', ul50Hits, totalValid);
-      setBarAndPct('ib-ext-ul75', ul75Hits, totalValid);
-      setBarAndPct('ib-ext-ul100', ul100Hits, totalValid);
-
-      setBarAndPct('ib-ext-dl25', dl25Hits, totalValid);
-      setBarAndPct('ib-ext-dl50', dl50Hits, totalValid);
-      setBarAndPct('ib-ext-dl75', dl75Hits, totalValid);
-      setBarAndPct('ib-ext-dl100', dl100Hits, totalValid);
-
       // Render Retest Table
       for (let i = 0; i < 4; i++) {
         const count = rCounts[i];
@@ -2319,7 +2395,6 @@
         document.getElementById(`ib-retest-r${i+1}`).textContent = `${retPct}% / ${confPct}% / ${revPct}%`;
         document.getElementById(`ib-retest-r${i+1}-n`).textContent = count;
       }
-
     }
 
     // Launch
