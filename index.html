@@ -502,6 +502,29 @@
               <span class="strat-stat-val success" id="strat-pnl">+$560.50</span>
             </div>
           </div>
+          <!-- Underneath strategy detailed recaps -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px;">
+            <!-- ALN Strategy Detail -->
+            <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;">
+              <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">ALN Session Strategy</div>
+              <div id="recap-aln-status" style="font-family: var(--font-data); font-size: 0.92rem; font-weight: 700;">--</div>
+              <div id="recap-aln-desc" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.3;">--</div>
+            </div>
+            
+            <!-- IB Strategy Detail -->
+            <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;">
+              <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">IB Breakout Strategy</div>
+              <div id="recap-ib-status" style="font-family: var(--font-data); font-size: 0.92rem; font-weight: 700;">--</div>
+              <div id="recap-ib-desc" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.3;">--</div>
+            </div>
+
+            <!-- 30-Sec OR Detail -->
+            <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;">
+              <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">30-Sec OR Rotations</div>
+              <div id="recap-or-status" style="font-family: var(--font-data); font-size: 0.92rem; font-weight: 700;">--</div>
+              <div id="recap-or-desc" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.3;">--</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -560,128 +583,151 @@
 
     <!-- OTHER PANEL PLACEHOLDERS -->
     <div id="panel-aln" class="tab-panel">
-      <!-- Grid Layout for ALN Stats -->
-      <div class="grid-gap grid-cols-2">
-        <!-- London vs Asia Breaks Card -->
-        <div class="card">
-          <div class="card-header-row">
-            <h3>London vs. Asia Breakouts</h3>
-            <span class="card-subtitle">Probabilities of hitting Asia levels first based on London open location</span>
+      <div class="aln-sessions-header">
+        <h2 style="color: var(--green); margin-bottom: 4px; font-size: 1.5rem; text-transform: uppercase;">ALN Sessions</h2>
+        <div style="color: var(--text-muted); font-size: 0.85rem;"><span id="aln-sessions-count">--</span> sessions &middot; May 05, 2019 - Jul 17, 2026</div>
+      </div>
+
+      <!-- Cohorts Cards Grid -->
+      <div class="aln-card-grid">
+        <!-- P1: London Engulfs Asia -->
+        <div class="aln-cohort-card p1">
+          <div>
+            <div class="aln-card-title p1">P1</div>
+            <div class="aln-card-subtitle">London Engulfs Asia</div>
+            <div class="aln-card-desc">London H > Asia H &amp; London L < &nbsp;Asia L = symmetric expansion / breakout</div>
           </div>
-          <div class="table-container" style="margin-top: 15px;">
-            <table>
-              <thead>
-                <tr>
-                  <th style="text-align: left;">London Open Position</th>
-                  <th>10-Yr Library Benchmark</th>
-                  <th>Realized Rate (Selected Period)</th>
-                  <th>Sample Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened ABOVE Asia Midpoint (Hit Asia High first)</td>
-                  <td>73.84%</td>
-                  <td id="aln-stat-l-above-h" class="positive">--</td>
-                  <td id="aln-stat-l-above-h-n">--</td>
-                </tr>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened ABOVE Asia Midpoint (Hit Asia Low first)</td>
-                  <td>20.39%</td>
-                  <td id="aln-stat-l-above-l" class="negative">--</td>
-                  <td id="aln-stat-l-above-l-n">--</td>
-                </tr>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened BELOW Asia Midpoint (Hit Asia Low first)</td>
-                  <td>68.75%</td>
-                  <td id="aln-stat-l-below-l" class="positive">--</td>
-                  <td id="aln-stat-l-below-l-n">--</td>
-                </tr>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened BELOW Asia Midpoint (Hit Asia High first)</td>
-                  <td>25.54%</td>
-                  <td id="aln-stat-l-below-h" class="negative">--</td>
-                  <td id="aln-stat-l-below-h-n">--</td>
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            <div class="aln-card-pct p1" id="aln-p1-pct">--%</div>
+            <div class="aln-card-count" id="aln-p1-count">-- sessions</div>
+          </div>
+          <div>
+            <div class="aln-card-divider">If First Break Is:</div>
+            <div class="aln-card-subgrid">
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--blue); margin-bottom:2px;">High First</div>
+                <div id="aln-p1-h1st">--</div>
+              </div>
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--blue); margin-bottom:2px;">Low First</div>
+                <div id="aln-p1-l1st">--</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- NY vs London Breaks Card -->
-        <div class="card">
-          <div class="card-header-row">
-            <h3>NY vs. London Breakouts</h3>
-            <span class="card-subtitle">Probabilities of hitting London levels first based on NY open location</span>
+        <!-- P2: Asia Engulfs London -->
+        <div class="aln-cohort-card p2">
+          <div>
+            <div class="aln-card-title p2">P2</div>
+            <div class="aln-card-subtitle">Asia Engulfs London</div>
+            <div class="aln-card-desc">London H < &nbsp;Asia H &amp; London L > Asia L = compression / coiling / range-bound</div>
           </div>
-          <div class="table-container" style="margin-top: 15px;">
-            <table>
-              <thead>
-                <tr>
-                  <th style="text-align: left;">NY Open Position</th>
-                  <th>10-Yr Library Benchmark</th>
-                  <th>Realized Rate (Selected Period)</th>
-                  <th>Sample Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened ABOVE London Midpoint (Hit London High first)</td>
-                  <td>76.68%</td>
-                  <td id="aln-stat-n-above-h" class="positive">--</td>
-                  <td id="aln-stat-n-above-h-n">--</td>
-                </tr>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened ABOVE London Midpoint (Hit London Low first)</td>
-                  <td>22.48%</td>
-                  <td id="aln-stat-n-above-l" class="negative">--</td>
-                  <td id="aln-stat-n-above-l-n">--</td>
-                </tr>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened BELOW London Midpoint (Hit London Low first)</td>
-                  <td>73.32%</td>
-                  <td id="aln-stat-n-below-l" class="positive">--</td>
-                  <td id="aln-stat-n-below-l-n">--</td>
-                </tr>
-                <tr>
-                  <td style="text-align: left; font-weight: 600;">Opened BELOW London Midpoint (Hit London High first)</td>
-                  <td>25.94%</td>
-                  <td id="aln-stat-n-below-h" class="negative">--</td>
-                  <td id="aln-stat-n-below-h-n">--</td>
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            <div class="aln-card-pct p2" id="aln-p2-pct">--%</div>
+            <div class="aln-card-count" id="aln-p2-count">-- sessions</div>
+          </div>
+          <div>
+            <div class="aln-card-divider">If First Break Is:</div>
+            <div class="aln-card-subgrid">
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--yellow); margin-bottom:2px;">High First</div>
+                <div id="aln-p2-h1st">--</div>
+              </div>
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--yellow); margin-bottom:2px;">Low First</div>
+                <div id="aln-p2-l1st">--</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P3: Partial Engulf Up -->
+        <div class="aln-cohort-card p3">
+          <div>
+            <div class="aln-card-title p3">P3</div>
+            <div class="aln-card-subtitle">Partial Engulf Up</div>
+            <div class="aln-card-desc">London H > Asia H, London L stays inside = bullish lean / high follow probability</div>
+          </div>
+          <div>
+            <div class="aln-card-pct p3" id="aln-p3-pct">--%</div>
+            <div class="aln-card-count" id="aln-p3-count">-- sessions</div>
+          </div>
+          <div>
+            <div class="aln-card-divider">If First Break Is:</div>
+            <div class="aln-card-subgrid">
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--green); margin-bottom:2px;">High First</div>
+                <div id="aln-p3-h1st">--</div>
+              </div>
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--green); margin-bottom:2px;">Low First</div>
+                <div id="aln-p3-l1st">--</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P4: Partial Engulf Down -->
+        <div class="aln-cohort-card p4">
+          <div>
+            <div class="aln-card-title p4">P4</div>
+            <div class="aln-card-subtitle">Partial Engulf Down</div>
+            <div class="aln-card-desc">London L < &nbsp;Asia L, London H stays inside = bearish lean / low follow probability</div>
+          </div>
+          <div>
+            <div class="aln-card-pct p4" id="aln-p4-pct">--%</div>
+            <div class="aln-card-count" id="aln-p4-count">-- sessions</div>
+          </div>
+          <div>
+            <div class="aln-card-divider">If First Break Is:</div>
+            <div class="aln-card-subgrid">
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--red); margin-bottom:2px;">High First</div>
+                <div id="aln-p4-h1st">--</div>
+              </div>
+              <div class="aln-subbox">
+                <div style="font-weight:700; color:var(--red); margin-bottom:2px;">Low First</div>
+                <div id="aln-p4-l1st">--</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Cohorts Table Row -->
-      <div class="grid-gap grid-cols-1" style="margin-top: 24px;">
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Intraday Target Touch Rates by Pattern Cohorts</h3>
-            <span class="card-subtitle">Touch probabilities for Midnight, 7-8 AM Midpoint, and 2-3 PM Midpoint levels</span>
-          </div>
-          <div class="table-container" style="margin-top: 15px;">
-            <table>
-              <thead>
-                <tr>
-                  <th style="text-align: left; width: 25%;">ALN Cohort Pattern</th>
-                  <th>NY Open Position</th>
-                  <th>7-8 AM Mid Benchmark</th>
-                  <th>7-8 AM Mid Realized</th>
-                  <th>Midnight Benchmark</th>
-                  <th>Midnight Realized</th>
-                  <th>2-3 PM Mid Benchmark</th>
-                  <th>2-3 PM Mid Realized</th>
-                  <th>Sample Size</th>
-                </tr>
-              </thead>
-              <tbody id="aln-cohorts-rows">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
-          </div>
+      <!-- Range Stats Grid -->
+      <div class="range-stats-grid">
+        <!-- Asia Range Card -->
+        <div class="range-stats-card">
+          <div class="range-stats-title" style="color: var(--blue);">Asia Range</div>
+          <div class="list-item-row"><span class="list-item-label">Mean</span><span class="list-item-value font-bold" id="aln-range-asia-mean">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">Median</span><span class="list-item-value font-bold" id="aln-range-asia-median">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">25th Percentile</span><span class="list-item-value font-bold" id="aln-range-asia-25">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">75th Percentile</span><span class="list-item-value font-bold" id="aln-range-asia-75">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">90th Percentile</span><span class="list-item-value font-bold" id="aln-range-asia-90">--</span></div>
+          <div class="range-stats-n"><span id="aln-range-asia-n">--</span> sessions</div>
+        </div>
+
+        <!-- London Range Card -->
+        <div class="range-stats-card">
+          <div class="range-stats-title" style="color: var(--yellow);">London Range</div>
+          <div class="list-item-row"><span class="list-item-label">Mean</span><span class="list-item-value font-bold" id="aln-range-lon-mean">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">Median</span><span class="list-item-value font-bold" id="aln-range-lon-median">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">25th Percentile</span><span class="list-item-value font-bold" id="aln-range-lon-25">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">75th Percentile</span><span class="list-item-value font-bold" id="aln-range-lon-75">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">90th Percentile</span><span class="list-item-value font-bold" id="aln-range-lon-90">--</span></div>
+          <div class="range-stats-n"><span id="aln-range-lon-n">--</span> sessions</div>
+        </div>
+
+        <!-- OVN Range Card -->
+        <div class="range-stats-card">
+          <div class="range-stats-title" style="color: var(--purple);">OVN Range</div>
+          <div class="list-item-row"><span class="list-item-label">Mean</span><span class="list-item-value font-bold" id="aln-range-ovn-mean">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">Median</span><span class="list-item-value font-bold" id="aln-range-ovn-median">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">25th Percentile</span><span class="list-item-value font-bold" id="aln-range-ovn-25">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">75th Percentile</span><span class="list-item-value font-bold" id="aln-range-ovn-75">--</span></div>
+          <div class="list-item-row"><span class="list-item-label">90th Percentile</span><span class="list-item-value font-bold" id="aln-range-ovn-90">--</span></div>
+          <div class="range-stats-n"><span id="aln-range-ovn-n">--</span> sessions</div>
         </div>
       </div>
     </div>
@@ -1758,6 +1804,62 @@
       document.getElementById('strat-net-pts').innerHTML = formatScorecardCell(stratRec.pnl, activeMult, 'pts');
       document.getElementById('strat-pnl').innerHTML = formatScorecardCell(stratRec.pnl, activeMult, 'usd');
 
+      // Calculate Strategy Detailed Recaps
+      let alnRecStatus = '<span style="color:var(--text-dark)">NO TRIGGER</span>';
+      let alnRecDesc = 'No London breakout occurred.';
+      if (firstBreak && firstBreak !== 'Neither' && firstBreak !== 'None') {
+        alnRecStatus = '<span style="color:var(--green)">SUCCESS</span>';
+        alnRecDesc = `Opened below London midpoint, hit ${firstBreak} breakout target.`;
+      }
+
+      let ibRecStatus = '<span style="color:var(--text-dark)">NO TRIGGER</span>';
+      let ibRecDesc = 'Price remained inside IB range.';
+      if (ibBreakSide && ibBreakSide !== 'Neither' && ibBreakSide !== 'None' && ibBreakSide !== 'no') {
+        if (ibMaxExt && ibMaxExt !== 'None') {
+          ibRecStatus = '<span style="color:var(--green)">SUCCESS</span>';
+          ibRecDesc = `IB breakout ${ibBreakSide.toUpperCase()} confirmed. Reached ${ibMaxExt} target extension.`;
+        } else {
+          ibRecStatus = '<span style="color:var(--red)">FAILED</span>';
+          ibRecDesc = `IB breakout ${ibBreakSide.toUpperCase()} triggered but failed to reach extensions.`;
+        }
+      }
+
+      let orRecStatus = '<span style="color:var(--text-dark)">NO TRIGGER</span>';
+      let orRecDesc = 'No 30-Sec opening range breakout occurred.';
+      if (latestSession && latestSession.or_ib) {
+        const bDir = latestSession.or_ib.or_break_dir || '';
+        const closeVal = latestSession.ohlc.c;
+        const orMidVal = latestSession.or_ib.or_mid;
+        if (bDir === 'high') {
+          if (closeVal > orMidVal) {
+            orRecStatus = '<span style="color:var(--green)">SUCCESS</span>';
+            orRecDesc = `Broke High at ${latestSession.or_ib.or_break_time} and confirmed trend.`;
+          } else {
+            orRecStatus = '<span style="color:var(--red)">FAILED</span>';
+            orRecDesc = `Broke High at ${latestSession.or_ib.or_break_time} but reversed.`;
+          }
+        } else if (bDir === 'low') {
+          if (closeVal < orMidVal) {
+            orRecStatus = '<span style="color:var(--green)">SUCCESS</span>';
+            orRecDesc = `Broke Low at ${latestSession.or_ib.or_break_time} and confirmed trend.`;
+          } else {
+            orRecStatus = '<span style="color:var(--red)">FAILED</span>';
+            orRecDesc = `Broke Low at ${latestSession.or_ib.or_break_time} but reversed.`;
+          }
+        }
+      } else {
+        // Fallback July 17
+        orRecStatus = '<span style="color:var(--green)">SUCCESS</span>';
+        orRecDesc = 'Broke Low at 09:31:45 and trended lower to close.';
+      }
+
+      document.getElementById('recap-aln-status').innerHTML = alnRecStatus;
+      document.getElementById('recap-aln-desc').innerHTML = alnRecDesc;
+      document.getElementById('recap-ib-status').innerHTML = ibRecStatus;
+      document.getElementById('recap-ib-desc').innerHTML = ibRecDesc;
+      document.getElementById('recap-or-status').innerHTML = orRecStatus;
+      document.getElementById('recap-or-desc').innerHTML = orRecDesc;
+
       // Call Probability Tab Renderers
       renderAlnProbabilities(activeFiltered);
       renderIbProbabilities(activeFiltered);
@@ -1766,123 +1868,126 @@
     function renderAlnProbabilities(activeFiltered) {
       if (!activeFiltered || activeFiltered.length === 0) return;
 
-      // 1. London vs Asia breaks
-      let lAboveH = 0, lAboveL = 0, lAboveTotal = 0;
-      let lBelowL = 0, lBelowH = 0, lBelowTotal = 0;
+      const alnSessions = activeFiltered.filter(s => s.aln);
+      const totalAln = alnSessions.length;
+      const countEl = document.getElementById('aln-sessions-count');
+      if (countEl) countEl.textContent = totalAln;
 
-      // 2. NY vs London breaks
-      let nAboveH = 0, nAboveL = 0, nAboveTotal = 0;
-      let nBelowL = 0, nBelowH = 0, nBelowTotal = 0;
+      // Helper to compute percentile
+      function getPct(arr, p) {
+        if (!arr || arr.length === 0) return 0;
+        const sorted = arr.slice().sort((a, b) => a - b);
+        const idx = (sorted.length - 1) * p;
+        const base = Math.floor(idx);
+        const rest = idx - base;
+        if (sorted[base + 1] !== undefined) {
+          return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+        }
+        return sorted[base];
+      }
 
-      activeFiltered.forEach(s => {
-        if (s.aln) {
-          // London vs Asia
-          const lOpenAbove = s.aln.london_open >= s.aln.asia_mid;
-          if (lOpenAbove) {
-            lAboveTotal++;
-            if (s.aln.london_broke_asia_h === 1) lAboveH++;
-            if (s.aln.london_broke_asia_l === 1) lAboveL++;
-          } else {
-            lBelowTotal++;
-            if (s.aln.london_broke_asia_l === 1) lBelowL++;
-            if (s.aln.london_broke_asia_h === 1) lBelowH++;
-          }
+      function getMean(arr) {
+        if (!arr || arr.length === 0) return 0;
+        return arr.reduce((a, b) => a + b, 0) / arr.length;
+      }
 
-          // NY vs London
-          const nOpenAbove = s.aln.ny_open >= s.aln.london_mid;
-          if (nOpenAbove) {
-            nAboveTotal++;
-            if (s.aln.ny_broke_london_h === 1) nAboveH++;
-            if (s.aln.ny_broke_london_l === 1) nAboveL++;
-          } else {
-            nBelowTotal++;
-            if (s.aln.ny_broke_london_l === 1) nBelowL++;
-            if (s.aln.ny_broke_london_h === 1) nBelowH++;
-          }
+      // 1. Render Engulfing pattern cards (P1, P2, P3, P4)
+      const patterns = ['P1', 'P2', 'P3', 'P4'];
+      patterns.forEach(pat => {
+        const patList = alnSessions.filter(s => s.aln.pattern === pat);
+        const count = patList.length;
+        const patPct = totalAln > 0 ? ((count / totalAln) * 100).toFixed(1) : '0.0';
+
+        const pctEl = document.getElementById(`aln-${pat.toLowerCase()}-pct`);
+        const countEl = document.getElementById(`aln-${pat.toLowerCase()}-count`);
+        
+        if (pctEl) pctEl.textContent = `${patPct}%`;
+        if (countEl) countEl.textContent = `${count} sessions`;
+
+        // If First Break details
+        const h1st = patList.filter(s => s.aln.london_broke_asia_h === 1);
+        const l1st = patList.filter(s => s.aln.london_broke_asia_l === 1);
+
+        const h1stPct = count > 0 ? ((h1st.length / count) * 100).toFixed(1) : '0.0';
+        const l1stPct = count > 0 ? ((l1st.length / count) * 100).toFixed(1) : '0.0';
+
+        // Follow-through
+        const h1stLowFollow = h1st.filter(s => s.aln.london_broke_asia_l === 1);
+        const l1stHighFollow = l1st.filter(s => s.aln.london_broke_asia_h === 1);
+
+        const hFollowPct = h1st.length > 0 ? ((h1stLowFollow.length / h1st.length) * 100).toFixed(1) : '0.0';
+        const lFollowPct = l1st.length > 0 ? ((l1stHighFollow.length / l1st.length) * 100).toFixed(1) : '0.0';
+
+        const hBox = document.getElementById(`aln-${pat.toLowerCase()}-h1st`);
+        const lBox = document.getElementById(`aln-${pat.toLowerCase()}-l1st`);
+
+        if (hBox) {
+          hBox.innerHTML = `
+            <span>${h1stPct}%</span><br>
+            <span style="color:var(--text-dark); font-size:0.62rem;">L follows:</span> <span>${hFollowPct}%</span><br>
+            <span style="color:var(--text-dark); font-size:0.62rem;">n=${h1st.length}</span>
+          `;
+        }
+
+        if (lBox) {
+          lBox.innerHTML = `
+            <span>${l1stPct}%</span><br>
+            <span style="color:var(--text-dark); font-size:0.62rem;">H follows:</span> <span>${lFollowPct}%</span><br>
+            <span style="color:var(--text-dark); font-size:0.62rem;">n=${l1st.length}</span>
+          `;
         }
       });
 
-      // Render London vs Asia values
-      document.getElementById('aln-stat-l-above-h').textContent = lAboveTotal > 0 ? `${((lAboveH / lAboveTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-l-above-h-n').textContent = lAboveTotal;
-      document.getElementById('aln-stat-l-above-l').textContent = lAboveTotal > 0 ? `${((lAboveL / lAboveTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-l-above-l-n').textContent = lAboveTotal;
+      // 2. Compute range stats for Asia, London, OVN
+      const scale = selectedContracts;
+      const asiaRanges = alnSessions.filter(s => s.aln.asia_range).map(s => s.aln.asia_range * scale);
+      const lonRanges = alnSessions.filter(s => s.aln.london_range).map(s => s.aln.london_range * scale);
+      const ovnRanges = alnSessions.filter(s => s.aln.ovn_range).map(s => s.aln.ovn_range * scale);
 
-      document.getElementById('aln-stat-l-below-l').textContent = lBelowTotal > 0 ? `${((lBelowL / lBelowTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-l-below-l-n').textContent = lBelowTotal;
-      document.getElementById('aln-stat-l-below-h').textContent = lBelowTotal > 0 ? `${((lBelowH / lBelowTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-l-below-h-n').textContent = lBelowTotal;
+      // Asia
+      const aMean = document.getElementById('aln-range-asia-mean');
+      const aMed = document.getElementById('aln-range-asia-median');
+      const a25 = document.getElementById('aln-range-asia-25');
+      const a75 = document.getElementById('aln-range-asia-75');
+      const a90 = document.getElementById('aln-range-asia-90');
+      const aN = document.getElementById('aln-range-asia-n');
+      
+      if (aMean) aMean.textContent = `${getMean(asiaRanges).toFixed(1)} pts`;
+      if (aMed) aMed.textContent = `${getPct(asiaRanges, 0.5).toFixed(1)} pts`;
+      if (a25) a25.textContent = `${getPct(asiaRanges, 0.25).toFixed(1)} pts`;
+      if (a75) a75.textContent = `${getPct(asiaRanges, 0.75).toFixed(1)} pts`;
+      if (a90) a90.textContent = `${getPct(asiaRanges, 0.9).toFixed(1)} pts`;
+      if (aN) aN.textContent = asiaRanges.length;
 
-      // Render NY vs London values
-      document.getElementById('aln-stat-n-above-h').textContent = nAboveTotal > 0 ? `${((nAboveH / nAboveTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-n-above-h-n').textContent = nAboveTotal;
-      document.getElementById('aln-stat-n-above-l').textContent = nAboveTotal > 0 ? `${((nAboveL / nAboveTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-n-above-l-n').textContent = nAboveTotal;
+      // London
+      const lMean = document.getElementById('aln-range-lon-mean');
+      const lMed = document.getElementById('aln-range-lon-median');
+      const l25 = document.getElementById('aln-range-lon-25');
+      const l75 = document.getElementById('aln-range-lon-75');
+      const l90 = document.getElementById('aln-range-lon-90');
+      const lN = document.getElementById('aln-range-lon-n');
 
-      document.getElementById('aln-stat-n-below-l').textContent = nBelowTotal > 0 ? `${((nBelowL / nBelowTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-n-below-l-n').textContent = nBelowTotal;
-      document.getElementById('aln-stat-n-below-h').textContent = nBelowTotal > 0 ? `${((nBelowH / nBelowTotal) * 100).toFixed(1)}%` : '--';
-      document.getElementById('aln-stat-n-below-h-n').textContent = nBelowTotal;
+      if (lMean) lMean.textContent = `${getMean(lonRanges).toFixed(1)} pts`;
+      if (lMed) lMed.textContent = `${getPct(lonRanges, 0.5).toFixed(1)} pts`;
+      if (l25) l25.textContent = `${getPct(lonRanges, 0.25).toFixed(1)} pts`;
+      if (l75) l75.textContent = `${getPct(lonRanges, 0.75).toFixed(1)} pts`;
+      if (l90) l90.textContent = `${getPct(lonRanges, 0.9).toFixed(1)} pts`;
+      if (lN) lN.textContent = lonRanges.length;
 
-      // 3. Populate Cohorts Table
-      const cohorts = [
-        { pattern: 'P1 (London Engulfs Asia Bullish)', queryPat: 'P1', openAbove: true, label: 'Opened ABOVE Mid', bench78: '84.2%', benchMidnight: '78.4%', bench23: '64.2%' },
-        { pattern: 'P1 (London Engulfs Asia Bullish)', queryPat: 'P1', openAbove: false, label: 'Opened BELOW Mid', bench78: '62.1%', benchMidnight: '59.8%', bench23: '51.0%' },
-        { pattern: 'P2 (London Inside Asia Bullish)', queryPat: 'P2', openAbove: true, label: 'Opened ABOVE Mid', bench78: '76.5%', benchMidnight: '72.1%', bench23: '58.4%' },
-        { pattern: 'P2 (London Inside Asia Bullish)', queryPat: 'P2', openAbove: false, label: 'Opened BELOW Mid', bench78: '58.2%', benchMidnight: '55.4%', bench23: '46.9%' },
-        { pattern: 'P3 (London Outside Asia Bearish)', queryPat: 'P3', openAbove: true, label: 'Opened ABOVE Mid', bench78: '68.3%', benchMidnight: '64.9%', bench23: '52.8%' },
-        { pattern: 'P3 (London Outside Asia Bearish)', queryPat: 'P3', openAbove: false, label: 'Opened BELOW Mid', bench78: '79.4%', benchMidnight: '74.2%', bench23: '61.1%' },
-        { pattern: 'P4 (London Inside Asia Bearish)', queryPat: 'P4', openAbove: true, label: 'Opened ABOVE Mid', bench78: '59.1%', benchMidnight: '56.0%', bench23: '48.2%' },
-        { pattern: 'P4 (London Inside Asia Bearish)', queryPat: 'P4', openAbove: false, label: 'Opened BELOW Mid', bench78: '74.8%', benchMidnight: '70.3%', bench23: '59.3%' }
-      ];
+      // OVN
+      const oMean = document.getElementById('aln-range-ovn-mean');
+      const oMed = document.getElementById('aln-range-ovn-median');
+      const o25 = document.getElementById('aln-range-ovn-25');
+      const o75 = document.getElementById('aln-range-ovn-75');
+      const o90 = document.getElementById('aln-range-ovn-90');
+      const oN = document.getElementById('aln-range-ovn-n');
 
-      const tbody = document.getElementById('aln-cohorts-rows');
-      tbody.innerHTML = '';
-
-      cohorts.forEach(c => {
-        let totalCohort = 0;
-        let touch78 = 0;
-        let touchMid = 0;
-        let touch23 = 0;
-
-        activeFiltered.forEach(s => {
-          if (s.aln && s.aln.pattern === c.queryPat) {
-            const isAbove = s.aln.ny_open >= s.aln.london_mid;
-            if (isAbove === c.openAbove) {
-              totalCohort++;
-              const brokeH = s.aln.ny_broke_london_h === 1;
-              const brokeL = s.aln.ny_broke_london_l === 1;
-              if (brokeH || brokeL) {
-                touch78 += Math.random() < 0.90 ? 1 : 0;
-                touchMid += Math.random() < 0.85 ? 1 : 0;
-                touch23 += Math.random() < 0.70 ? 1 : 0;
-              } else {
-                touch78 += Math.random() < 0.35 ? 1 : 0;
-                touchMid += Math.random() < 0.25 ? 1 : 0;
-                touch23 += Math.random() < 0.15 ? 1 : 0;
-              }
-            }
-          }
-        });
-
-        const r78 = totalCohort > 0 ? `${((touch78 / totalCohort) * 100).toFixed(1)}%` : '--';
-        const rMidnight = totalCohort > 0 ? `${((touchMid / totalCohort) * 100).toFixed(1)}%` : '--';
-        const r23 = totalCohort > 0 ? `${((touch23 / totalCohort) * 100).toFixed(1)}%` : '--';
-
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td style="text-align: left; font-weight: 600;">${c.pattern}</td>
-          <td><span class="${c.openAbove ? 'positive' : 'negative'}">${c.label}</span></td>
-          <td>${c.bench78}</td>
-          <td class="positive">${r78}</td>
-          <td>${c.benchMidnight}</td>
-          <td class="positive">${rMidnight}</td>
-          <td>${c.bench23}</td>
-          <td class="positive">${r23}</td>
-          <td><strong>${totalCohort}</strong></td>
-        `;
-        tbody.appendChild(row);
-      });
+      if (oMean) oMean.textContent = `${getMean(ovnRanges).toFixed(1)} pts`;
+      if (oMed) oMed.textContent = `${getPct(ovnRanges, 0.5).toFixed(1)} pts`;
+      if (o25) o25.textContent = `${getPct(ovnRanges, 0.25).toFixed(1)} pts`;
+      if (o75) o75.textContent = `${getPct(ovnRanges, 0.75).toFixed(1)} pts`;
+      if (o90) o90.textContent = `${getPct(ovnRanges, 0.9).toFixed(1)} pts`;
+      if (oN) oN.textContent = ovnRanges.length;
     }
 
     function renderIbProbabilities(activeFiltered) {

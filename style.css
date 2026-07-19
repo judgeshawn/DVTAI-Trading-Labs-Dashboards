@@ -716,3 +716,136 @@ tr:last-child td {
   color: var(--green);
   box-shadow: 0 0 12px rgba(0, 240, 153, 0.2);
 }
+
+/* ─── ALN VISUAL ENGULFING CARDS & RANGE WIDGETS ────────────────────────── */
+.aln-sessions-header {
+  margin-bottom: 24px;
+}
+.aln-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.aln-cohort-card {
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+}
+.aln-cohort-card:hover {
+  transform: translateY(-4px);
+}
+.aln-cohort-card.p1 { border-color: rgba(59, 130, 246, 0.35); box-shadow: 0 4px 20px rgba(59, 130, 246, 0.05); }
+.aln-cohort-card.p1:hover { border-color: var(--blue); box-shadow: 0 0 20px rgba(59, 130, 246, 0.25); }
+.aln-cohort-card.p2 { border-color: rgba(255, 184, 0, 0.35); box-shadow: 0 4px 20px rgba(255, 184, 0, 0.05); }
+.aln-cohort-card.p2:hover { border-color: var(--yellow); box-shadow: 0 0 20px rgba(255, 184, 0, 0.25); }
+.aln-cohort-card.p3 { border-color: rgba(0, 240, 153, 0.35); box-shadow: 0 4px 20px rgba(0, 240, 153, 0.05); }
+.aln-cohort-card.p3:hover { border-color: var(--green); box-shadow: 0 0 20px rgba(0, 240, 153, 0.25); }
+.aln-cohort-card.p4 { border-color: rgba(255, 75, 96, 0.35); box-shadow: 0 4px 20px rgba(255, 75, 96, 0.05); }
+.aln-cohort-card.p4:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255, 75, 96, 0.25); }
+
+.aln-card-title {
+  font-family: var(--font-data);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.aln-card-title.p1 { color: var(--blue); }
+.aln-card-title.p2 { color: var(--yellow); }
+.aln-card-title.p3 { color: var(--green); }
+.aln-card-title.p4 { color: var(--red); }
+
+.aln-card-subtitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.aln-card-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+  min-height: 34px;
+}
+.aln-card-pct {
+  font-family: var(--font-data);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 14px 0 2px;
+}
+.aln-card-pct.p1 { color: var(--blue); }
+.aln-card-pct.p2 { color: var(--yellow); }
+.aln-card-pct.p3 { color: var(--green); }
+.aln-card-pct.p4 { color: var(--red); }
+
+.aln-card-count {
+  font-size: 0.75rem;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.aln-card-divider {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+.aln-card-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.aln-subbox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  text-align: center;
+}
+.aln-subbox span {
+  font-weight: 700;
+}
+
+/* Range Stats Widgets */
+.range-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.range-stats-card {
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+}
+.range-stats-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.range-stats-n {
+  font-size: 0.72rem;
+  color: var(--text-dark);
+  text-align: right;
+  margin-top: 12px;
+}
+
