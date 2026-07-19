@@ -384,14 +384,21 @@
             </div>
             <!-- Column 2: Rotations & Breakouts -->
             <div>
-              <h4 class="section-title">Ladders &amp; Breakouts</h4>
-              <div class="list-item-row">
-                <span class="list-item-label">Ladder Rotations</span>
-                <span class="list-item-value" id="or-rotations">--</span>
+              <h4 class="section-title" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Ladders &amp; Breakouts</span>
+                <span style="font-size: 0.65rem; color: var(--yellow); border: 1px solid var(--yellow-dim); background: var(--yellow-dim); padding: 1px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase;">1st Hour</span>
+              </h4>
+              <div class="list-item-row" style="height: auto; padding: 6px 0; flex-direction: column; align-items: flex-start; gap: 4px;">
+                <span class="list-item-label" style="font-size: 0.72rem;">Up Ladders (First Hour)</span>
+                <div id="or-ladders-up" style="display: flex; gap: 6px; margin-top: 2px;">
+                  <!-- Dynamically populated green badges -->
+                </div>
               </div>
-              <div class="list-item-row">
-                <span class="list-item-label">Rotations Direction</span>
-                <span class="list-item-value" id="or-rot-dir">--</span>
+              <div class="list-item-row" style="height: auto; padding: 6px 0; flex-direction: column; align-items: flex-start; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 6px; padding-bottom: 8px;">
+                <span class="list-item-label" style="font-size: 0.72rem;">Down Ladders (First Hour)</span>
+                <div id="or-ladders-down" style="display: flex; gap: 6px; margin-top: 2px;">
+                  <!-- Dynamically populated red badges -->
+                </div>
               </div>
               <div class="list-item-row">
                 <span class="list-item-label">First Rotation Time</span>
@@ -482,21 +489,17 @@
             <!-- Column 3: Milestone Breakout Times -->
             <div>
               <h4 class="section-title">Extension Hit Times (RTH)</h4>
-              <div class="list-item-row">
-                <span class="list-item-label" style="font-size: 0.65rem;">UL 25% | 50%</span>
-                <span class="list-item-value" id="ib-ext-ul25-50">-- | --</span>
+              <div class="list-item-row" style="height: auto; padding: 6px 0; flex-direction: column; align-items: flex-start; gap: 4px;">
+                <span class="list-item-label" style="font-size: 0.72rem;">Upper Extensions (UL)</span>
+                <div id="ib-daily-ul-badges" style="display: flex; gap: 6px; margin-top: 2px;">
+                  <!-- UL 25% to 100% badges with times -->
+                </div>
               </div>
-              <div class="list-item-row">
-                <span class="list-item-label" style="font-size: 0.65rem;">UL 75% | 100%</span>
-                <span class="list-item-value" id="ib-ext-ul75-100">-- | --</span>
-              </div>
-              <div class="list-item-row">
-                <span class="list-item-label" style="font-size: 0.65rem;">DL 25% | 50%</span>
-                <span class="list-item-value" id="ib-ext-dl25-50">-- | --</span>
-              </div>
-              <div class="list-item-row">
-                <span class="list-item-label" style="font-size: 0.65rem;">DL 75% | 100%</span>
-                <span class="list-item-value" id="ib-ext-dl75-100">-- | --</span>
+              <div class="list-item-row" style="height: auto; padding: 6px 0; flex-direction: column; align-items: flex-start; gap: 4px;">
+                <span class="list-item-label" style="font-size: 0.72rem;">Lower Extensions (DL)</span>
+                <div id="ib-daily-dl-badges" style="display: flex; gap: 6px; margin-top: 2px;">
+                  <!-- DL 25% to 100% badges with times -->
+                </div>
               </div>
             </div>
           </div>
@@ -1208,6 +1211,59 @@
       return weekdaySessions.filter(s => new Date(s.date) >= cutoffDate);
     }
 
+    // ── LADDER ROTATIONS & DAILY IB BADGES RENDERERS ──────────────────────────
+    function renderLadders(containerId, count, isUp) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      
+      const maxLadders = 3; // L1, L2, L3
+      const badgeColor = isUp ? 'var(--green)' : 'var(--red)';
+      const badgeBg = isUp ? 'var(--green-dim)' : 'var(--red-dim)';
+      const badgeBorder = isUp ? 'rgba(0, 240, 153, 0.15)' : 'rgba(255, 75, 96, 0.15)';
+      
+      for (let i = 1; i <= maxLadders; i++) {
+        const hit = i <= count;
+        const styleStr = hit
+          ? `background:${badgeBg}; color:${badgeColor}; border:1px solid ${badgeBorder}; font-weight:800; font-size:0.68rem; padding:2px 8px; border-radius:4px; font-family:var(--font-data);`
+          : `background:rgba(255,255,255,0.02); color:var(--text-dark); border:1px solid var(--border); font-size:0.68rem; padding:2px 8px; border-radius:4px; font-family:var(--font-data); opacity:0.3;`;
+        container.innerHTML += `<span style="${styleStr}">L${i}</span>`;
+      }
+    }
+
+    function renderDailyIbBadges(containerId, ulTimes, dlTimes, isUp) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      
+      const levels = ['25%', '50%', '75%', '100%'];
+      const times = isUp ? ulTimes : dlTimes;
+      const badgeColor = isUp ? 'var(--green)' : 'var(--red)';
+      const badgeBg = isUp ? 'var(--green-dim)' : 'var(--red-dim)';
+      const badgeBorder = isUp ? 'rgba(0, 240, 153, 0.15)' : 'rgba(255, 75, 96, 0.15)';
+      
+      levels.forEach((lvl, idx) => {
+        const timeVal = times[idx];
+        const hit = timeVal && timeVal !== 'None' && timeVal !== 'n/a';
+        
+        if (hit) {
+          container.innerHTML += `
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+              <span style="background:${badgeBg}; color:${badgeColor}; border:1px solid ${badgeBorder}; font-weight:800; font-size:0.65rem; padding:2px 6px; border-radius:4px; font-family:var(--font-data);">${lvl}</span>
+              <span style="font-size:0.58rem; color:var(--text-muted); font-family:var(--font-data);">${timeVal}</span>
+            </div>
+          `;
+        } else {
+          container.innerHTML += `
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: 0.35;">
+              <span style="background:rgba(255,255,255,0.02); color:var(--text-dark); border:1px solid var(--border); font-size:0.65rem; padding:2px 6px; border-radius:4px; font-family:var(--font-data);">${lvl}</span>
+              <span style="font-size:0.58rem; color:var(--text-dark); font-family:var(--font-data);">--</span>
+            </div>
+          `;
+        }
+      });
+    }
+
     // ── DYNAMIC SCORECARD CALCULATIONS ────────────────────────────────────────
     function calculateScorecard(inst, sessions) {
       if (!sessions || !sessions.length) return null;
@@ -1750,8 +1806,8 @@
       document.getElementById('or-range-val').textContent = `${(orRangeVal * selectedContracts).toFixed(2)} pts`;
       document.getElementById('or-volume').innerHTML = orVolumeText;
 
-      document.getElementById('or-rotations').textContent = `${rotations} rotations`;
-      document.getElementById('or-rot-dir').textContent = `${upRot} Up / ${dnRot} Down`;
+      renderLadders('or-ladders-up', upRot, true);
+      renderLadders('or-ladders-down', dnRot, false);
       document.getElementById('or-first-rot-time').textContent = firstRotTime;
       document.getElementById('or-break-time').textContent = orBreakTime;
 
@@ -1882,10 +1938,8 @@
       document.getElementById('ib-10yr-prob').textContent = benchmarkStr;
       document.getElementById('ib-realized-prob').textContent = realizedStr;
 
-      document.getElementById('ib-ext-ul25-50').textContent = `${ul25} | ${ul50}`;
-      document.getElementById('ib-ext-ul75-100').textContent = `${ul75} | ${ul100}`;
-      document.getElementById('ib-ext-dl25-50').textContent = `${dl25} | ${dl50}`;
-      document.getElementById('ib-ext-dl75-100').textContent = `${dl75} | ${dl100}`;
+      renderDailyIbBadges('ib-daily-ul-badges', [ul25, ul50, ul75, ul100], [], true);
+      renderDailyIbBadges('ib-daily-dl-badges', [], [dl25, dl50, dl75, dl100], false);
 
       // 5. Strategy Recap (Calculated dynamically or fallback baseline)
       const stratRec = BASELINE_DATA[currentInst].strat;
