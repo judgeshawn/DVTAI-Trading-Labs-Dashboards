@@ -619,8 +619,454 @@
       document.getElementById('strat-signals').textContent = data.strat.signals;
     }
 
-    // Launch
-    init();
+    // ── STATE ────────────────────────────────────────────────────────────────
+    let currentInst = 'MNQ';
+    let currentTab = 'daily-dose';
+    let selectedContracts = 1;
+    let displayMode = 'usd';
+    let sessionsData = null; // Stores parsed JSON database
+    let activePeriod = 'all';
+
+    // Multipliers for Points to Dollars scaling (USD per point per contract)
+    const POINT_VALUES = {
+      'MNQ': 2.0,
+      'MES': 5.0,
+      'YM': 5.0,
+      'RTY': 5.0
+    };
+
+    // Baseline 1-contract point metrics (Fallback)
+    const BASELINE_DATA = {
+      'MNQ': {
+        scorecard: { pct: 1.42, pts: 280.50, wtd: 2.15, open: 245.25, mtd: 4.10, ytd: 18.45, vol: '1,452,240', rng: 315.25 },
+        sessions: { asia: 120.50, london: 155.00, nyam: 210.25, nycl: 95.00 },
+        gap: { size: 45.50, fill_pct: 35.0, filled: 'NO', direction: 'GAP UP' },
+        or: { range: 38.25, rotations: 3, up_rotations: 2, down_rotations: 1, first_rot_time: '09:34:30' },
+        ib: { high: 19850.50, low: 19770.25, range: 80.25, break_time: '10:42:00', break_side: 'HIGH (UP)', max_extension: '+50% (UL2)' },
+        strat: { pnl: 280.25, wins: 2, losses: 1, signals: 3 }
+      },
+      'MES': {
+        scorecard: { pct: 0.85, pts: 48.25, wtd: 1.10, open: 38.50, mtd: 2.35, ytd: 12.10, vol: '1,894,500', rng: 54.75 },
+        sessions: { asia: 22.50, london: 32.00, nyam: 45.25, nycl: 18.50 },
+        gap: { size: 8.75, fill_pct: 100.0, filled: 'YES', direction: 'GAP DOWN' },
+        or: { range: 7.25, rotations: 1, up_rotations: 1, down_rotations: 0, first_rot_time: '09:36:00' },
+        ib: { high: 5432.50, low: 5415.25, range: 17.25, break_time: '10:45:00', break_side: 'HIGH (UP)', max_extension: '+25% (UL1)' },
+        strat: { pnl: 48.25, wins: 1, losses: 0, signals: 1 }
+      }
+    };
+
+    // ── ISO WEEK HELPER ───────────────────────────────────────────────────────
+    function getWeekNo(date) {
+      const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      const dayNum = d.getUTCDay() || 7;
+      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+      return [d.getUTCFullYear(), weekNo];
+    }
+
+    // ── INITIALIZE ────────────────────────────────────────────────────────────
+    async function init() {
+      try {
+        const response = await fetch('./data/sessions_db.json');
+        if (!response.ok) throw new Error('Failed to load database file.');
+        sessionsData = await response.json();
+        
+        // Find latest date in MNQ database
+        const mnqList = sessionsData['MNQ'] || [];
+        if (mnqList.length > 0) {
+          const latestSession = mnqList[mnqList.length - 1];
+          const latestDate = new Date(latestSession.date);
+          document.getElementById('scorecard-date').textContent = 'Session: ' + 
+            latestDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+        }
+        
+        document.getElementById('last-updated').textContent = 'Last Updated: ' + 
+          new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' +
+          new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+        updateDisplay();
+      } catch (e) {
+        console.error('Error fetching sessions_db.json, using fallback data:', e);
+        document.getElementById('last-updated').textContent = 'Last Updated: ' + 
+          new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' (Static Fallback)';
+        updateDisplay();
+      }
+    }
+
+    // ── TAB CONTROLLER ────────────────────────────────────────────────────────
+    function switchTab(tabId) {
+      currentTab = tabId;
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${tabId}`);
+      });
+      updateDisplay();
+    }
+
+    // ── INSTRUMENT CONTROLLER ──────────────────────────────────────────────────
+    function switchInstrument(inst) {
+      currentInst = inst;
+      
+      document.querySelectorAll('.btn-toggle').forEach(btn => {
+        if (btn.id.startsWith('inst-')) {
+          const isTarget = btn.id === `inst-${inst.toLowerCase()}`;
+          btn.classList.toggle('active', isTarget);
+          btn.classList.toggle('instrument-active', isTarget);
+        }
+      });
+
+      if (inst === 'YM' || inst === 'RTY') {
+        alert(`${inst} is currently a placeholder. Phase 2 foundation is built on NQ/MNQ and ES/MES.`);
+      }
+
+      updateDisplay();
+    }
+
+    // ── CONTRACT STEPPER ──────────────────────────────────────────────────────
+    function adjustContracts(amount) {
+      const input = document.getElementById('contract-count');
+      let val = parseInt(input.value) + amount;
+      if (val < 1) val = 1;
+      if (val > 100) val = 100;
+      input.value = val;
+      selectedContracts = val;
+      updateDisplay();
+    }
+
+    // Input box validation
+    function updateScaling() {
+      const input = document.getElementById('contract-count');
+      let val = parseInt(input.value);
+      if (isNaN(val) || val < 1) val = 1;
+      if (val > 100) val = 100;
+      input.value = val;
+      selectedContracts = val;
+      updateDisplay();
+    }
+
+    // ── DISPLAY MODE ──────────────────────────────────────────────────────────
+    function setDisplayMode(mode) {
+      displayMode = mode;
+      document.getElementById('display-usd').classList.toggle('active', mode === 'usd');
+      document.getElementById('display-pts').classList.toggle('active', mode === 'pts');
+      updateDisplay();
+    }
+
+    // ── PERIOD CHANGE ─────────────────────────────────────────────────────────
+    function onPeriodChange() {
+      activePeriod = document.getElementById('period-filter').value;
+      updateDisplay();
+    }
+
+    // ── DYNAMIC PERIOD FILTERING ──────────────────────────────────────────────
+    function getFilteredSessions(inst) {
+      const allSessions = sessionsData ? (sessionsData[inst] || []) : [];
+      if (allSessions.length === 0) return [];
+      if (activePeriod === 'all') return allSessions;
+
+      const latestDateStr = allSessions[allSessions.length - 1].date;
+      const latestDate = new Date(latestDateStr);
+      let days = 36500; // default large number
+
+      switch (activePeriod) {
+        case '1w': days = 7; break;
+        case '1m': days = 30; break;
+        case '3m': days = 90; break;
+        case '6m': days = 180; break;
+        case '1y': days = 365; break;
+        case '2y': days = 730; break;
+        case '5y': days = 1825; break;
+        case '10y': days = 3650; break;
+      }
+
+      const cutoffDate = new Date(latestDate);
+      cutoffDate.setDate(cutoffDate.getDate() - days);
+
+      return allSessions.filter(s => new Date(s.date) >= cutoffDate);
+    }
+
+    // ── DYNAMIC SCORECARD CALCULATIONS ────────────────────────────────────────
+    function calculateScorecard(inst, sessions) {
+      if (!sessions || !sessions.length) return null;
+      
+      const latestSession = sessions[sessions.length - 1];
+      const latestClose = latestSession.ohlc?.c;
+      const latestOpen = latestSession.ohlc?.o;
+      if (latestClose === undefined || latestClose === null || latestOpen === undefined || latestOpen === null) {
+        return null;
+      }
+
+      const latestDate = new Date(latestSession.date);
+      const latestYear = latestDate.getFullYear();
+      const latestMonth = latestDate.getMonth();
+      const [latestIsoYear, latestWeekNo] = getWeekNo(latestDate);
+
+      // Find first session of the year
+      let yearOpen = null;
+      for (let s of sessions) {
+        if (s.ohlc && new Date(s.date).getFullYear() === latestYear) {
+          yearOpen = s.ohlc.o;
+          break;
+        }
+      }
+
+      // Find first session of the month
+      let monthOpen = null;
+      for (let s of sessions) {
+        const d = new Date(s.date);
+        if (s.ohlc && d.getFullYear() === latestYear && d.getMonth() === latestMonth) {
+          monthOpen = s.ohlc.o;
+          break;
+        }
+      }
+
+      // Find first session of the ISO week
+      let weekOpen = null;
+      for (let s of sessions) {
+        const d = new Date(s.date);
+        const [y, w] = getWeekNo(d);
+        if (s.ohlc && y === latestIsoYear && w === latestWeekNo) {
+          weekOpen = s.ohlc.o;
+          break;
+        }
+      }
+
+      const ptsChg = latestSession.ohlc.chg !== null ? latestSession.ohlc.chg : (latestClose - latestOpen);
+      const pctChg = latestSession.ohlc.chg_pct !== null ? latestSession.ohlc.chg_pct : ((latestClose - latestOpen) / latestOpen * 100);
+      
+      const wtdPct = weekOpen ? ((latestClose - weekOpen) / weekOpen * 100) : pctChg;
+      const mtdPct = monthOpen ? ((latestClose - monthOpen) / monthOpen * 100) : pctChg;
+      const ytdPct = yearOpen ? ((latestClose - yearOpen) / yearOpen * 100) : pctChg;
+      const ptsFromOpen = latestClose - latestOpen;
+
+      return {
+        pct: pctChg,
+        pts: ptsChg,
+        wtd: wtdPct,
+        open: ptsFromOpen,
+        mtd: mtdPct,
+        ytd: ytdPct,
+        vol: latestSession.ohlc.volume,
+        rng: latestSession.ohlc.range
+      };
+    }
+
+    // ── SCALE HELPERS ─────────────────────────────────────────────────────────
+    function scalePnL(ptsValue) {
+      const multiplier = POINT_VALUES[currentInst] || 2.0;
+      const usdValue = ptsValue * multiplier * selectedContracts;
+      
+      if (displayMode === 'pts') {
+        return (ptsValue * selectedContracts).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' pts';
+      }
+      return '$' + usdValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatSign(val, isPercentage = false, isRawText = false) {
+      if (val === null || val === undefined) return '--';
+      const sign = val >= 0 ? '+' : '';
+      const formatted = isPercentage 
+        ? val.toFixed(2) + '%' 
+        : val.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      
+      if (isRawText) return sign + formatted;
+      
+      const colorClass = val >= 0 ? 'positive' : 'negative';
+      return `<span class="${colorClass}">${sign}${formatted}</span>`;
+    }
+
+    // ── UPDATE RENDER ────────────────────────────────────────────────────────
+    function updateDisplay() {
+      // Find sessions for active filter
+      const filteredMNQ = getFilteredSessions('MNQ');
+      const filteredMES = getFilteredSessions('MES');
+      const activeFiltered = currentInst === 'MES' ? filteredMES : filteredMNQ;
+
+      // Update placeholders for other panels showing live stats count
+      const placeholderText = `Calculating statistics across ${activeFiltered.length} session dates in the selected period.`;
+      document.querySelectorAll('.tab-panel').forEach(p => {
+        if (p.id !== 'panel-daily-dose') {
+          const phBox = p.querySelector('.placeholder-box');
+          if (phBox) {
+            phBox.innerHTML = `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              ${placeholderText}
+            `;
+          }
+        }
+      });
+
+      // Fetch latest scorecard metrics
+      let nqSc = sessionsData ? calculateScorecard('MNQ', filteredMNQ) : BASELINE_DATA['MNQ'].scorecard;
+      let esSc = sessionsData ? calculateScorecard('MES', filteredMES) : BASELINE_DATA['MES'].scorecard;
+
+      if (!nqSc) nqSc = BASELINE_DATA['MNQ'].scorecard;
+      if (!esSc) esSc = BASELINE_DATA['MES'].scorecard;
+
+      // Get multipliers
+      const mnqMult = POINT_VALUES['MNQ'];
+      const mesMult = POINT_VALUES['MES'];
+
+      // Render Scorecard Row 1 (NQ)
+      const nqPtsVal = (displayMode === 'pts') ? nqSc.pts * selectedContracts : nqSc.pts * mnqMult * selectedContracts;
+      const nqOpenVal = (displayMode === 'pts') ? nqSc.open * selectedContracts : nqSc.open * mnqMult * selectedContracts;
+      
+      const nqPtsHtml = (displayMode === 'pts') 
+        ? formatSign(nqSc.pts * selectedContracts) + ' pts' 
+        : formatSign(nqSc.pts * mnqMult * selectedContracts);
+        
+      const nqOpenHtml = (displayMode === 'pts') 
+        ? formatSign(nqSc.open * selectedContracts) + ' pts' 
+        : formatSign(nqSc.open * mnqMult * selectedContracts);
+
+      const nqRow = document.getElementById('scorecard-rows').children[0];
+      nqRow.innerHTML = `
+        <td class="scorecard-cell-inst">NQ / MNQ</td>
+        <td>${formatSign(nqSc.pct, true)}</td>
+        <td>${nqPtsHtml}</td>
+        <td>${formatSign(nqSc.wtd, true)}</td>
+        <td>${nqOpenHtml}</td>
+        <td>${formatSign(nqSc.mtd, true)}</td>
+        <td>${formatSign(nqSc.ytd, true)}</td>
+        <td>${nqSc.vol ? nqSc.vol.toLocaleString() : 'N/A'}</td>
+        <td>${nqSc.rng ? (nqSc.rng * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:2}) : 'N/A'} pts</td>
+      `;
+
+      // Render Scorecard Row 2 (ES)
+      const esPtsHtml = (displayMode === 'pts') 
+        ? formatSign(esSc.pts * selectedContracts) + ' pts' 
+        : formatSign(esSc.pts * mesMult * selectedContracts);
+        
+      const esOpenHtml = (displayMode === 'pts') 
+        ? formatSign(esSc.open * selectedContracts) + ' pts' 
+        : formatSign(esSc.open * mesMult * selectedContracts);
+
+      const esRow = document.getElementById('scorecard-rows').children[1];
+      esRow.innerHTML = `
+        <td class="scorecard-cell-inst">ES / MES</td>
+        <td>${formatSign(esSc.pct, true)}</td>
+        <td>${esPtsHtml}</td>
+        <td>${formatSign(esSc.wtd, true)}</td>
+        <td>${esOpenHtml}</td>
+        <td>${formatSign(esSc.mtd, true)}</td>
+        <td>${formatSign(esSc.ytd, true)}</td>
+        <td>${esSc.vol ? esSc.vol.toLocaleString() : 'N/A'}</td>
+        <td>${esSc.rng ? (esSc.rng * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:2}) : 'N/A'} pts</td>
+      `;
+
+      // Handlers for active instrument placeholders
+      const isPlaceholder = (currentInst === 'YM' || currentInst === 'RTY');
+      if (isPlaceholder) return;
+
+      // Extract details for the latest session of the active instrument
+      const latestSession = activeFiltered[activeFiltered.length - 1];
+      if (!latestSession) return;
+
+      // 1. Session Ranges
+      const asiaRange = latestSession.aln?.asia_range || BASELINE_DATA[currentInst].sessions.asia;
+      const lonRange = latestSession.aln?.london_range || BASELINE_DATA[currentInst].sessions.london;
+      const ibRange = latestSession.or_ib?.ib_range || BASELINE_DATA[currentInst].sessions.nyam;
+      const ohlcRange = latestSession.ohlc?.range || BASELINE_DATA[currentInst].sessions.nycl;
+
+      const maxRangeVal = Math.max(asiaRange, lonRange, ibRange, ohlcRange) || 1;
+      
+      document.getElementById('sess-asia-val').textContent = `${(asiaRange * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-london-val').textContent = `${(lonRange * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-nyam-val').textContent = `${(ibRange * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-nycl-val').textContent = `${(ohlcRange * selectedContracts).toFixed(2)} pts`;
+
+      document.querySelector('.session-bar-fill.asia').style.width = `${(asiaRange / maxRangeVal * 100)}%`;
+      document.querySelector('.session-bar-fill.london').style.width = `${(lonRange / maxRangeVal * 100)}%`;
+      document.querySelectorAll('.session-bar-fill.ny')[0].style.width = `${(ibRange / maxRangeVal * 100)}%`;
+      document.querySelectorAll('.session-bar-fill.ny')[1].style.width = `${(ohlcRange / maxRangeVal * 100)}%`;
+
+      // 2. Gaps Analysis
+      const gapDir = latestSession.gap?.direction || BASELINE_DATA[currentInst].gap.direction;
+      const gapSize = latestSession.gap?.size !== null ? latestSession.gap.size : BASELINE_DATA[currentInst].gap.size;
+      
+      let fill100 = 'NO';
+      let fillPct = 0;
+      if (latestSession.gap) {
+        if (latestSession.gap.fill_100 === 1) { fill100 = 'YES'; fillPct = 100; }
+        else if (latestSession.gap.fill_75 === 1) { fillPct = 75; }
+        else if (latestSession.gap.fill_50 === 1) { fillPct = 50; }
+        else if (latestSession.gap.fill_25 === 1) { fillPct = 25; }
+      } else {
+        fill100 = BASELINE_DATA[currentInst].gap.filled;
+        fillPct = BASELINE_DATA[currentInst].gap.fill_pct;
+      }
+
+      const gapDirEl = document.getElementById('gap-dir');
+      gapDirEl.textContent = gapDir ? gapDir.toUpperCase() : 'FLAT';
+      gapDirEl.className = (gapDir && gapDir.toLowerCase() === 'up') ? 'positive' : 'negative';
+      
+      document.getElementById('gap-size').textContent = `${(gapSize * selectedContracts).toFixed(2)} pts`;
+      
+      const gapFillEl = document.getElementById('gap-filled');
+      gapFillEl.textContent = fill100;
+      gapFillEl.className = (fill100 === 'YES') ? 'positive' : 'negative';
+      
+      document.getElementById('gap-fill-pct').textContent = `${fillPct}%`;
+      document.getElementById('gap-progress-text').textContent = `${fillPct}%`;
+      document.getElementById('gap-progress-bar').style.width = `${fillPct}%`;
+      document.getElementById('gap-progress-bar').style.backgroundColor = (fillPct === 100) ? 'var(--green)' : (fillPct > 0 ? 'var(--yellow)' : 'var(--border)');
+
+      // 3. 30-Sec OR
+      const orRange = latestSession.or_ib?.or_range !== null ? latestSession.or_ib.or_range : BASELINE_DATA[currentInst].or.range;
+      const rotations = latestSession.or_ib?.ladder_rotation_count !== null ? latestSession.or_ib.ladder_rotation_count : BASELINE_DATA[currentInst].or.rotations;
+      const upRot = latestSession.or_ib?.up_rotations !== null ? latestSession.or_ib.up_rotations : BASELINE_DATA[currentInst].or.up_rotations;
+      const dnRot = latestSession.or_ib?.down_rotations !== null ? latestSession.or_ib.down_rotations : BASELINE_DATA[currentInst].or.down_rotations;
+      const firstRotTime = latestSession.or_ib?.first_up_time || latestSession.or_ib?.first_down_time || BASELINE_DATA[currentInst].or.first_rot_time;
+
+      document.getElementById('or-range-val').textContent = `${(orRange * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('or-rotations').textContent = `${rotations} rotations`;
+      document.getElementById('or-rot-dir').textContent = `${upRot} Up / ${dnRot} Down`;
+      document.getElementById('or-first-rot-time').textContent = firstRotTime || 'None';
+
+      // 4. IB & Extensions
+      const ibHigh = latestSession.or_ib?.ib_high !== null ? latestSession.or_ib.ib_high : BASELINE_DATA[currentInst].ib.high;
+      const ibLow = latestSession.or_ib?.ib_low !== null ? latestSession.or_ib.ib_low : BASELINE_DATA[currentInst].ib.low;
+      const ibRangeVal = latestSession.or_ib?.ib_range !== null ? latestSession.or_ib.ib_range : BASELINE_DATA[currentInst].ib.range;
+      const ibBreakTime = latestSession.or_ib?.ib_break_time || BASELINE_DATA[currentInst].ib.break_time;
+      const ibBreakSide = latestSession.or_ib?.ib_break_dir || BASELINE_DATA[currentInst].ib.break_side;
+      
+      let ibMaxExt = 'None';
+      if (latestSession.or_ib) {
+        const upExt = latestSession.or_ib.ib_max_ext_up || 0;
+        const dnExt = latestSession.or_ib.ib_max_ext_dn || 0;
+        if (upExt > 0) ibMaxExt = `+${upExt}% (UL${upExt/25})`;
+        else if (dnExt > 0) ibMaxExt = `-${dnExt}% (DL${dnExt/25})`;
+      } else {
+        ibMaxExt = BASELINE_DATA[currentInst].ib.max_extension;
+      }
+
+      document.getElementById('ib-high-val').textContent = ibHigh ? ibHigh.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('ib-low-val').textContent = ibLow ? ibLow.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('ib-range-val').textContent = `${(ibRangeVal * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('ib-break-time').textContent = ibBreakTime || 'None';
+      
+      const ibBreakEl = document.getElementById('ib-break-side');
+      ibBreakEl.textContent = ibBreakSide ? ibBreakSide.toUpperCase() : 'NO BREAK';
+      ibBreakEl.className = (ibBreakSide && ibBreakSide.toLowerCase().includes('h')) ? 'positive' : (ibBreakSide ? 'negative' : 'neutral');
+      
+      const ibMaxEl = document.getElementById('ib-max-ext');
+      ibMaxEl.textContent = ibMaxExt;
+      ibMaxEl.className = ibMaxExt.startsWith('+') ? 'positive' : (ibMaxExt.startsWith('-') ? 'negative' : 'neutral');
+
+      // 5. Strategy Recap (Mock stats as placeholder for live signals)
+      const stratRec = BASELINE_DATA[currentInst].strat;
+      document.getElementById('strat-pnl').textContent = scalePnL(stratRec.pnl);
+      document.getElementById('strat-pnl').className = (stratRec.pnl >= 0) ? 'positive' : 'negative';
+      document.getElementById('strat-wl').textContent = `${stratRec.wins}W - ${stratRec.losses}L`;
+      document.getElementById('strat-signals').textContent = stratRec.signals;
+    }
   </script>
 </body>
 </html>
