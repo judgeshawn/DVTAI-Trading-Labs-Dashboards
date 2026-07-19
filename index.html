@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DVTAI Trading Labs — Probability Dashboard v2</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <h1>📊 DVTAI <span>Trading Labs</span></h1>
+      <p>Probability Dashboard v2</p>
+    </div>
+    <div class="header-right">
+      <div class="updated-time" id="last-updated">Last Updated: Loading...</div>
+    </div>
+  </header>
+
+  <!-- TAB NAVIGATION -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('daily-dose')">Daily Dose</button>
+    <button class="tab-btn placeholder-tab" onclick="switchTab('aln')">ALN <span class="badge">v1</span></button>
+    <button class="tab-btn placeholder-tab" onclick="switchTab('ib')">IB & Extensions <span class="badge">v1</span></button>
+    <button class="tab-btn placeholder-tab" onclick="switchTab('gaps')">Gaps <span class="badge">v1</span></button>
+    <button class="tab-btn placeholder-tab" onclick="switchTab('pivots')">Pivots <span class="badge">v1</span></button>
+    <button class="tab-btn placeholder-tab" onclick="switchTab('or-30sec')">30-Sec OR <span class="badge">Hub</span></button>
+  </nav>
+
+  <!-- CONTROL PANEL BAR -->
+  <div class="controls-bar">
+    <div class="control-group">
+      <label>Active Instrument</label>
+      <div class="btn-toggle-group">
+        <button class="btn-toggle active instrument-active" id="inst-mnq" onclick="switchInstrument('MNQ')">MNQ</button>
+        <button class="btn-toggle" id="inst-mes" onclick="switchInstrument('MES')">MES</button>
+        <button class="btn-toggle" id="inst-ym" onclick="switchInstrument('YM')">YM</button>
+        <button class="btn-toggle" id="inst-rty" onclick="switchInstrument('RTY')">RTY</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>Period Filter</label>
+      <div class="select-wrapper">
+        <select id="period-filter" onchange="onPeriodChange()">
+          <option value="1w">Last Week</option>
+          <option value="1m">Last Month</option>
+          <option value="3m">Last Quarter</option>
+          <option value="6m">Last 6 Months</option>
+          <option value="1y">Last Year</option>
+          <option value="2y">Last 2 Years</option>
+          <option value="5y">Last 5 Years</option>
+          <option value="10y">Last 10 Years</option>
+          <option value="all" selected>All History</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>Contract Size</label>
+      <div class="stepper">
+        <button onclick="adjustContracts(-1)">−</button>
+        <input type="number" id="contract-count" value="1" min="1" max="100" onchange="updateScaling()">
+        <button onclick="adjustContracts(1)">+</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>Display Mode</label>
+      <div class="btn-toggle-group">
+        <button class="btn-toggle active" id="display-usd" onclick="setDisplayMode('usd')">$ USD</button>
+        <button class="btn-toggle" id="display-pts" onclick="setDisplayMode('pts')">Points</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>View Mode</label>
+      <div class="btn-toggle-group">
+        <button class="btn-toggle active" id="view-normal">Normal</button>
+        <button class="btn-toggle" id="view-compare">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN TAB CONTENT AREA -->
+  <main>
+    
+    <!-- TAB 1: DAILY DOSE PANEL -->
+    <div id="panel-daily-dose" class="tab-panel active">
+      
+      <!-- GRID ROW 1: SCORECARD -->
+      <div class="grid-gap grid-cols-1">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Daily Scorecard</h3>
+            <span class="card-subtitle" id="scorecard-date">Session: Fri, July 17, 2026</span>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Instrument</th>
+                  <th>Daily %</th>
+                  <th>Points Chg</th>
+                  <th>WTD %</th>
+                  <th>Points From Open</th>
+                  <th>MTD %</th>
+                  <th>YTD %</th>
+                  <th>Volume</th>
+                  <th>Range</th>
+                </tr>
+              </thead>
+              <tbody id="scorecard-rows">
+                <!-- NQ Row -->
+                <tr>
+                  <td class="scorecard-cell-inst">NQ / MNQ</td>
+                  <td class="positive" id="sc-nq-pct">+1.42%</td>
+                  <td class="positive" id="sc-nq-pts">+280.50 pts</td>
+                  <td class="positive" id="sc-nq-wtd">+2.15%</td>
+                  <td class="positive" id="sc-nq-open">+245.25 pts</td>
+                  <td class="positive" id="sc-nq-mtd">+4.10%</td>
+                  <td class="positive" id="sc-nq-ytd">+18.45%</td>
+                  <td id="sc-nq-vol">1,452,240</td>
+                  <td id="sc-nq-rng">315.25 pts</td>
+                </tr>
+                <!-- ES Row -->
+                <tr>
+                  <td class="scorecard-cell-inst">ES / MES</td>
+                  <td class="positive" id="sc-es-pct">+0.85%</td>
+                  <td class="positive" id="sc-es-pts">+48.25 pts</td>
+                  <td class="positive" id="sc-es-wtd">+1.10%</td>
+                  <td class="positive" id="sc-es-open">+38.50 pts</td>
+                  <td class="positive" id="sc-es-mtd">+2.35%</td>
+                  <td class="positive" id="sc-es-ytd">+12.10%</td>
+                  <td id="sc-es-vol">1,894,500</td>
+                  <td id="sc-es-rng">54.75 pts</td>
+                </tr>
+                <!-- YM Row (Dow Placeholder) -->
+                <tr class="neutral" style="opacity: 0.6;">
+                  <td class="scorecard-cell-inst">YM (Dow)</td>
+                  <td id="sc-ym-pct">--</td>
+                  <td id="sc-ym-pts">--</td>
+                  <td id="sc-ym-wtd">--</td>
+                  <td id="sc-ym-open">--</td>
+                  <td id="sc-ym-mtd">--</td>
+                  <td id="sc-ym-ytd">--</td>
+                  <td id="sc-ym-vol">Placeholder</td>
+                  <td id="sc-ym-rng">--</td>
+                </tr>
+                <!-- RTY Row (Russell Placeholder) -->
+                <tr class="neutral" style="opacity: 0.6;">
+                  <td class="scorecard-cell-inst">RTY (Russell)</td>
+                  <td id="sc-rty-pct">--</td>
+                  <td id="sc-rty-pts">--</td>
+                  <td id="sc-rty-wtd">--</td>
+                  <td id="sc-rty-open">--</td>
+                  <td id="sc-rty-mtd">--</td>
+                  <td id="sc-rty-ytd">--</td>
+                  <td id="sc-rty-vol">Placeholder</td>
+                  <td id="sc-rty-rng">--</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 2: SUBJECTIVE METRICS & NEWS PLACEHOLDERS -->
+      <div class="grid-gap grid-cols-4">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Macro Snapshot</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Geopolitical & Fed news
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Key News</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 4a2 2 0 0 0-2-2h-3v11l3-2 3 2V11z"></path>
+            </svg>
+            Earnings & Economic Events
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Sector Performance</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 20V10M12 20V4M6 20v-6"></path>
+            </svg>
+            ETF Heatmap / Performance
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Top Movers</h3>
+          </div>
+          <div class="placeholder-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+              <path d="M17 6h6v6"></path>
+            </svg>
+            High Beta / Volatility leaders
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 3: SESSIONS & GAP ANALYSIS -->
+      <div class="grid-gap grid-cols-3">
+        <!-- Session Range Analysis -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>"What Happened" Sessions</h3>
+            <span class="card-subtitle">Wick-to-Wick Ranges</span>
+          </div>
+          <div>
+            <div class="session-row">
+              <span class="session-name">Asia vs NY</span>
+              <div class="session-bar-track">
+                <div class="session-bar-fill asia" style="width: 65%;"></div>
+              </div>
+              <span class="session-bar-val" id="sess-asia-val">120.50 pts</span>
+            </div>
+            <div class="session-row">
+              <span class="session-name">London vs Asia</span>
+              <div class="session-bar-track">
+                <div class="session-bar-fill london" style="width: 80%;"></div>
+              </div>
+              <span class="session-bar-val" id="sess-london-val">155.00 pts</span>
+            </div>
+            <div class="session-row">
+              <span class="session-name">NY AM vs Lon</span>
+              <div class="session-bar-track">
+                <div class="session-bar-fill ny" style="width: 95%;"></div>
+              </div>
+              <span class="session-bar-val" id="sess-nyam-val">210.25 pts</span>
+            </div>
+            <div class="session-row">
+              <span class="session-name">NY Close vs Lon</span>
+              <div class="session-bar-track">
+                <div class="session-bar-fill ny" style="width: 45%;"></div>
+              </div>
+              <span class="session-bar-val" id="sess-nycl-val">95.00 pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gap Analysis Widget -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Gap Analysis</h3>
+          </div>
+          <div>
+            <div class="list-item-row">
+              <span class="list-item-label">Gap Direction</span>
+              <span class="list-item-value positive" id="gap-dir">GAP UP</span>
+            </div>
+            <div class="list-item-row">
+              <span class="list-item-label">Gap Size</span>
+              <span class="list-item-value" id="gap-size">45.50 pts</span>
+            </div>
+            <div class="list-item-row">
+              <span class="list-item-label">Filled 100%?</span>
+              <span class="list-item-value negative" id="gap-filled">NO</span>
+            </div>
+            <div class="list-item-row">
+              <span class="list-item-label">Max Gap Fill %</span>
+              <span class="list-item-value" id="gap-fill-pct">35.0%</span>
+            </div>
+            <div class="bar-wrap">
+              <div class="bar-meta">
+                <span class="neutral">Fill Progress</span>
+                <span class="warning" id="gap-progress-text">35%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" id="gap-progress-bar" style="width: 35%; background: var(--yellow);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 30-Sec OR Widget -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>30-Sec OR (1st Hour)</h3>
+          </div>
+          <div>
+            <div class="list-item-row">
+              <span class="list-item-label">OR Range</span>
+              <span class="list-item-value" id="or-range-val">38.25 pts</span>
+            </div>
+            <div class="list-item-row">
+              <span class="list-item-label">Ladder Rotations</span>
+              <span class="list-item-value" id="or-rotations">3 rotations</span>
+            </div>
+            <div class="list-item-row">
+              <span class="list-item-label">Rotations Direction</span>
+              <span class="list-item-value positive" id="or-rot-dir">2 Up / 1 Down</span>
+            </div>
+            <div class="list-item-row">
+              <span class="list-item-label">First Rotation Time</span>
+              <span class="list-item-value" id="or-first-rot-time">09:34:30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 4: IB & STRATEGY RESULTS -->
+      <div class="grid-gap grid-cols-2">
+        <!-- Initial Balance Detail -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Initial Balance (IB) & Extensions</h3>
+          </div>
+          <div class="grid-gap grid-cols-2" style="margin-bottom: 0;">
+            <div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB High</span>
+                <span class="list-item-value" id="ib-high-val">19,850.50</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB Low</span>
+                <span class="list-item-value" id="ib-low-val">19,770.25</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB Range</span>
+                <span class="list-item-value" id="ib-range-val">80.25 pts</span>
+              </div>
+            </div>
+            <div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB Break Time</span>
+                <span class="list-item-value" id="ib-break-time">10:42:00</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB Break Side</span>
+                <span class="list-item-value positive" id="ib-break-side">HIGH (UP)</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Max Extension</span>
+                <span class="list-item-value positive" id="ib-max-ext">+50% (UL2)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy performance overview -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Active Strategy Session Recap</h3>
+            <span class="card-subtitle">30-Sec OR Rotations</span>
+          </div>
+          <div class="grid-gap grid-cols-3" style="margin-bottom: 0;">
+            <div style="text-align: center;">
+              <div class="list-item-label" style="font-size: 0.65rem; text-transform: uppercase;">Signals</div>
+              <div style="font-family: var(--font-data); font-size: 1.8rem; font-weight: 800; color: var(--blue);" id="strat-signals">3</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="list-item-label" style="font-size: 0.65rem; text-transform: uppercase;">Win / Loss</div>
+              <div style="font-family: var(--font-data); font-size: 1.8rem; font-weight: 800; color: var(--green);" id="strat-wl">2W - 1L</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="list-item-label" style="font-size: 0.65rem; text-transform: uppercase;">Net P&L</div>
+              <div style="font-family: var(--font-data); font-size: 1.8rem; font-weight: 800; color: var(--green);" id="strat-pnl">+$560.50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OTHER PANEL PLACEHOLDERS -->
+    <div id="panel-aln" class="tab-panel">
+      <div class="card" style="text-align: center; padding: 60px 20px;">
+        <h2 style="color: var(--green); margin-bottom: 12px; text-transform: uppercase; font-size: 1.25rem;">ALN Pattern Analysis</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+          Detailed historical probabilities for London vs. Asia engulfing patterns (P1 - P8), conditional breaks, and session open locations.
+        </p>
+        <span class="badge" style="background: var(--blue-dim); color: var(--blue); padding: 6px 12px; font-size: 0.75rem;">Phase 3 Integration</span>
+      </div>
+    </div>
+
+    <div id="panel-ib" class="tab-panel">
+      <div class="card" style="text-align: center; padding: 60px 20px;">
+        <h2 style="color: var(--green); margin-bottom: 12px; text-transform: uppercase; font-size: 1.25rem;">Initial Balance &amp; Extensions</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+          Historical statistics on IB ranges, break rates, extension reach (+/- 25%, 50%, 75%, 100%), and close half relationships.
+        </p>
+        <span class="badge" style="background: var(--blue-dim); color: var(--blue); padding: 6px 12px; font-size: 0.75rem;">Phase 3 Integration</span>
+      </div>
+    </div>
+
+    <div id="panel-gaps" class="tab-panel">
+      <div class="card" style="text-align: center; padding: 60px 20px;">
+        <h2 style="color: var(--green); margin-bottom: 12px; text-transform: uppercase; font-size: 1.25rem;">RTH Gap Analysis</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+          RTH gap size stats, direction distributions, overall fill rates, and fill times segmented by gap size.
+        </p>
+        <span class="badge" style="background: var(--blue-dim); color: var(--blue); padding: 6px 12px; font-size: 0.75rem;">Phase 3 Integration</span>
+      </div>
+    </div>
+
+    <div id="panel-pivots" class="tab-panel">
+      <div class="card" style="text-align: center; padding: 60px 20px;">
+        <h2 style="color: var(--green); margin-bottom: 12px; text-transform: uppercase; font-size: 1.25rem;">Pivot Level Touch Rates</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+          Daily, Weekly, and Monthly Pivot level touch rates and session close location distributions.
+        </p>
+        <span class="badge" style="background: var(--blue-dim); color: var(--blue); padding: 6px 12px; font-size: 0.75rem;">Phase 3 Integration</span>
+      </div>
+    </div>
+
+    <div id="panel-or-30sec" class="tab-panel">
+      <div class="card" style="text-align: center; padding: 60px 20px;">
+        <h2 style="color: var(--green); margin-bottom: 12px; text-transform: uppercase; font-size: 1.25rem;">30-Sec OR Strategy Hub</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
+          Integrated performance tracker for the 30-Sec Opening Range strategy, including HTF confluence filter and forward test.
+        </p>
+        <span class="badge" style="background: var(--blue-dim); color: var(--blue); padding: 6px 12px; font-size: 0.75rem;">Phase 3 Integration</span>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ── STATE ────────────────────────────────────────────────────────────────
+    let currentInst = 'MNQ';
+    let currentTab = 'daily-dose';
+    let selectedContracts = 1;
+    let displayMode = 'usd';
+
+    // Multipliers for Points to Dollars scaling (USD per point per contract)
+    const POINT_VALUES = {
+      'MNQ': 2.0,
+      'MES': 5.0,
+      'YM': 5.0,
+      'RTY': 5.0
+    };
+
+    // Baseline 1-contract point metrics (Mock metrics for initial layout render)
+    const BASELINE_DATA = {
+      'MNQ': {
+        scorecard: { pct: 1.42, pts: 280.50, wtd: 2.15, open: 245.25, mtd: 4.10, ytd: 18.45, vol: '1,452,240', rng: 315.25 },
+        sessions: { asia: 120.50, london: 155.00, nyam: 210.25, nycl: 95.00 },
+        gap: { size: 45.50, fill_pct: 35.0 },
+        or: { range: 38.25 },
+        ib: { high: 19850.50, low: 19770.25, range: 80.25 },
+        strat: { pnl: 280.25, wins: 2, losses: 1, signals: 3 }
+      },
+      'MES': {
+        scorecard: { pct: 0.85, pts: 48.25, wtd: 1.10, open: 38.50, mtd: 2.35, ytd: 12.10, vol: '1,894,500', rng: 54.75 },
+        sessions: { asia: 22.50, london: 32.00, nyam: 45.25, nycl: 18.50 },
+        gap: { size: 8.75, fill_pct: 100.0 },
+        or: { range: 7.25 },
+        ib: { high: 5432.50, low: 5415.25, range: 17.25 },
+        strat: { pnl: 48.25, wins: 1, losses: 0, signals: 1 }
+      }
+    };
+
+    // ── INITIALIZE ────────────────────────────────────────────────────────────
+    function init() {
+      // Set updated timestamp
+      const now = new Date();
+      document.getElementById('last-updated').textContent = 'Last Updated: ' + 
+        now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' +
+        now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+      // Initial layout update
+      updateDisplay();
+    }
+
+    // ── TAB CONTROLLER ────────────────────────────────────────────────────────
+    function switchTab(tabId) {
+      currentTab = tabId;
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${tabId}`);
+      });
+    }
+
+    // ── INSTRUMENT CONTROLLER ──────────────────────────────────────────────────
+    function switchInstrument(inst) {
+      currentInst = inst;
+      
+      // Update buttons
+      document.querySelectorAll('.btn-toggle').forEach(btn => {
+        if (btn.id.startsWith('inst-')) {
+          const isTarget = btn.id === `inst-${inst.toLowerCase()}`;
+          btn.classList.toggle('active', isTarget);
+          btn.classList.toggle('instrument-active', isTarget);
+        }
+      });
+
+      // Handle placeholder view style
+      const scorecardRows = document.getElementById('scorecard-rows').children;
+      if (inst === 'YM' || inst === 'RTY') {
+        // Blur other scorecard elements to focus attention on active placeholder
+        alert(`YM and RTY are currently placeholders. Foundation is built using NQ/MNQ and ES/MES.`);
+      }
+
+      updateDisplay();
+    }
+
+    // ── CONTRACT STEPPER ──────────────────────────────────────────────────────
+    function adjustContracts(amount) {
+      const input = document.getElementById('contract-count');
+      let val = parseInt(input.value) + amount;
+      if (val < 1) val = 1;
+      if (val > 100) val = 100;
+      input.value = val;
+      selectedContracts = val;
+      updateDisplay();
+    }
+
+    function updateScaling() {
+      const input = document.getElementById('contract-count');
+      let val = parseInt(input.value);
+      if (isNaN(val) || val < 1) val = 1;
+      if (val > 100) val = 100;
+      input.value = val;
+      selectedContracts = val;
+      updateDisplay();
+    }
+
+    // ── DISPLAY MODE ──────────────────────────────────────────────────────────
+    function setDisplayMode(mode) {
+      displayMode = mode;
+      document.getElementById('display-usd').classList.toggle('active', mode === 'usd');
+      document.getElementById('display-pts').classList.toggle('active', mode === 'pts');
+      updateDisplay();
+    }
+
+    function onPeriodChange() {
+      const period = document.getElementById('period-filter').value;
+      if (period !== 'all') {
+        alert(`Timeframe filtering (${period.toUpperCase()}) will be dynamically calculated once sessions_db.json is loaded in Phase 2.`);
+      }
+    }
+
+    // ── SCALE HELPERS ─────────────────────────────────────────────────────────
+    function scalePnL(ptsValue) {
+      // Returns USD or Points depending on current state
+      const multiplier = POINT_VALUES[currentInst] || 2.0;
+      const usdValue = ptsValue * multiplier * selectedContracts;
+      
+      if (displayMode === 'pts') {
+        return (ptsValue * selectedContracts).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' pts';
+      }
+      return '$' + usdValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // ── UPDATE RENDER ────────────────────────────────────────────────────────
+    function updateDisplay() {
+      // Get the correct data source (default to MNQ if placeholder)
+      const data = BASELINE_DATA[currentInst] || BASELINE_DATA['MNQ'];
+      const multiplier = POINT_VALUES[currentInst] || 2.0;
+      const isPlaceholder = (currentInst === 'YM' || currentInst === 'RTY');
+
+      if (isPlaceholder) {
+        // Reset scorecard numbers to placeholders
+        return;
+      }
+
+      // Update Daily Dose elements with scaled numbers
+      // Scorecard Row 1 (MNQ)
+      const mnqData = BASELINE_DATA['MNQ'];
+      const mnqMult = POINT_VALUES['MNQ'];
+      document.getElementById('sc-nq-pts').textContent = (displayMode === 'pts') 
+        ? `+${(mnqData.scorecard.pts * selectedContracts).toFixed(2)} pts` 
+        : `+$${(mnqData.scorecard.pts * mnqMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      document.getElementById('sc-nq-open').textContent = (displayMode === 'pts')
+        ? `+${(mnqData.scorecard.open * selectedContracts).toFixed(2)} pts`
+        : `+$${(mnqData.scorecard.open * mnqMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      document.getElementById('sc-nq-rng').textContent = `${(mnqData.scorecard.rng * selectedContracts).toFixed(2)} pts`;
+
+      // Scorecard Row 2 (ES)
+      const esData = BASELINE_DATA['MES'];
+      const esMult = POINT_VALUES['MES'];
+      document.getElementById('sc-es-pts').textContent = (displayMode === 'pts')
+        ? `+${(esData.scorecard.pts * selectedContracts).toFixed(2)} pts`
+        : `+$${(esData.scorecard.pts * esMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      document.getElementById('sc-es-open').textContent = (displayMode === 'pts')
+        ? `+${(esData.scorecard.open * selectedContracts).toFixed(2)} pts`
+        : `+$${(esData.scorecard.open * esMult * selectedContracts).toLocaleString(undefined, {maximumFractionDigits:0})}`;
+      document.getElementById('sc-es-rng').textContent = `${(esData.scorecard.rng * selectedContracts).toFixed(2)} pts`;
+
+      // Current Instrument specific updates
+      // Session Ranges
+      document.getElementById('sess-asia-val').textContent = `${(data.sessions.asia * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-london-val').textContent = `${(data.sessions.london * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-nyam-val').textContent = `${(data.sessions.nyam * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-nycl-val').textContent = `${(data.sessions.nycl * selectedContracts).toFixed(2)} pts`;
+
+      // Gap size
+      document.getElementById('gap-size').textContent = `${(data.gap.size * selectedContracts).toFixed(2)} pts`;
+      
+      // 30-Sec OR Range
+      document.getElementById('or-range-val').textContent = `${(data.or.range * selectedContracts).toFixed(2)} pts`;
+
+      // IB Range
+      document.getElementById('ib-range-val').textContent = `${(data.ib.range * selectedContracts).toFixed(2)} pts`;
+
+      // Strategy Net P&L
+      const netPnlVal = data.strat.pnl; // points per contract
+      document.getElementById('strat-pnl').textContent = scalePnL(netPnlVal);
+      document.getElementById('strat-pnl').className = (netPnlVal >= 0) ? 'positive' : 'negative';
+      document.getElementById('strat-wl').textContent = `${data.strat.wins}W - ${data.strat.losses}L`;
+      document.getElementById('strat-signals').textContent = data.strat.signals;
+    }
+
+    // Launch
+    init();
+  </script>
+</body>
+</html>
