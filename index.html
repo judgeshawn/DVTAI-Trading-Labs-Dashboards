@@ -343,10 +343,14 @@
                 <span class="list-item-label">OR Range (Pts)</span>
                 <span class="list-item-value" id="or-range-val">--</span>
               </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Volume (30-Sec)</span>
+                <span class="list-item-value" id="or-volume">--</span>
+              </div>
             </div>
-            <!-- Column 2: Rotations & Breaks -->
+            <!-- Column 2: Rotations & Breakouts -->
             <div>
-              <h4 class="section-title">Ladders & Breakouts</h4>
+              <h4 class="section-title">Ladders &amp; Breakouts</h4>
               <div class="list-item-row">
                 <span class="list-item-label">Ladder Rotations</span>
                 <span class="list-item-value" id="or-rotations">--</span>
@@ -366,22 +370,18 @@
             </div>
             <!-- Column 3: Multi-Timeframe Ranges -->
             <div>
-              <h4 class="section-title">Multi-Timeframe Ranges &amp; Vol</h4>
+              <h4 class="section-title">Multi-Timeframe Ranges (HTF)</h4>
               <div class="list-item-row">
-                <span class="list-item-label">OR TF1 Range</span>
+                <span class="list-item-label">OR TF1 (5-Min)</span>
                 <span class="list-item-value" id="or-tf1-range">--</span>
               </div>
               <div class="list-item-row">
-                <span class="list-item-label">OR TF2 Range</span>
+                <span class="list-item-label">OR TF2 (15-Min)</span>
                 <span class="list-item-value" id="or-tf2-range">--</span>
               </div>
               <div class="list-item-row">
-                <span class="list-item-label">OR TF3 Range</span>
+                <span class="list-item-label">OR TF3 (30-Min)</span>
                 <span class="list-item-value" id="or-tf3-range">--</span>
-              </div>
-              <div class="list-item-row">
-                <span class="list-item-label">OR Volume</span>
-                <span class="list-item-value" id="or-volume">--</span>
               </div>
             </div>
           </div>
@@ -1250,7 +1250,18 @@
 
       // 3. 30-Sec OR
       let orHigh, orLow, orMid, orRangeVal, rotations, upRot, dnRot, firstRotTime, orBreakTime;
-      let orTf1Range, orTf2Range, orTf3Range, orVolume;
+      let orTf1Range, orTf2Range, orTf3Range, orVolume, orVolumeText;
+
+      // Compute dynamic average OR volume
+      let avgOrVolume = 0;
+      let validOrVolCount = 0;
+      activeFiltered.forEach(s => {
+        if (s.or_ib && s.or_ib.or_volume) {
+          avgOrVolume += s.or_ib.or_volume;
+          validOrVolCount++;
+        }
+      });
+      avgOrVolume = validOrVolCount > 0 ? Math.round(avgOrVolume / validOrVolCount) : 0;
 
       if (latestSession && latestSession.or_ib) {
         orHigh = latestSession.or_ib.or_high || 0;
@@ -1260,13 +1271,31 @@
         rotations = latestSession.or_ib.ladder_rotation_count || 0;
         upRot = latestSession.or_ib.up_rotations || 0;
         dnRot = latestSession.or_ib.down_rotations || 0;
-        firstRotTime = latestSession.or_ib.first_up_time || latestSession.or_ib.first_down_time || 'None';
+        
+        // Find which rotation happened first
+        const upTime = latestSession.or_ib.first_up_time || '';
+        const dnTime = latestSession.or_ib.first_down_time || '';
+        if (upTime && dnTime) {
+          if (upTime < dnTime) {
+            firstRotTime = `${upTime} (UP)`;
+          } else {
+            firstRotTime = `${dnTime} (DOWN)`;
+          }
+        } else if (upTime) {
+          firstRotTime = `${upTime} (UP)`;
+        } else if (dnTime) {
+          firstRotTime = `${dnTime} (DOWN)`;
+        } else {
+          firstRotTime = 'None';
+        }
+
         orBreakTime = latestSession.or_ib.or_break_time || 'None';
         
         orTf1Range = latestSession.or_ib.or_tf1_range || 0;
         orTf2Range = latestSession.or_ib.or_tf2_range || (orTf1Range * 1.5);
         orTf3Range = latestSession.or_ib.or_tf3_range || (orTf1Range * 2.1);
         orVolume = latestSession.or_ib.or_volume || 0;
+        orVolumeText = `${orVolume.toLocaleString()} <span class="avg-label" style="font-size:0.75rem; color:var(--text-muted);">(Avg: ${avgOrVolume.toLocaleString()})</span>`;
       } else {
         const baseOr = BASELINE_DATA[currentInst].or;
         orHigh = currentInst === 'MNQ' ? 19850.50 : 5432.50;
@@ -1276,19 +1305,22 @@
         rotations = baseOr.rotations;
         upRot = baseOr.up_rotations;
         dnRot = baseOr.down_rotations;
-        firstRotTime = baseOr.first_rot_time;
+        firstRotTime = '09:34:00 (UP)';
         orBreakTime = '09:34:30';
 
         orTf1Range = orRangeVal * 0.8;
         orTf2Range = orRangeVal * 1.3;
         orTf3Range = orRangeVal * 1.8;
         orVolume = currentInst === 'MNQ' ? 12450 : 25600;
+        const fakeAvg = currentInst === 'MNQ' ? 14850 : 26100;
+        orVolumeText = `${orVolume.toLocaleString()} <span class="avg-label" style="font-size:0.75rem; color:var(--text-muted);">(Avg: ${fakeAvg.toLocaleString()})</span>`;
       }
 
       document.getElementById('or-high').textContent = orHigh ? orHigh.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
       document.getElementById('or-low').textContent = orLow ? orLow.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
       document.getElementById('or-mid').textContent = orMid ? orMid.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
       document.getElementById('or-range-val').textContent = `${(orRangeVal * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('or-volume').innerHTML = orVolumeText;
 
       document.getElementById('or-rotations').textContent = `${rotations} rotations`;
       document.getElementById('or-rot-dir').textContent = `${upRot} Up / ${dnRot} Down`;
@@ -1298,7 +1330,6 @@
       document.getElementById('or-tf1-range').textContent = `${(orTf1Range * selectedContracts).toFixed(2)} pts`;
       document.getElementById('or-tf2-range').textContent = `${(orTf2Range * selectedContracts).toFixed(2)} pts`;
       document.getElementById('or-tf3-range').textContent = `${(orTf3Range * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('or-volume').textContent = orVolume ? orVolume.toLocaleString() : '--';
 
       // 4. IB & Extensions
       let ibHigh, ibLow, ibMid, ibRangeVal, ibVolume, ibBreakTime, ibBreakSide, ibCloseHalf, ibMaxExt;
