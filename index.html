@@ -1476,11 +1476,11 @@
         let alnHighBreaks = 0;
         let alnLowBreaks = 0;
         alnSess.forEach(s => {
-          if (s.aln.london_broke_asia_h === 1) alnHighBreaks++;
-          if (s.aln.london_broke_asia_l === 1) alnLowBreaks++;
+          if (s.aln.ny_broke_london_h === 1) alnHighBreaks++;
+          if (s.aln.ny_broke_london_l === 1) alnLowBreaks++;
         });
         const alnBreakRate = totalAln > 0 ? (((alnHighBreaks + alnLowBreaks) / totalAln) * 100).toFixed(1) : '0.0';
-        document.getElementById('insight-weekly-1').innerHTML = `<strong>ALN Period Summary (${activePeriod.toUpperCase()}):</strong> London broke Asia ranges on <strong>${alnBreakRate}%</strong> of sessions (${alnHighBreaks + alnLowBreaks} breakouts: ${alnHighBreaks} High / ${alnLowBreaks} Low) out of ${totalAln} dates.`;
+        document.getElementById('insight-weekly-1').innerHTML = `<strong>ALN Period Summary (${activePeriod.toUpperCase()}):</strong> NY broke London ranges on <strong>${alnBreakRate}%</strong> of sessions (${alnHighBreaks + alnLowBreaks} breakouts: ${alnHighBreaks} High / ${alnLowBreaks} Low) out of ${totalAln} dates.`;
 
         const ibSess = activeFiltered.filter(s => s.or_ib);
         const totalIb = ibSess.length;
@@ -2172,16 +2172,16 @@
         if (pctEl) pctEl.textContent = `${patPct}%`;
         if (countEl) countEl.textContent = `${count} sessions`;
 
-        // If First Break details
-        const h1st = patList.filter(s => s.aln.london_broke_asia_h === 1);
-        const l1st = patList.filter(s => s.aln.london_broke_asia_l === 1);
+        // If First Break details (based on NY breaking London)
+        const h1st = patList.filter(s => s.aln.ny_first_break && s.aln.ny_first_break.toUpperCase() === 'H');
+        const l1st = patList.filter(s => s.aln.ny_first_break && s.aln.ny_first_break.toUpperCase() === 'L');
 
         const h1stPct = count > 0 ? ((h1st.length / count) * 100).toFixed(1) : '0.0';
         const l1stPct = count > 0 ? ((l1st.length / count) * 100).toFixed(1) : '0.0';
 
-        // Follow-through
-        const h1stLowFollow = h1st.filter(s => s.aln.london_broke_asia_l === 1);
-        const l1stHighFollow = l1st.filter(s => s.aln.london_broke_asia_h === 1);
+        // Follow-through (if broke high first, did it also break low?)
+        const h1stLowFollow = h1st.filter(s => s.aln.ny_broke_london_l === 1 || s.aln.ny_broke_london_both === 1);
+        const l1stHighFollow = l1st.filter(s => s.aln.ny_broke_london_h === 1 || s.aln.ny_broke_london_both === 1);
 
         const hFollowPct = h1st.length > 0 ? ((h1stLowFollow.length / h1st.length) * 100).toFixed(1) : '0.0';
         const lFollowPct = l1st.length > 0 ? ((l1stHighFollow.length / l1st.length) * 100).toFixed(1) : '0.0';
@@ -2261,7 +2261,8 @@
     function renderIbProbabilities(activeFiltered) {
       if (!activeFiltered || activeFiltered.length === 0) return;
 
-      const totalValid = activeFiltered.length;
+      const hasIb = activeFiltered.filter(s => s.or_ib);
+      const totalValid = hasIb.length;
       document.getElementById('ib-sessions-count').textContent = totalValid;
 
       // 1. Breakout Side Counts (High vs Low)
