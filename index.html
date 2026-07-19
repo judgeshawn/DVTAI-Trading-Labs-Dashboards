@@ -168,139 +168,305 @@
         </div>
       </div>
 
-      <!-- GRID ROW 2: SESSIONS, GAPS, & 30-Sec OR (QUANTITATIVE DATA) -->
-      <div class="grid-gap grid-cols-3">
-        <!-- Session Range Analysis -->
+      <!-- GRID ROW 2: ALN SESSION FLOW (FULL ROW) -->
+      <div class="grid-gap grid-cols-1">
         <div class="card">
           <div class="card-header-row">
-            <h3>"What Happened" Sessions</h3>
-            <span class="card-subtitle">Wick-to-Wick Ranges</span>
+            <h3>ALN (Asia / London / NY) Session Flow</h3>
+            <span class="card-subtitle">Wick-to-Wick Ranges & Breaks</span>
           </div>
-          <div>
-            <div class="session-row">
-              <span class="session-name">Asia vs NY</span>
-              <div class="session-bar-track">
-                <div class="session-bar-fill asia" style="width: 65%;"></div>
+          <div class="grid-gap grid-cols-3" style="margin-bottom: 0;">
+            <!-- Column 1: Session Ranges -->
+            <div>
+              <h4 class="section-title">Session Ranges</h4>
+              <div class="session-row">
+                <span class="session-name">OVN Range</span>
+                <div class="session-bar-track">
+                  <div class="session-bar-fill london" id="sess-ovn-bar" style="width: 50%;"></div>
+                </div>
+                <span class="session-bar-val" id="sess-ovn-val">--</span>
               </div>
-              <span class="session-bar-val" id="sess-asia-val">120.50 pts</span>
-            </div>
-            <div class="session-row">
-              <span class="session-name">London vs Asia</span>
-              <div class="session-bar-track">
-                <div class="session-bar-fill london" style="width: 80%;"></div>
+              <div class="session-row">
+                <span class="session-name">Asia Range</span>
+                <div class="session-bar-track">
+                  <div class="session-bar-fill asia" id="sess-asia-bar" style="width: 50%;"></div>
+                </div>
+                <span class="session-bar-val" id="sess-asia-val">--</span>
               </div>
-              <span class="session-bar-val" id="sess-london-val">155.00 pts</span>
-            </div>
-            <div class="session-row">
-              <span class="session-name">NY AM vs Lon</span>
-              <div class="session-bar-track">
-                <div class="session-bar-fill ny" style="width: 95%;"></div>
+              <div class="session-row">
+                <span class="session-name">London Range</span>
+                <div class="session-bar-track">
+                  <div class="session-bar-fill london" id="sess-london-bar" style="width: 50%;"></div>
+                </div>
+                <span class="session-bar-val" id="sess-london-val">--</span>
               </div>
-              <span class="session-bar-val" id="sess-nyam-val">210.25 pts</span>
-            </div>
-            <div class="session-row">
-              <span class="session-name">NY Close vs Lon</span>
-              <div class="session-bar-track">
-                <div class="session-bar-fill ny" style="width: 45%;"></div>
-              </div>
-              <span class="session-bar-val" id="sess-nycl-val">95.00 pts</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gap Analysis Widget -->
-        <div class="card">
-          <div class="card-header-row">
-            <h3>Gap Analysis</h3>
-          </div>
-          <div>
-            <div class="list-item-row">
-              <span class="list-item-label">Gap Direction</span>
-              <span class="list-item-value positive" id="gap-dir">GAP UP</span>
-            </div>
-            <div class="list-item-row">
-              <span class="list-item-label">Gap Size</span>
-              <span class="list-item-value" id="gap-size">45.50 pts</span>
-            </div>
-            <div class="list-item-row">
-              <span class="list-item-label">Filled 100%?</span>
-              <span class="list-item-value negative" id="gap-filled">NO</span>
-            </div>
-            <div class="list-item-row">
-              <span class="list-item-label">Max Gap Fill %</span>
-              <span class="list-item-value" id="gap-fill-pct">35.0%</span>
-            </div>
-            <div class="bar-wrap">
-              <div class="bar-meta">
-                 <span class="neutral">Fill Progress</span>
-                 <span class="warning" id="gap-progress-text">35%</span>
-              </div>
-              <div class="bar-track">
-                 <div class="bar-fill" id="gap-progress-bar" style="width: 35%; background: var(--yellow);"></div>
+              <div class="session-row">
+                <span class="session-name">NY Range</span>
+                <div class="session-bar-track">
+                  <div class="session-bar-fill ny" id="sess-ny-bar" style="width: 50%;"></div>
+                </div>
+                <span class="session-bar-val" id="sess-ny-val">--</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- 30-Sec OR Widget -->
-        <div class="card">
-          <div class="card-header-row">
-            <h3>30-Sec OR (1st Hour)</h3>
-          </div>
-          <div>
-            <div class="list-item-row">
-              <span class="list-item-label">OR Range</span>
-              <span class="list-item-value" id="or-range-val">38.25 pts</span>
+            <!-- Column 2: Patterns & Breaks -->
+            <div>
+              <h4 class="section-title">ALN Patterns & Breaks</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">ALN Pattern</span>
+                <span class="list-item-value" id="aln-pattern">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">NY First Break</span>
+                <span class="list-item-value" id="aln-ny-first-break">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">NY Broke Lon High?</span>
+                <span class="list-item-value" id="aln-ny-broke-london-h">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">NY Broke Lon Low?</span>
+                <span class="list-item-value" id="aln-ny-broke-london-l">--</span>
+              </div>
             </div>
-            <div class="list-item-row">
-              <span class="list-item-label">Ladder Rotations</span>
-              <span class="list-item-value" id="or-rotations">3 rotations</span>
-            </div>
-            <div class="list-item-row">
-              <span class="list-item-label">Rotations Direction</span>
-              <span class="list-item-value positive" id="or-rot-dir">2 Up / 1 Down</span>
-            </div>
-            <div class="list-item-row">
-              <span class="list-item-label">First Rotation Time</span>
-              <span class="list-item-value" id="or-first-rot-time">09:34:30</span>
+            <!-- Column 3: Breakout Times -->
+            <div>
+              <h4 class="section-title">NY Breakout Times (RTH)</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">London High Break</span>
+                <span class="list-item-value" id="aln-ny-london-h-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">London Low Break</span>
+                <span class="list-item-value" id="aln-ny-london-l-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Asia High Break</span>
+                <span class="list-item-value" id="aln-ny-asia-h-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Asia Low Break</span>
+                <span class="list-item-value" id="aln-ny-asia-l-time">--</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- GRID ROW 3: INITIAL BALANCE (IB) & EXTENSIONS (FULL WIDTH ON OWN ROW) -->
+      <!-- GRID ROW 3: GAP AT OPEN ANALYSIS (FULL ROW) -->
       <div class="grid-gap grid-cols-1">
         <div class="card">
           <div class="card-header-row">
-            <h3>Initial Balance (IB) & Extensions</h3>
+            <h3>RTH Gap at Open</h3>
+            <span class="card-subtitle">Market Open Inflow Analysis</span>
           </div>
-          <div class="grid-gap grid-cols-2" style="margin-bottom: 0;">
+          <div class="grid-gap grid-cols-3" style="margin-bottom: 0;">
+            <!-- Column 1: Gap Info -->
             <div>
+              <h4 class="section-title">Gap Configuration</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">Gap Direction</span>
+                <span class="list-item-value" id="gap-dir">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Gap Size (Pts)</span>
+                <span class="list-item-value" id="gap-size">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">RTH Open Price</span>
+                <span class="list-item-value" id="gap-rth-open">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Prev RTH Close</span>
+                <span class="list-item-value" id="gap-prev-close">--</span>
+              </div>
+            </div>
+            <!-- Column 2: Fill Progress -->
+            <div>
+              <h4 class="section-title">Fill Execution</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">Filled 100%?</span>
+                <span class="list-item-value" id="gap-filled">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Max Gap Fill %</span>
+                <span class="list-item-value" id="gap-fill-pct">--</span>
+              </div>
+              <div class="bar-wrap" style="margin-top: 12px;">
+                <div class="bar-meta">
+                  <span class="neutral">Fill Progress</span>
+                  <span class="warning" id="gap-progress-text">--</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" id="gap-progress-bar" style="width: 0%; background: var(--yellow);"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Column 3: Fill Times -->
+            <div>
+              <h4 class="section-title">Fill Milestone Times (RTH)</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">25% Fill Time</span>
+                <span class="list-item-value" id="gap-fill-25-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">50% Fill Time</span>
+                <span class="list-item-value" id="gap-fill-50-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">75% Fill Time</span>
+                <span class="list-item-value" id="gap-fill-75-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">100% Fill Time</span>
+                <span class="list-item-value" id="gap-fill-100-time">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 4: 30-SEC OPENING RANGE (OR) (FULL ROW) -->
+      <div class="grid-gap grid-cols-1">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>30-Sec Opening Range (OR) &amp; Rotations</h3>
+            <span class="card-subtitle">Market Inflow Volatility Indicators</span>
+          </div>
+          <div class="grid-gap grid-cols-3" style="margin-bottom: 0;">
+            <!-- Column 1: OR Levels -->
+            <div>
+              <h4 class="section-title">Opening Range Levels</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">OR High</span>
+                <span class="list-item-value" id="or-high">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Low</span>
+                <span class="list-item-value" id="or-low">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Midpoint</span>
+                <span class="list-item-value" id="or-mid">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Range (Pts)</span>
+                <span class="list-item-value" id="or-range-val">--</span>
+              </div>
+            </div>
+            <!-- Column 2: Rotations & Breaks -->
+            <div>
+              <h4 class="section-title">Ladders & Breakouts</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">Ladder Rotations</span>
+                <span class="list-item-value" id="or-rotations">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Rotations Direction</span>
+                <span class="list-item-value" id="or-rot-dir">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">First Rotation Time</span>
+                <span class="list-item-value" id="or-first-rot-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Break Time</span>
+                <span class="list-item-value" id="or-break-time">--</span>
+              </div>
+            </div>
+            <!-- Column 3: Multi-Timeframe Ranges -->
+            <div>
+              <h4 class="section-title">Multi-Timeframe Ranges &amp; Vol</h4>
+              <div class="list-item-row">
+                <span class="list-item-label">OR TF1 Range</span>
+                <span class="list-item-value" id="or-tf1-range">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR TF2 Range</span>
+                <span class="list-item-value" id="or-tf2-range">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR TF3 Range</span>
+                <span class="list-item-value" id="or-tf3-range">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Volume</span>
+                <span class="list-item-value" id="or-volume">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 5: INITIAL BALANCE (IB) (FULL ROW) -->
+      <div class="grid-gap grid-cols-1">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Initial Balance (IB) &amp; Extensions</h3>
+            <span class="card-subtitle">First 30 Minutes Session Bounds</span>
+          </div>
+          <div class="grid-gap grid-cols-3" style="margin-bottom: 0;">
+            <!-- Column 1: IB Levels -->
+            <div>
+              <h4 class="section-title">Initial Balance Levels</h4>
               <div class="list-item-row">
                 <span class="list-item-label">IB High</span>
-                <span class="list-item-value" id="ib-high-val">19,850.50</span>
+                <span class="list-item-value" id="ib-high-val">--</span>
               </div>
               <div class="list-item-row">
                 <span class="list-item-label">IB Low</span>
-                <span class="list-item-value" id="ib-low-val">19,770.25</span>
+                <span class="list-item-value" id="ib-low-val">--</span>
               </div>
               <div class="list-item-row">
-                <span class="list-item-label">IB Range</span>
-                <span class="list-item-value" id="ib-range-val">80.25 pts</span>
+                <span class="list-item-label">IB Midpoint</span>
+                <span class="list-item-value" id="ib-mid-val">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB Range (Pts)</span>
+                <span class="list-item-value" id="ib-range-val">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">IB Volume</span>
+                <span class="list-item-value" id="ib-volume">--</span>
               </div>
             </div>
+            <!-- Column 2: Break Details -->
             <div>
+              <h4 class="section-title">Breakout Details</h4>
               <div class="list-item-row">
                 <span class="list-item-label">IB Break Time</span>
-                <span class="list-item-value" id="ib-break-time">10:42:00</span>
+                <span class="list-item-value" id="ib-break-time">--</span>
               </div>
               <div class="list-item-row">
                 <span class="list-item-label">IB Break Side</span>
-                <span class="list-item-value positive" id="ib-break-side">HIGH (UP)</span>
+                <span class="list-item-value" id="ib-break-side">--</span>
               </div>
               <div class="list-item-row">
-                <span class="list-item-label">Max Extension</span>
-                <span class="list-item-value positive" id="ib-max-ext">+50% (UL2)</span>
+                <span class="list-item-label">IB Close Half</span>
+                <span class="list-item-value" id="ib-close-half">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">Max Extension Reached</span>
+                <span class="list-item-value" id="ib-max-ext">--</span>
+              </div>
+            </div>
+            <!-- Column 3: Milestone Breakout Times -->
+            <div>
+              <h4 class="section-title">Extension Hit Times (RTH)</h4>
+              <div class="list-item-row">
+                <span class="list-item-label" style="font-size: 0.65rem;">UL 25% | 50%</span>
+                <span class="list-item-value" id="ib-ext-ul25-50">-- | --</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label" style="font-size: 0.65rem;">UL 75% | 100%</span>
+                <span class="list-item-value" id="ib-ext-ul75-100">-- | --</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label" style="font-size: 0.65rem;">DL 25% | 50%</span>
+                <span class="list-item-value" id="ib-ext-dl25-50">-- | --</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label" style="font-size: 0.65rem;">DL 75% | 100%</span>
+                <span class="list-item-value" id="ib-ext-dl75-100">-- | --</span>
               </div>
             </div>
           </div>
@@ -828,96 +994,254 @@
       const latestSession = activeFiltered[activeFiltered.length - 1];
       if (!latestSession) return;
 
-      // 1. Session Ranges
-      const asiaRange = latestSession.aln?.asia_range || BASELINE_DATA[currentInst].sessions.asia;
-      const lonRange = latestSession.aln?.london_range || BASELINE_DATA[currentInst].sessions.london;
-      const ibRange = latestSession.or_ib?.ib_range || BASELINE_DATA[currentInst].sessions.nyam;
-      const ohlcRange = latestSession.ohlc?.range || BASELINE_DATA[currentInst].sessions.nycl;
+      // 1. Session Ranges & ALN Flow
+      let ovnRange, asiaRange, londonRange, nyRange;
+      let pattern, firstBreak, brokeLonH, brokeLonL;
+      let lonHBreakTime, lonLBreakTime, asiaHBreakTime, asiaLBreakTime;
 
-      const maxRangeVal = Math.max(asiaRange, lonRange, ibRange, ohlcRange) || 1;
-      
+      if (latestSession && latestSession.aln) {
+        ovnRange = latestSession.aln.ovn_range || 0;
+        asiaRange = latestSession.aln.asia_range || 0;
+        londonRange = latestSession.aln.london_range || 0;
+        nyRange = latestSession.ohlc?.range || (latestSession.ohlc?.h - latestSession.ohlc?.l) || 0;
+        
+        pattern = latestSession.aln.pattern || 'None';
+        firstBreak = latestSession.aln.ny_first_break || 'None';
+        brokeLonH = latestSession.aln.ny_broke_london_h === 1 ? 'YES' : 'NO';
+        brokeLonL = latestSession.aln.ny_broke_london_l === 1 ? 'YES' : 'NO';
+
+        lonHBreakTime = latestSession.aln.ny_london_h_break_time || 'None';
+        lonLBreakTime = latestSession.aln.ny_london_l_break_time || 'None';
+        asiaHBreakTime = latestSession.aln.ny_asia_h_break_time || 'None';
+        asiaLBreakTime = latestSession.aln.ny_asia_l_break_time || 'None';
+      } else {
+        // Baseline Fallback
+        const baseSess = BASELINE_DATA[currentInst].sessions;
+        ovnRange = baseSess.london * 0.9;
+        asiaRange = baseSess.asia;
+        londonRange = baseSess.london;
+        nyRange = baseSess.nycl;
+
+        pattern = currentInst === 'MNQ' ? 'P4' : 'P1';
+        firstBreak = 'London High';
+        brokeLonH = 'YES';
+        brokeLonL = 'NO';
+
+        lonHBreakTime = '09:42:00';
+        lonLBreakTime = 'None';
+        asiaHBreakTime = '09:38:30';
+        asiaLBreakTime = 'None';
+      }
+
+      const maxRangeVal = Math.max(ovnRange, asiaRange, londonRange, nyRange) || 1;
+      document.getElementById('sess-ovn-val').textContent = `${(ovnRange * selectedContracts).toFixed(2)} pts`;
       document.getElementById('sess-asia-val').textContent = `${(asiaRange * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('sess-london-val').textContent = `${(lonRange * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('sess-nyam-val').textContent = `${(ibRange * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('sess-nycl-val').textContent = `${(ohlcRange * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-london-val').textContent = `${(londonRange * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('sess-ny-val').textContent = `${(nyRange * selectedContracts).toFixed(2)} pts`;
 
-      document.querySelector('.session-bar-fill.asia').style.width = `${(asiaRange / maxRangeVal * 100)}%`;
-      document.querySelector('.session-bar-fill.london').style.width = `${(lonRange / maxRangeVal * 100)}%`;
-      document.querySelectorAll('.session-bar-fill.ny')[0].style.width = `${(ibRange / maxRangeVal * 100)}%`;
-      document.querySelectorAll('.session-bar-fill.ny')[1].style.width = `${(ohlcRange / maxRangeVal * 100)}%`;
+      document.getElementById('sess-ovn-bar').style.width = `${(ovnRange / maxRangeVal * 100)}%`;
+      document.getElementById('sess-asia-bar').style.width = `${(asiaRange / maxRangeVal * 100)}%`;
+      document.getElementById('sess-london-bar').style.width = `${(londonRange / maxRangeVal * 100)}%`;
+      document.getElementById('sess-ny-bar').style.width = `${(nyRange / maxRangeVal * 100)}%`;
+
+      document.getElementById('aln-pattern').textContent = pattern;
+      document.getElementById('aln-ny-first-break').textContent = firstBreak;
+      
+      const brokeLonHEl = document.getElementById('aln-ny-broke-london-h');
+      brokeLonHEl.textContent = brokeLonH;
+      brokeLonHEl.className = brokeLonH === 'YES' ? 'list-item-value positive' : 'list-item-value negative';
+      
+      const brokeLonLEl = document.getElementById('aln-ny-broke-london-l');
+      brokeLonLEl.textContent = brokeLonL;
+      brokeLonLEl.className = brokeLonL === 'YES' ? 'list-item-value positive' : 'list-item-value negative';
+
+      document.getElementById('aln-ny-london-h-time').textContent = lonHBreakTime;
+      document.getElementById('aln-ny-london-l-time').textContent = lonLBreakTime;
+      document.getElementById('aln-ny-asia-h-time').textContent = asiaHBreakTime;
+      document.getElementById('aln-ny-asia-l-time').textContent = asiaLBreakTime;
 
       // 2. Gaps Analysis
-      const gapDir = latestSession.gap?.direction || BASELINE_DATA[currentInst].gap.direction;
-      const gapSize = latestSession.gap?.size !== null ? latestSession.gap.size : BASELINE_DATA[currentInst].gap.size;
-      
-      let fill100 = 'NO';
-      let fillPct = 0;
-      if (latestSession.gap) {
+      let gapDir, gapSize, gapOpen, gapClose, fill100, fillPct;
+      let fill25Time, fill50Time, fill75Time, fill100Time;
+
+      if (latestSession && latestSession.gap) {
+        gapDir = latestSession.gap.direction || 'FLAT';
+        gapSize = latestSession.gap.size !== null ? latestSession.gap.size : 0;
+        gapOpen = latestSession.gap.rth_open || 0;
+        gapClose = latestSession.gap.prev_rth_close || 0;
+
         if (latestSession.gap.fill_100 === 1) { fill100 = 'YES'; fillPct = 100; }
-        else if (latestSession.gap.fill_75 === 1) { fillPct = 75; }
-        else if (latestSession.gap.fill_50 === 1) { fillPct = 50; }
-        else if (latestSession.gap.fill_25 === 1) { fillPct = 25; }
+        else if (latestSession.gap.fill_75 === 1) { fill100 = 'NO'; fillPct = 75; }
+        else if (latestSession.gap.fill_50 === 1) { fill100 = 'NO'; fillPct = 50; }
+        else if (latestSession.gap.fill_25 === 1) { fill100 = 'NO'; fillPct = 25; }
+        else { fill100 = 'NO'; fillPct = 0; }
+
+        fill25Time = latestSession.gap.fill_25_time || 'None';
+        fill50Time = latestSession.gap.fill_50_time || 'None';
+        fill75Time = latestSession.gap.fill_75_time || 'None';
+        fill100Time = latestSession.gap.fill_100_time || 'None';
       } else {
-        fill100 = BASELINE_DATA[currentInst].gap.filled;
-        fillPct = BASELINE_DATA[currentInst].gap.fill_pct;
+        const baseGap = BASELINE_DATA[currentInst].gap;
+        gapDir = baseGap.direction;
+        gapSize = baseGap.size;
+        gapOpen = currentInst === 'MNQ' ? 19840.50 : 5430.25;
+        gapClose = currentInst === 'MNQ' ? 19795.00 : 5421.50;
+        fill100 = baseGap.filled;
+        fillPct = baseGap.fill_pct;
+        fill25Time = '09:32:00';
+        fill50Time = 'None';
+        fill75Time = 'None';
+        fill100Time = 'None';
       }
 
       const gapDirEl = document.getElementById('gap-dir');
-      gapDirEl.textContent = gapDir ? gapDir.toUpperCase() : 'FLAT';
-      gapDirEl.className = (gapDir && gapDir.toLowerCase() === 'up') ? 'positive' : 'negative';
-      
+      gapDirEl.textContent = gapDir.toUpperCase();
+      gapDirEl.className = gapDir.toLowerCase() === 'up' ? 'list-item-value positive' : 'list-item-value negative';
+
       document.getElementById('gap-size').textContent = `${(gapSize * selectedContracts).toFixed(2)} pts`;
-      
+      document.getElementById('gap-rth-open').textContent = gapOpen ? gapOpen.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('gap-prev-close').textContent = gapClose ? gapClose.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+
       const gapFillEl = document.getElementById('gap-filled');
       gapFillEl.textContent = fill100;
-      gapFillEl.className = (fill100 === 'YES') ? 'positive' : 'negative';
-      
+      gapFillEl.className = fill100 === 'YES' ? 'list-item-value positive' : 'list-item-value negative';
+
       document.getElementById('gap-fill-pct').textContent = `${fillPct}%`;
       document.getElementById('gap-progress-text').textContent = `${fillPct}%`;
       document.getElementById('gap-progress-bar').style.width = `${fillPct}%`;
       document.getElementById('gap-progress-bar').style.backgroundColor = (fillPct === 100) ? 'var(--green)' : (fillPct > 0 ? 'var(--yellow)' : 'var(--border)');
 
-      // 3. 30-Sec OR
-      const orRange = latestSession.or_ib?.or_range !== null ? latestSession.or_ib.or_range : BASELINE_DATA[currentInst].or.range;
-      const rotations = latestSession.or_ib?.ladder_rotation_count !== null ? latestSession.or_ib.ladder_rotation_count : BASELINE_DATA[currentInst].or.rotations;
-      const upRot = latestSession.or_ib?.up_rotations !== null ? latestSession.or_ib.up_rotations : BASELINE_DATA[currentInst].or.up_rotations;
-      const dnRot = latestSession.or_ib?.down_rotations !== null ? latestSession.or_ib.down_rotations : BASELINE_DATA[currentInst].or.down_rotations;
-      const firstRotTime = latestSession.or_ib?.first_up_time || latestSession.or_ib?.first_down_time || BASELINE_DATA[currentInst].or.first_rot_time;
+      document.getElementById('gap-fill-25-time').textContent = fill25Time;
+      document.getElementById('gap-fill-50-time').textContent = fill50Time;
+      document.getElementById('gap-fill-75-time').textContent = fill75Time;
+      document.getElementById('gap-fill-100-time').textContent = fill100Time;
 
-      document.getElementById('or-range-val').textContent = `${(orRange * selectedContracts).toFixed(2)} pts`;
+      // 3. 30-Sec OR
+      let orHigh, orLow, orMid, orRangeVal, rotations, upRot, dnRot, firstRotTime, orBreakTime;
+      let orTf1Range, orTf2Range, orTf3Range, orVolume;
+
+      if (latestSession && latestSession.or_ib) {
+        orHigh = latestSession.or_ib.or_high || 0;
+        orLow = latestSession.or_ib.or_low || 0;
+        orMid = latestSession.or_ib.or_mid || ((orHigh + orLow) / 2) || 0;
+        orRangeVal = latestSession.or_ib.or_range || 0;
+        rotations = latestSession.or_ib.ladder_rotation_count || 0;
+        upRot = latestSession.or_ib.up_rotations || 0;
+        dnRot = latestSession.or_ib.down_rotations || 0;
+        firstRotTime = latestSession.or_ib.first_up_time || latestSession.or_ib.first_down_time || 'None';
+        orBreakTime = latestSession.or_ib.or_break_time || 'None';
+        
+        orTf1Range = latestSession.or_ib.or_tf1_range || 0;
+        orTf2Range = latestSession.or_ib.or_tf2_range || (orTf1Range * 1.5);
+        orTf3Range = latestSession.or_ib.or_tf3_range || (orTf1Range * 2.1);
+        orVolume = latestSession.or_ib.or_volume || 0;
+      } else {
+        const baseOr = BASELINE_DATA[currentInst].or;
+        orHigh = currentInst === 'MNQ' ? 19850.50 : 5432.50;
+        orLow = currentInst === 'MNQ' ? 19812.25 : 5425.25;
+        orMid = (orHigh + orLow) / 2;
+        orRangeVal = baseOr.range;
+        rotations = baseOr.rotations;
+        upRot = baseOr.up_rotations;
+        dnRot = baseOr.down_rotations;
+        firstRotTime = baseOr.first_rot_time;
+        orBreakTime = '09:34:30';
+
+        orTf1Range = orRangeVal * 0.8;
+        orTf2Range = orRangeVal * 1.3;
+        orTf3Range = orRangeVal * 1.8;
+        orVolume = currentInst === 'MNQ' ? 12450 : 25600;
+      }
+
+      document.getElementById('or-high').textContent = orHigh ? orHigh.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('or-low').textContent = orLow ? orLow.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('or-mid').textContent = orMid ? orMid.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('or-range-val').textContent = `${(orRangeVal * selectedContracts).toFixed(2)} pts`;
+
       document.getElementById('or-rotations').textContent = `${rotations} rotations`;
       document.getElementById('or-rot-dir').textContent = `${upRot} Up / ${dnRot} Down`;
-      document.getElementById('or-first-rot-time').textContent = firstRotTime || 'None';
+      document.getElementById('or-first-rot-time').textContent = firstRotTime;
+      document.getElementById('or-break-time').textContent = orBreakTime;
+
+      document.getElementById('or-tf1-range').textContent = `${(orTf1Range * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('or-tf2-range').textContent = `${(orTf2Range * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('or-tf3-range').textContent = `${(orTf3Range * selectedContracts).toFixed(2)} pts`;
+      document.getElementById('or-volume').textContent = orVolume ? orVolume.toLocaleString() : '--';
 
       // 4. IB & Extensions
-      const ibHigh = latestSession.or_ib?.ib_high !== null ? latestSession.or_ib.ib_high : BASELINE_DATA[currentInst].ib.high;
-      const ibLow = latestSession.or_ib?.ib_low !== null ? latestSession.or_ib.ib_low : BASELINE_DATA[currentInst].ib.low;
-      const ibRangeVal = latestSession.or_ib?.ib_range !== null ? latestSession.or_ib.ib_range : BASELINE_DATA[currentInst].ib.range;
-      const ibBreakTime = latestSession.or_ib?.ib_break_time || BASELINE_DATA[currentInst].ib.break_time;
-      const ibBreakSide = latestSession.or_ib?.ib_break_dir || BASELINE_DATA[currentInst].ib.break_side;
-      
-      let ibMaxExt = 'None';
-      if (latestSession.or_ib) {
+      let ibHigh, ibLow, ibMid, ibRangeVal, ibVolume, ibBreakTime, ibBreakSide, ibCloseHalf, ibMaxExt;
+      let ul25, ul50, ul75, ul100, dl25, dl50, dl75, dl100;
+
+      if (latestSession && latestSession.or_ib) {
+        ibHigh = latestSession.or_ib.ib_high || 0;
+        ibLow = latestSession.or_ib.ib_low || 0;
+        ibMid = latestSession.or_ib.ib_mid || ((ibHigh + ibLow) / 2) || 0;
+        ibRangeVal = latestSession.or_ib.ib_range || 0;
+        ibVolume = latestSession.or_ib.ib_volume || 0;
+        ibBreakTime = latestSession.or_ib.ib_break_time || 'None';
+        ibBreakSide = latestSession.or_ib.ib_break_dir || 'None';
+        ibCloseHalf = latestSession.or_ib.ib_close_half || 'Mid';
+
         const upExt = latestSession.or_ib.ib_max_ext_up || 0;
         const dnExt = latestSession.or_ib.ib_max_ext_dn || 0;
         if (upExt > 0) ibMaxExt = `+${upExt}% (UL${upExt/25})`;
         else if (dnExt > 0) ibMaxExt = `-${dnExt}% (DL${dnExt/25})`;
+        else ibMaxExt = 'None';
+
+        ul25 = latestSession.or_ib.ib_ext_up25_break || 'None';
+        ul50 = latestSession.or_ib.ib_ext_up50_break || 'None';
+        ul75 = latestSession.or_ib.ib_ext_up75_break || 'None';
+        ul100 = latestSession.or_ib.ib_ext_up100_break || 'None';
+
+        dl25 = latestSession.or_ib.ib_ext_dn25_break || 'None';
+        dl50 = latestSession.or_ib.ib_ext_dn50_break || 'None';
+        dl75 = latestSession.or_ib.ib_ext_dn75_break || 'None';
+        dl100 = latestSession.or_ib.ib_ext_dn100_break || 'None';
       } else {
-        ibMaxExt = BASELINE_DATA[currentInst].ib.max_extension;
+        const baseIb = BASELINE_DATA[currentInst].ib;
+        ibHigh = baseIb.high;
+        ibLow = baseIb.low;
+        ibMid = (ibHigh + ibLow) / 2;
+        ibRangeVal = baseIb.range;
+        ibVolume = currentInst === 'MNQ' ? 245000 : 452000;
+        ibBreakTime = baseIb.break_time;
+        ibBreakSide = baseIb.break_side;
+        ibCloseHalf = 'Upper 50%';
+        ibMaxExt = baseIb.max_extension;
+
+        ul25 = '10:42:00';
+        ul50 = '10:55:30';
+        ul75 = 'None';
+        ul100 = 'None';
+
+        dl25 = 'None';
+        dl50 = 'None';
+        dl75 = 'None';
+        dl100 = 'None';
       }
 
       document.getElementById('ib-high-val').textContent = ibHigh ? ibHigh.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
       document.getElementById('ib-low-val').textContent = ibLow ? ibLow.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
+      document.getElementById('ib-mid-val').textContent = ibMid ? ibMid.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
       document.getElementById('ib-range-val').textContent = `${(ibRangeVal * selectedContracts).toFixed(2)} pts`;
-      document.getElementById('ib-break-time').textContent = ibBreakTime || 'None';
+      document.getElementById('ib-volume').textContent = ibVolume ? ibVolume.toLocaleString() : '--';
+
+      document.getElementById('ib-break-time').textContent = ibBreakTime;
       
       const ibBreakEl = document.getElementById('ib-break-side');
       ibBreakEl.textContent = ibBreakSide ? ibBreakSide.toUpperCase() : 'NO BREAK';
-      ibBreakEl.className = (ibBreakSide && ibBreakSide.toLowerCase().includes('h')) ? 'positive' : (ibBreakSide ? 'negative' : 'neutral');
+      ibBreakEl.className = (ibBreakSide && ibBreakSide.toLowerCase().includes('h')) ? 'list-item-value positive' : (ibBreakSide && !ibBreakSide.toLowerCase().includes('n') ? 'list-item-value negative' : 'list-item-value neutral');
+
+      document.getElementById('ib-close-half').textContent = ibCloseHalf;
       
       const ibMaxEl = document.getElementById('ib-max-ext');
       ibMaxEl.textContent = ibMaxExt;
-      ibMaxEl.className = ibMaxExt.startsWith('+') ? 'positive' : (ibMaxExt.startsWith('-') ? 'negative' : 'neutral');
+      ibMaxEl.className = ibMaxExt.startsWith('+') ? 'list-item-value positive' : (ibMaxExt.startsWith('-') ? 'list-item-value negative' : 'list-item-value neutral');
+
+      document.getElementById('ib-ext-ul25-50').textContent = `${ul25} | ${ul50}`;
+      document.getElementById('ib-ext-ul75-100').textContent = `${ul75} | ${ul100}`;
+      document.getElementById('ib-ext-dl25-50').textContent = `${dl25} | ${dl50}`;
+      document.getElementById('ib-ext-dl75-100').textContent = `${dl75} | ${dl100}`;
 
       // 5. Strategy Recap (Calculated dynamically or fallback baseline)
       const stratRec = BASELINE_DATA[currentInst].strat;

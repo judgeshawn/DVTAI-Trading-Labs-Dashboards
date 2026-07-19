@@ -631,3 +631,14 @@ tr:last-child td {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  margin-bottom: 14px;
+  border-left: 2px solid var(--green);
+  padding-left: 8px;
+}
