@@ -84,11 +84,22 @@ def main():
         print("Failed to fetch recent data. Aborting.")
         return
         
-    # Filter bars after last database date
-    new_nq_bars = [b for b in nq_bars if b["date"] > last_mnq_date_str]
-    new_es_bars = [b for b in es_bars if b["date"] > last_mes_date_str]
+    # Filter bars after last database date and ensure they are strictly WEEKDAYS (Mon-Fri)
+    new_nq_bars = []
+    for b in nq_bars:
+        if b["date"] > last_mnq_date_str:
+            dt_obj = datetime.datetime.strptime(b["date"], "%Y-%m-%d")
+            if dt_obj.weekday() < 5: # Monday=0 to Friday=4
+                new_nq_bars.append(b)
+                
+    new_es_bars = []
+    for b in es_bars:
+        if b["date"] > last_mes_date_str:
+            dt_obj = datetime.datetime.strptime(b["date"], "%Y-%m-%d")
+            if dt_obj.weekday() < 5:
+                new_es_bars.append(b)
     
-    print(f"Found {len(new_nq_bars)} new daily sessions for NQ and {len(new_es_bars)} for ES.")
+    print(f"Found {len(new_nq_bars)} new weekday sessions for NQ and {len(new_es_bars)} for ES.")
     
     # Create index lookup for ES bars by date to align them
     es_by_date = {b["date"]: b for b in new_es_bars}
@@ -150,30 +161,50 @@ def generate_synthetic_session(dt, inst, day_of_week, bar, prev_close):
     chg = round(cl - prev_close, 2)
     chg_pct = round((chg / prev_close) * 100, 4)
     
-    # Gap size
-    gap_size = round(op - prev_close, 2)
-    gap_dir = "up" if gap_size >= 0 else "down"
+    # ── Simulated RTH Open and RTH Gap ─────────────────────────────────────
+    # Standard deviation of gap: ~15% of daily range
+    # Direction bias follows daily change direction mostly (75% probability)
+    dir_bias = 1 if chg >= 0 else -1
+    if random.random() < 0.25:
+        dir_bias = -dir_bias
+        
+    gap_size_signed = round(rng * random.uniform(0.08, 0.35) * dir_bias, 2)
+    gap_size = abs(gap_size_signed)
+    gap_dir = "GAP UP" if gap_size_signed >= 0 else "GAP DOWN"
     
-    # Realistic Gaps behavior
-    fill_25 = 1 if abs(gap_size) > 0 else 0
-    fill_50 = 1 if abs(gap_size) > 5 else 0
-    fill_75 = 0
-    fill_100 = 0
+    rth_open = round(prev_close + gap_size_signed, 2)
     
-    fill_25_time = "09:32:00" if fill_25 else ""
-    fill_50_time = "09:36:30" if fill_50 else ""
+    # Check mathematically if the gap was filled using the day's high/low bounds
+    filled = False
+    if gap_dir == "GAP UP":
+        if lo <= prev_close:
+            filled = True
+    else:
+        if hi >= prev_close:
+            filled = True
+            
+    fill_100 = 1 if filled else 0
+    # Higher logic step fill rates
+    fill_75 = 1 if (filled or random.random() < 0.35) else 0
+    fill_50 = 1 if (filled or random.random() < 0.55) else 0
+    fill_25 = 1 if (filled or random.random() < 0.75) else 0
+    
+    fill_25_time = "09:32:30" if fill_25 else ""
+    fill_50_time = "09:37:15" if fill_50 else ""
+    fill_75_time = "09:49:00" if fill_75 else ""
+    fill_100_time = "10:14:30" if fill_100 else ""
     
     # Opening Range (30-Sec OR) simulated bounds
-    or_range = round(rng * random.uniform(0.15, 0.25), 2)
-    or_high = round(op + or_range * random.uniform(0.4, 0.6), 2)
-    or_low = round(op - or_range * (1.0 - random.uniform(0.4, 0.6)), 2)
+    or_range = round(rng * random.uniform(0.12, 0.22), 2)
+    or_high = round(rth_open + or_range * random.uniform(0.4, 0.6), 2)
+    or_low = round(rth_open - or_range * (1.0 - random.uniform(0.4, 0.6)), 2)
     or_mid = round((or_high + or_low) / 2, 2)
     or_break_time = "09:31:00"
     
     # Initial Balance (IB) simulated bounds
     ib_range = round(rng * random.uniform(0.35, 0.50), 2)
-    ib_high = round(op + ib_range * random.uniform(0.4, 0.6), 2)
-    ib_low = round(op - ib_range * (1.0 - random.uniform(0.4, 0.6)), 2)
+    ib_high = round(rth_open + ib_range * random.uniform(0.4, 0.6), 2)
+    ib_low = round(rth_open - ib_range * (1.0 - random.uniform(0.4, 0.6)), 2)
     ib_mid = round((ib_high + ib_low) / 2, 2)
     
     # Decide IB break details based on close position
@@ -209,7 +240,7 @@ def generate_synthetic_session(dt, inst, day_of_week, bar, prev_close):
       "instrument": inst,
       "day_of_week": day_of_week,
       "ohlc": {
-        "o": op,
+        "o": rth_open,
         "h": hi,
         "l": lo,
         "c": cl,
@@ -239,7 +270,7 @@ def generate_synthetic_session(dt, inst, day_of_week, bar, prev_close):
         "ovn_range": ovn_range
       },
       "gap": {
-        "rth_open": op,
+        "rth_open": rth_open,
         "prev_rth_close": prev_close,
         "size": gap_size,
         "pct": round(gap_size / prev_close * 100, 4),
@@ -250,8 +281,8 @@ def generate_synthetic_session(dt, inst, day_of_week, bar, prev_close):
         "fill_100": fill_100,
         "fill_25_time": fill_25_time,
         "fill_50_time": fill_50_time,
-        "fill_75_time": "",
-        "fill_100_time": ""
+        "fill_75_time": fill_75_time,
+        "fill_100_time": fill_100_time
       },
       "or_ib": {
         "or_high": or_high,

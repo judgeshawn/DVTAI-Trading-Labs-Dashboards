@@ -417,6 +417,15 @@ th {
   user-select: none;
 }
 
+.hdr-sub {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
 th:first-child, td:first-child {
   text-align: left;
 }
