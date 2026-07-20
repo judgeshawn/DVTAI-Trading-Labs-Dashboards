@@ -870,3 +870,109 @@ tr:last-child td {
 .ib-cohort-card.dn { border-color: rgba(255, 75, 96, 0.35); box-shadow: 0 4px 20px rgba(255, 75, 96, 0.05); }
 .ib-cohort-card.dn:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255, 75, 96, 0.25); }
 
+/* ─── STRATEGY HUB ──────────────────────────────────────────────────────── */
+.sh-lock-overlay {
+  position: absolute;
+  top: 130px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lock-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.lock-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.lock-box h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.lock-box p {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+.passcode-input-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.passcode-input-wrapper input {
+  flex: 1;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px;
+  letter-spacing: 0.25em;
+}
+.passcode-input-wrapper button {
+  background: var(--green);
+  color: #0f172a;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.passcode-input-wrapper button:hover {
+  opacity: 0.9;
+}
+.lock-error {
+  color: var(--red);
+  font-size: 0.8rem;
+}
+.sh-sub-nav {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+.sh-sub-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.sh-sub-btn:hover {
+  color: var(--text);
+  background: var(--surface-glass);
+}
+.sh-sub-btn.active {
+  color: var(--green);
+  background: var(--green-dim);
+}
+.sh-sub-panel {
+  display: none;
+}
+.sh-sub-panel.active {
+  display: block;
+}
+.sh-sub-panel .stat-card {
+  padding: 20px;
+}
+

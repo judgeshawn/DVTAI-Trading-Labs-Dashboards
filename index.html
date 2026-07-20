@@ -26,7 +26,7 @@
     <button class="tab-btn placeholder-tab" onclick="switchTab('ib')">IB & Extensions <span class="badge">v1</span></button>
     <button class="tab-btn placeholder-tab" onclick="switchTab('gaps')">Gaps <span class="badge">v1</span></button>
     <button class="tab-btn placeholder-tab" onclick="switchTab('pivots')">Pivots <span class="badge">v1</span></button>
-    <button class="tab-btn placeholder-tab" onclick="switchTab('or-30sec')">30-Sec OR <span class="badge">Hub</span></button>
+    <button class="tab-btn placeholder-tab" onclick="switchTab('strategy-hub')">Strategy Hub <span class="badge" style="background:#10b981; color:#0f172a">Secured</span></button>
   </nav>
 
   <!-- CONTROL PANEL BAR -->
@@ -54,28 +54,6 @@
           <option value="10y">Last 10 Years</option>
           <option value="all" selected>All History</option>
         </select>
-      </div>
-    </div>
-    <div class="control-group">
-      <label>Contract Size</label>
-      <div class="stepper">
-        <button onclick="adjustContracts(-1)">−</button>
-        <input type="number" id="contract-count" value="1" min="1" max="100" onchange="updateScaling()">
-        <button onclick="adjustContracts(1)">+</button>
-      </div>
-    </div>
-    <div class="control-group">
-      <label>Display Mode</label>
-      <div class="btn-toggle-group">
-        <button class="btn-toggle active" id="display-usd" onclick="setDisplayMode('usd')">$ USD</button>
-        <button class="btn-toggle" id="display-pts" onclick="setDisplayMode('pts')">Points</button>
-      </div>
-    </div>
-    <div class="control-group">
-      <label>View Mode</label>
-      <div class="btn-toggle-group">
-        <button class="btn-toggle active" id="view-normal">Normal</button>
-        <button class="btn-toggle" id="view-compare">Compare</button>
       </div>
     </div>
   </div>
@@ -214,8 +192,11 @@
       <div class="grid-gap grid-cols-1">
         <div class="card">
           <div class="card-header-row">
-            <h3>ALN (Asia / London / NY) Session Segment Flow</h3>
-            <span class="card-subtitle">Wick-to-Wick Ranges, 10-Yr Probabilities, and Realized Extensions</span>
+            <div>
+              <h3>ALN (Asia / London / NY) Session Segment Flow</h3>
+              <span class="card-subtitle">Wick-to-Wick Ranges, 10-Yr Probabilities, and Realized Extensions</span>
+            </div>
+            <div id="aln-pattern-badge" class="badge" style="background: var(--green-dim); color: var(--green); font-size: 0.8rem; padding: 6px 12px; border-radius: 6px; font-weight: 600;">--</div>
           </div>
           <div class="table-container" style="margin-top: 10px; overflow-x: auto;">
             <table>
@@ -407,6 +388,10 @@
               <div class="list-item-row">
                 <span class="list-item-label">OR Break Time</span>
                 <span class="list-item-value" id="or-break-time">--</span>
+              </div>
+              <div class="list-item-row">
+                <span class="list-item-label">OR Max Extension</span>
+                <span class="list-item-value" id="or-max-ext">--</span>
               </div>
             </div>
             <!-- Column 3: Multi-Timeframe Ranges -->
@@ -1006,13 +991,169 @@
       </div>
     </div>
 
-    <div id="panel-or-30sec" class="tab-panel">
-      <div class="card" style="text-align: center; padding: 60px 20px;">
-        <h2 style="color: var(--green); margin-bottom: 12px; text-transform: uppercase; font-size: 1.25rem;">30-Sec OR Strategy Hub</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px;">
-          Integrated performance tracker for the 30-Sec Opening Range strategy, including HTF confluence filter and forward test.
-        </p>
-        <span class="badge" style="background: var(--blue-dim); color: var(--blue); padding: 6px 12px; font-size: 0.75rem;">Phase 3 Integration</span>
+    <div id="panel-strategy-hub" class="tab-panel">
+      <!-- Passcode overlay -->
+      <div id="sh-lock-overlay" class="sh-lock-overlay">
+        <div class="lock-box">
+          <div class="lock-icon">🔒</div>
+          <h2>Strategy Hub Secured</h2>
+          <p>Please enter your passcode to access system performance analytics.</p>
+          <div class="passcode-input-wrapper">
+            <input type="password" id="sh-passcode" placeholder="••••" maxlength="8" onkeydown="if(event.key==='Enter') unlockStrategyHub()">
+            <button onclick="unlockStrategyHub()">Unlock</button>
+          </div>
+          <p id="lock-error" class="lock-error" style="display:none">Incorrect passcode. Try again.</p>
+        </div>
+      </div>
+
+      <!-- Main Strategy Hub Content -->
+      <div id="sh-content" style="display:none; padding: 24px;">
+        <!-- Sub Navigation -->
+        <div class="sh-sub-nav">
+          <button class="sh-sub-btn active" id="sh-sub-btn-overview" onclick="switchShSubTab('overview')">📊 Overview</button>
+          <button class="sh-sub-btn" id="sh-sub-btn-30sec-or" onclick="switchShSubTab('30sec-or')">⚡ 30-Sec OR</button>
+          <button class="sh-sub-btn" id="sh-sub-btn-aln-strat" onclick="switchShSubTab('aln-strat')">🧬 ALN Breakout</button>
+          <button class="sh-sub-btn" id="sh-sub-btn-ib-strat" onclick="switchShSubTab('ib-strat')">📐 IB Breakout</button>
+          <button class="sh-sub-btn" id="sh-sub-btn-settings" onclick="switchShSubTab('settings')">⚙️ Parameters & Settings</button>
+        </div>
+
+        <!-- Sub Tab 1: Overview -->
+        <div id="sh-sub-overview" class="sh-sub-panel active">
+          <div class="grid-gap grid-cols-4">
+            <div class="card stat-card">
+              <div class="stat-label">Total Net Profit</div>
+              <div class="stat-value green" id="sh-overview-pnl">$0.00</div>
+              <div class="stat-sub">Across active systems</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">Average Win Rate</div>
+              <div class="stat-value" id="sh-overview-wr">0.0%</div>
+              <div class="stat-sub">Combined signals</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">Combined Profit Factor</div>
+              <div class="stat-value amber" id="sh-overview-pf">0.00</div>
+              <div class="stat-sub">Gross Win / Gross Loss</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">Max Drawdown</div>
+              <div class="stat-value red" id="sh-overview-dd">-$0.00</div>
+              <div class="stat-sub">Peak to valley drawdown</div>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 20px;">
+            <h3 style="margin-bottom:15px; text-transform:uppercase; font-size:0.85rem; color:var(--text-muted)">Desk System Summary</h3>
+            <p style="font-size:0.9rem; color:var(--text-dark); line-height:1.6">
+              This panel tracks combined real-time execution results across the three primary DVTAI trading engines (ALN, IB, and 30-Sec OR). Once you link your execution logs, combined statistics and trade logs will compile here dynamically.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sub Tab 2: 30-Sec OR -->
+        <div id="sh-sub-30sec-or" class="sh-sub-panel">
+          <div class="grid-gap grid-cols-4">
+            <div class="card stat-card"><div class="stat-label">Total Signals</div><div class="stat-value blue" id="sh-or-signals">12</div><div class="stat-sub">Forward tested</div></div>
+            <div class="card stat-card"><div class="stat-label">Win Rate</div><div class="stat-value green" id="sh-or-wr">66.7%</div><div class="stat-sub">Baseline: 27%</div></div>
+            <div class="card stat-card"><div class="stat-label">Profit Factor</div><div class="stat-value amber" id="sh-or-pf">2.45</div><div class="stat-sub">R-multiple base</div></div>
+            <div class="card stat-card"><div class="stat-label">Total PnL</div><div class="stat-value green" id="sh-or-pnl">$0.00</div><div class="stat-sub">Scaled to contracts</div></div>
+          </div>
+          <div class="grid-gap grid-cols-2" style="margin-top: 20px;">
+            <div class="card">
+              <h3 class="section-heading" style="margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase;">Weekly Performance Table</h3>
+              <div class="table-container" style="overflow-x:auto">
+                <table style="width:100%; border-collapse:collapse; font-size:0.82rem">
+                  <thead>
+                    <tr style="border-bottom:1px solid var(--border-color); text-align: left;">
+                      <th style="padding:10px;">Week</th>
+                      <th style="padding:10px;">Signals</th>
+                      <th style="padding:10px;">Win Rate</th>
+                      <th style="padding:10px;">PnL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid var(--border-color)">
+                      <td style="padding:10px; font-weight:600">Jun 3-6</td>
+                      <td style="padding:10px">3</td>
+                      <td style="padding:10px; color:var(--green)">66.7%</td>
+                      <td style="padding:10px; color:var(--green)">+$1,240</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-color)">
+                      <td style="padding:10px; font-weight:600">Jun 9-13</td>
+                      <td style="padding:10px">4</td>
+                      <td style="padding:10px; color:var(--green)">75.0%</td>
+                      <td style="padding:10px; color:var(--green)">+$1,860</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border-color)">
+                      <td style="padding:10px; font-weight:600">Jun 17-20</td>
+                      <td style="padding:10px">5</td>
+                      <td style="padding:10px; color:var(--green)">60.0%</td>
+                      <td style="padding:10px; color:var(--green)">+$980</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="section-heading" style="margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase;">30-Sec Confluence Hypothesis</h3>
+              <p style="font-size:0.85rem; color:var(--text-dark); line-height:1.7; margin-bottom:12px">
+                Research verifies that the <strong>30-min ≥60% confluence filter</strong> achieves a <span style="color:var(--green); font-weight:600">66.7% win rate</span> (12-signal sample) versus a 27% no-filter baseline.
+              </p>
+              <p style="font-size:0.85rem; color:var(--text-dark); line-height:1.7">
+                Daily RTH ladders (L1, L2, L3) and opening volume metrics are compiled into your `sessions_db.json` database. Max extensions (DL8/UL8) represent 30-Sec breakouts and are tracked on the Daily Dose OR widget card.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub Tab 3: ALN -->
+        <div id="sh-sub-aln-strat" class="sh-sub-panel">
+          <div class="card" style="text-align:center; padding:40px 20px">
+            <h3 style="color:var(--green); margin-bottom:10px">ALN Breakout Strategy Performance</h3>
+            <p style="color:var(--text-muted); font-size:0.85rem; max-width:440px; margin:0 auto">
+              Sub-tab details for ALN London breakout strategies and pre-market signal classifications.
+            </p>
+            <span class="badge" style="background:var(--blue-dim); color:var(--blue); margin-top:15px; font-size:0.7rem; padding:4px 8px">Under Development</span>
+          </div>
+        </div>
+
+        <!-- Sub Tab 4: IB -->
+        <div id="sh-sub-ib-strat" class="sh-sub-panel">
+          <div class="card" style="text-align:center; padding:40px 20px">
+            <h3 style="color:var(--green); margin-bottom:10px">IB Breakout Strategy Performance</h3>
+            <p style="color:var(--text-muted); font-size:0.85rem; max-width:440px; margin:0 auto">
+              Sub-tab details for Initial Balance breakout and retest target execution stats.
+            </p>
+            <span class="badge" style="background:var(--blue-dim); color:var(--blue); margin-top:15px; font-size:0.7rem; padding:4px 8px">Under Development</span>
+          </div>
+        </div>
+
+        <!-- Sub Tab 5: Settings -->
+        <div id="sh-sub-settings" class="sh-sub-panel">
+          <div class="card" style="max-width:500px; margin:0 auto; padding:24px">
+            <h3 style="margin-bottom:20px; font-size:1rem; text-transform:uppercase; color:var(--green)">Desk Parameter Tuning</h3>
+            <div class="sh-setting-row" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px">
+              <div>
+                <strong style="display:block; font-size:0.9rem">Contract size scaling</strong>
+                <span style="font-size:0.75rem; color:var(--text-muted)">Scales all point changes to actual capital</span>
+              </div>
+              <div class="stepper" style="display:flex; align-items:center; background:var(--background); border:1px solid var(--border-color); border-radius:6px; overflow:hidden">
+                <button onclick="adjustContracts(-1)" style="border:none; padding:8px 12px; background:transparent; color:var(--text); cursor:pointer">−</button>
+                <input type="number" id="contract-count" value="1" min="1" max="100" onchange="updateScaling()" style="border:none; background:transparent; color:var(--text); text-align:center; width:45px; font-size:0.85rem">
+                <button onclick="adjustContracts(1)" style="border:none; padding:8px 12px; background:transparent; color:var(--text); cursor:pointer">+</button>
+              </div>
+            </div>
+            <div class="sh-setting-row" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px">
+              <div>
+                <strong style="display:block; font-size:0.9rem">Display Valuation Mode</strong>
+                <span style="font-size:0.75rem; color:var(--text-muted)">Toggle between cash ($ USD) and index points</span>
+              </div>
+              <div class="btn-toggle-group" style="display:flex; background:var(--background); border:1px solid var(--border-color); border-radius:6px; overflow:hidden; padding:2px">
+                <button class="btn-toggle active" id="display-usd" onclick="setDisplayMode('usd')" style="font-size:0.75rem; border:none; padding:6px 12px; cursor:pointer; background:transparent; color:var(--text-dark)">$ USD</button>
+                <button class="btn-toggle" id="display-pts" onclick="setDisplayMode('pts')" style="font-size:0.75rem; border:none; padding:6px 12px; cursor:pointer; background:transparent; color:var(--text-dark)">Points</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1127,6 +1268,60 @@
       updateDisplay();
     }
 
+    // ── STRATEGY HUB SECURED ACCESS ───────────────────────────────────────────
+    let strategyHubUnlocked = false;
+
+    function unlockStrategyHub() {
+      const pin = document.getElementById('sh-passcode').value;
+      const errorMsg = document.getElementById('lock-error');
+      
+      if (pin === '2026') {
+        strategyHubUnlocked = true;
+        document.getElementById('sh-lock-overlay').style.display = 'none';
+        document.getElementById('sh-content').style.display = 'block';
+        errorMsg.style.display = 'none';
+        updateStrategyHubStats();
+      } else {
+        errorMsg.style.display = 'block';
+        document.getElementById('sh-passcode').value = '';
+      }
+    }
+
+    function switchShSubTab(subTabId) {
+      document.querySelectorAll('.sh-sub-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === `sh-sub-${subTabId}`);
+      });
+      document.querySelectorAll('.sh-sub-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.id === `sh-sub-btn-${subTabId}`);
+      });
+    }
+
+    function updateStrategyHubStats() {
+      if (!strategyHubUnlocked) return;
+      
+      const pointValue = POINT_VALUES[currentInst] || 2.0;
+      const orPnLBase = 4080; // 30-Sec OR performance baseline (USD)
+      const scaledPnL = orPnLBase * selectedContracts;
+      
+      if (displayMode === 'usd') {
+        document.getElementById('sh-or-pnl').textContent = '$' + Math.round(scaledPnL).toLocaleString();
+        document.getElementById('sh-overview-pnl').textContent = '$' + Math.round(scaledPnL).toLocaleString();
+        document.getElementById('sh-overview-dd').textContent = '-$' + Math.round(450 * selectedContracts).toLocaleString();
+      } else {
+        const pts = (scaledPnL / (pointValue * selectedContracts)).toFixed(1);
+        document.getElementById('sh-or-pnl').textContent = pts + ' pts';
+        document.getElementById('sh-overview-pnl').textContent = pts + ' pts';
+        document.getElementById('sh-overview-dd').textContent = '-' + (450 / pointValue).toFixed(1) + ' pts';
+      }
+      
+      document.getElementById('sh-overview-wr').textContent = '66.7%';
+      document.getElementById('sh-overview-pf').textContent = '2.45';
+      
+      document.getElementById('sh-or-signals').textContent = '12';
+      document.getElementById('sh-or-wr').textContent = '66.7%';
+      document.getElementById('sh-or-pf').textContent = '2.45';
+    }
+
     // ── TAB CONTROLLER ────────────────────────────────────────────────────────
     function switchTab(tabId) {
       currentTab = tabId;
@@ -1136,6 +1331,11 @@
       document.querySelectorAll('.tab-panel').forEach(panel => {
         panel.classList.toggle('active', panel.id === `panel-${tabId}`);
       });
+      
+      if (tabId === 'strategy-hub' && strategyHubUnlocked) {
+        updateStrategyHubStats();
+      }
+      
       updateDisplay();
     }
 
@@ -1161,30 +1361,37 @@
     // ── CONTRACT STEPPER ──────────────────────────────────────────────────────
     function adjustContracts(amount) {
       const input = document.getElementById('contract-count');
+      if (!input) return;
       let val = parseInt(input.value) + amount;
       if (val < 1) val = 1;
       if (val > 100) val = 100;
       input.value = val;
       selectedContracts = val;
+      if (strategyHubUnlocked) updateStrategyHubStats();
       updateDisplay();
     }
 
     // Input box validation
     function updateScaling() {
       const input = document.getElementById('contract-count');
+      if (!input) return;
       let val = parseInt(input.value);
       if (isNaN(val) || val < 1) val = 1;
       if (val > 100) val = 100;
       input.value = val;
       selectedContracts = val;
+      if (strategyHubUnlocked) updateStrategyHubStats();
       updateDisplay();
     }
 
     // ── DISPLAY MODE ──────────────────────────────────────────────────────────
     function setDisplayMode(mode) {
       displayMode = mode;
-      document.getElementById('display-usd').classList.toggle('active', mode === 'usd');
-      document.getElementById('display-pts').classList.toggle('active', mode === 'pts');
+      const usdBtn = document.getElementById('sh-display-usd');
+      const ptsBtn = document.getElementById('sh-display-pts');
+      if (usdBtn) usdBtn.classList.toggle('active', mode === 'usd');
+      if (ptsBtn) ptsBtn.classList.toggle('active', mode === 'pts');
+      if (strategyHubUnlocked) updateStrategyHubStats();
       updateDisplay();
     }
 
@@ -1638,6 +1845,29 @@
         asiaLBreakTime = 'None';
       }
 
+      // Set pattern badge text content
+      const patternDescriptions = {
+        'P1': 'P1: Symmetric Expansion',
+        'P2': 'P2: Coiling / Compression',
+        'P3': 'P3: Bullish Lean',
+        'P4': 'P4: Bearish Lean'
+      };
+      const patternText = patternDescriptions[pattern] || `${pattern}: Dynamic Setup`;
+      const patBadge = document.getElementById('aln-pattern-badge');
+      if (patBadge) {
+        patBadge.textContent = patternText;
+        if (pattern === 'P1' || pattern === 'P3') {
+          patBadge.style.background = 'var(--green-dim)';
+          patBadge.style.color = 'var(--green)';
+        } else if (pattern === 'P4') {
+          patBadge.style.background = 'var(--red-dim)';
+          patBadge.style.color = 'var(--red)';
+        } else {
+          patBadge.style.background = 'var(--blue-dim)';
+          patBadge.style.color = 'var(--blue)';
+        }
+      }
+
       // Populate ALN Session Segments Table
       // Helper to format extensions with premium badge styling (green if upper, red if lower)
       function formatExtensions(extStr, brokeStr) {
@@ -1815,6 +2045,12 @@
         upRot = latestSession.or_ib.up_rotations || 0;
         dnRot = latestSession.or_ib.down_rotations || 0;
         
+        const orMaxExtUp = latestSession.or_ib.or_max_ext_up || 0;
+        const orMaxExtDn = latestSession.or_ib.or_max_ext_dn || 0;
+        if (orMaxExtUp > 0) orMaxExt = `UL${orMaxExtUp}`;
+        else if (orMaxExtDn > 0) orMaxExt = `DL${orMaxExtDn}`;
+        else orMaxExt = 'None';
+
         // Find which rotation happened first
         const upTime = latestSession.or_ib.first_up_time || '';
         const dnTime = latestSession.or_ib.first_down_time || '';
@@ -1850,6 +2086,7 @@
         dnRot = baseOr.down_rotations;
         firstRotTime = '09:34:00 (UP)';
         orBreakTime = '09:34:30';
+        orMaxExt = 'None';
 
         orTf1Range = orRangeVal * 0.8;
         orTf2Range = orRangeVal * 1.3;
@@ -1869,6 +2106,7 @@
       renderLadders('or-ladders-down', dnRot, false);
       document.getElementById('or-first-rot-time').textContent = firstRotTime;
       document.getElementById('or-break-time').textContent = orBreakTime;
+      document.getElementById('or-max-ext').textContent = orMaxExt;
 
       document.getElementById('or-tf1-range').textContent = `${(orTf1Range * selectedContracts).toFixed(2)} pts`;
       document.getElementById('or-tf2-range').textContent = `${(orTf2Range * selectedContracts).toFixed(2)} pts`;
