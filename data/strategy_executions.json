@@ -1,0 +1,5984 @@
+{
+  "ALN": {
+    "total_net_profit": 10869.5,
+    "win_rate": 55.67,
+    "profit_factor": 1.96,
+    "max_drawdown": -1470.5,
+    "total_trades": 300,
+    "trades": [
+      {
+        "trade_num": 1,
+        "date": "2026-06-01",
+        "time": "2026-06-01 02:20:00",
+        "direction": "Long",
+        "pnl": -27.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-01 02:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 2,
+        "date": "2026-06-01",
+        "time": "2026-06-01 02:20:00",
+        "direction": "Long",
+        "pnl": -54.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-01 02:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 3,
+        "date": "2026-06-01",
+        "time": "2026-06-01 02:20:00",
+        "direction": "Long",
+        "pnl": -27.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-01 02:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 4,
+        "date": "2026-06-01",
+        "time": "2026-06-01 08:30:00",
+        "direction": "Short",
+        "pnl": 12.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-01 08:28",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 5,
+        "date": "2026-06-01",
+        "time": "2026-06-01 08:30:00",
+        "direction": "Short",
+        "pnl": -62.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-01 08:28",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 6,
+        "date": "2026-06-01",
+        "time": "2026-06-01 08:30:00",
+        "direction": "Short",
+        "pnl": -125.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-01 08:28",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 7,
+        "date": "2026-06-01",
+        "time": "2026-06-01 11:14:00",
+        "direction": "Short",
+        "pnl": -65.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-01 11:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 8,
+        "date": "2026-06-01",
+        "time": "2026-06-01 11:14:00",
+        "direction": "Short",
+        "pnl": -130.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-01 11:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 9,
+        "date": "2026-06-01",
+        "time": "2026-06-01 11:14:00",
+        "direction": "Short",
+        "pnl": -65.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-01 11:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 10,
+        "date": "2026-06-02",
+        "time": "2026-06-02 02:36:00",
+        "direction": "Long",
+        "pnl": 92.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-02 02:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 11,
+        "date": "2026-06-02",
+        "time": "2026-06-02 02:36:00",
+        "direction": "Long",
+        "pnl": 185.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-02 02:34",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 12,
+        "date": "2026-06-02",
+        "time": "2026-06-02 02:36:00",
+        "direction": "Long",
+        "pnl": 56.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-02 02:34",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 13,
+        "date": "2026-06-02",
+        "time": "2026-06-02 03:04:00",
+        "direction": "Long",
+        "pnl": 9.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-02 02:34",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 14,
+        "date": "2026-06-02",
+        "time": "2026-06-02 03:04:00",
+        "direction": "Long",
+        "pnl": -36.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-02 02:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 15,
+        "date": "2026-06-02",
+        "time": "2026-06-02 03:04:00",
+        "direction": "Long",
+        "pnl": -72.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-02 02:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 16,
+        "date": "2026-06-02",
+        "time": "2026-06-02 08:10:00",
+        "direction": "Long",
+        "pnl": -39.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-02 08:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 17,
+        "date": "2026-06-02",
+        "time": "2026-06-02 08:10:00",
+        "direction": "Long",
+        "pnl": -78.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-02 08:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 18,
+        "date": "2026-06-02",
+        "time": "2026-06-02 08:10:00",
+        "direction": "Long",
+        "pnl": -39.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-02 08:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 19,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:32:00",
+        "direction": "Long",
+        "pnl": 30.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-02 10:30",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 20,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:32:00",
+        "direction": "Long",
+        "pnl": 121.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-02 10:30",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 21,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:32:00",
+        "direction": "Long",
+        "pnl": 167.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-02 10:30",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 22,
+        "date": "2026-06-03",
+        "time": "2026-06-03 02:02:00",
+        "direction": "Long",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-03 02:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 23,
+        "date": "2026-06-03",
+        "time": "2026-06-03 02:02:00",
+        "direction": "Long",
+        "pnl": -101.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-03 02:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 24,
+        "date": "2026-06-03",
+        "time": "2026-06-03 02:02:00",
+        "direction": "Long",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-03 02:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 25,
+        "date": "2026-06-03",
+        "time": "2026-06-03 08:56:00",
+        "direction": "Short",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-03 08:54",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 26,
+        "date": "2026-06-03",
+        "time": "2026-06-03 08:56:00",
+        "direction": "Short",
+        "pnl": -100.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-03 08:54",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 27,
+        "date": "2026-06-03",
+        "time": "2026-06-03 08:56:00",
+        "direction": "Short",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-03 08:54",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 28,
+        "date": "2026-06-03",
+        "time": "2026-06-03 09:36:00",
+        "direction": "Short",
+        "pnl": 25.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-03 09:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 29,
+        "date": "2026-06-03",
+        "time": "2026-06-03 09:36:00",
+        "direction": "Short",
+        "pnl": -46.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-03 09:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 30,
+        "date": "2026-06-03",
+        "time": "2026-06-03 09:36:00",
+        "direction": "Short",
+        "pnl": -92.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-03 09:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 31,
+        "date": "2026-06-04",
+        "time": "2026-06-04 02:02:00",
+        "direction": "Long",
+        "pnl": 87.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-04 02:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 32,
+        "date": "2026-06-04",
+        "time": "2026-06-04 02:02:00",
+        "direction": "Long",
+        "pnl": 174.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-04 02:00",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 33,
+        "date": "2026-06-04",
+        "time": "2026-06-04 02:02:00",
+        "direction": "Long",
+        "pnl": 61.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-04 02:00",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 34,
+        "date": "2026-06-04",
+        "time": "2026-06-04 02:40:00",
+        "direction": "Long",
+        "pnl": 9.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-04 02:00",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 35,
+        "date": "2026-06-04",
+        "time": "2026-06-04 02:40:00",
+        "direction": "Long",
+        "pnl": -43.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-04 02:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 36,
+        "date": "2026-06-04",
+        "time": "2026-06-04 02:40:00",
+        "direction": "Long",
+        "pnl": -86.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-04 02:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 37,
+        "date": "2026-06-04",
+        "time": "2026-06-04 08:06:00",
+        "direction": "Short",
+        "pnl": -63.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-04 08:04",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 38,
+        "date": "2026-06-04",
+        "time": "2026-06-04 08:06:00",
+        "direction": "Short",
+        "pnl": -127.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-04 08:04",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 39,
+        "date": "2026-06-04",
+        "time": "2026-06-04 08:06:00",
+        "direction": "Short",
+        "pnl": -63.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-04 08:04",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 40,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:20:00",
+        "direction": "Short",
+        "pnl": -49.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-04 10:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 41,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:20:00",
+        "direction": "Short",
+        "pnl": -98.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-04 10:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 42,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:20:00",
+        "direction": "Short",
+        "pnl": -49.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-04 10:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 43,
+        "date": "2026-06-05",
+        "time": "2026-06-05 02:12:00",
+        "direction": "Short",
+        "pnl": 102.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_06-05 02:10",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 44,
+        "date": "2026-06-05",
+        "time": "2026-06-05 02:12:00",
+        "direction": "Short",
+        "pnl": 160.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_06-05 02:10",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 45,
+        "date": "2026-06-05",
+        "time": "2026-06-05 02:12:00",
+        "direction": "Short",
+        "pnl": 80.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_06-05 02:10",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 46,
+        "date": "2026-06-05",
+        "time": "2026-06-05 03:12:00",
+        "direction": "Short",
+        "pnl": -223.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_06-05 02:10",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 47,
+        "date": "2026-06-05",
+        "time": "2026-06-05 03:12:00",
+        "direction": "Short",
+        "pnl": -223.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_06-05 02:10",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 48,
+        "date": "2026-06-08",
+        "time": "2026-06-08 02:06:00",
+        "direction": "Short",
+        "pnl": -48.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-08 02:04",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 49,
+        "date": "2026-06-08",
+        "time": "2026-06-08 02:06:00",
+        "direction": "Short",
+        "pnl": -96.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-08 02:04",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 50,
+        "date": "2026-06-08",
+        "time": "2026-06-08 02:06:00",
+        "direction": "Short",
+        "pnl": -48.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-08 02:04",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 51,
+        "date": "2026-06-08",
+        "time": "2026-06-08 08:10:00",
+        "direction": "Long",
+        "pnl": 46.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-08 08:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 52,
+        "date": "2026-06-08",
+        "time": "2026-06-08 08:10:00",
+        "direction": "Long",
+        "pnl": 11.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-08 08:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 53,
+        "date": "2026-06-08",
+        "time": "2026-06-08 08:10:00",
+        "direction": "Long",
+        "pnl": 23.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-08 08:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 54,
+        "date": "2026-06-08",
+        "time": "2026-06-08 10:08:00",
+        "direction": "Long",
+        "pnl": 77.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-08 10:06",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 55,
+        "date": "2026-06-08",
+        "time": "2026-06-08 10:08:00",
+        "direction": "Long",
+        "pnl": 516.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-08 10:06",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 56,
+        "date": "2026-06-08",
+        "time": "2026-06-08 10:08:00",
+        "direction": "Long",
+        "pnl": 274.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-08 10:06",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 57,
+        "date": "2026-06-09",
+        "time": "2026-06-09 02:02:00",
+        "direction": "Long",
+        "pnl": 40.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-09 02:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 58,
+        "date": "2026-06-09",
+        "time": "2026-06-09 02:02:00",
+        "direction": "Long",
+        "pnl": 60.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-09 02:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 59,
+        "date": "2026-06-09",
+        "time": "2026-06-09 02:02:00",
+        "direction": "Long",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-09 02:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 60,
+        "date": "2026-06-09",
+        "time": "2026-06-09 08:04:00",
+        "direction": "Long",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-09 08:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 61,
+        "date": "2026-06-09",
+        "time": "2026-06-09 08:04:00",
+        "direction": "Long",
+        "pnl": -102.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-09 08:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 62,
+        "date": "2026-06-09",
+        "time": "2026-06-09 08:04:00",
+        "direction": "Long",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-09 08:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 63,
+        "date": "2026-06-10",
+        "time": "2026-06-10 02:12:00",
+        "direction": "Short",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-10 02:10",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 64,
+        "date": "2026-06-10",
+        "time": "2026-06-10 02:12:00",
+        "direction": "Short",
+        "pnl": -102.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-10 02:10",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 65,
+        "date": "2026-06-10",
+        "time": "2026-06-10 02:12:00",
+        "direction": "Short",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-10 02:10",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 66,
+        "date": "2026-06-10",
+        "time": "2026-06-10 08:16:00",
+        "direction": "Short",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-10 08:14",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 67,
+        "date": "2026-06-10",
+        "time": "2026-06-10 08:16:00",
+        "direction": "Short",
+        "pnl": -102.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-10 08:14",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 68,
+        "date": "2026-06-10",
+        "time": "2026-06-10 08:16:00",
+        "direction": "Short",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-10 08:14",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 69,
+        "date": "2026-06-10",
+        "time": "2026-06-10 09:40:00",
+        "direction": "Long",
+        "pnl": -181.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-10 09:38",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 70,
+        "date": "2026-06-10",
+        "time": "2026-06-10 09:40:00",
+        "direction": "Long",
+        "pnl": -362.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-10 09:38",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 71,
+        "date": "2026-06-10",
+        "time": "2026-06-10 09:40:00",
+        "direction": "Long",
+        "pnl": -181.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-10 09:38",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 72,
+        "date": "2026-06-10",
+        "time": "2026-06-10 09:42:00",
+        "direction": "Long",
+        "pnl": 272.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-10 09:38",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 73,
+        "date": "2026-06-10",
+        "time": "2026-06-10 09:42:00",
+        "direction": "Long",
+        "pnl": 968.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-10 09:38",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 74,
+        "date": "2026-06-11",
+        "time": "2026-06-11 02:14:00",
+        "direction": "Long",
+        "pnl": 143.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-11 02:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 75,
+        "date": "2026-06-11",
+        "time": "2026-06-11 02:14:00",
+        "direction": "Long",
+        "pnl": 158.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-11 02:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 76,
+        "date": "2026-06-11",
+        "time": "2026-06-11 02:14:00",
+        "direction": "Long",
+        "pnl": 18.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-11 02:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 77,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:02:00",
+        "direction": "Short",
+        "pnl": -51.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-11 09:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 78,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:02:00",
+        "direction": "Short",
+        "pnl": -103.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-11 09:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 79,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:02:00",
+        "direction": "Short",
+        "pnl": -51.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-11 09:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 80,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:46:00",
+        "direction": "Long",
+        "pnl": 233.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-11 09:44",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 81,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:46:00",
+        "direction": "Long",
+        "pnl": 516.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-11 09:44",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 82,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:46:00",
+        "direction": "Long",
+        "pnl": 356.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-11 09:44",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 83,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:50:00",
+        "direction": "Long",
+        "pnl": 172.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-11 09:44",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 84,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:50:00",
+        "direction": "Long",
+        "pnl": -74.5,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-11 09:44",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 85,
+        "date": "2026-06-11",
+        "time": "2026-06-11 09:50:00",
+        "direction": "Long",
+        "pnl": -149.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-11 09:44",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 86,
+        "date": "2026-06-12",
+        "time": "2026-06-12 02:18:00",
+        "direction": "Short",
+        "pnl": 132.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_06-12 02:16",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 87,
+        "date": "2026-06-12",
+        "time": "2026-06-12 02:18:00",
+        "direction": "Short",
+        "pnl": 265.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_06-12 02:16",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 88,
+        "date": "2026-06-12",
+        "time": "2026-06-12 02:18:00",
+        "direction": "Short",
+        "pnl": 269.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_06-12 02:16",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 89,
+        "date": "2026-06-12",
+        "time": "2026-06-12 02:34:00",
+        "direction": "Short",
+        "pnl": 191.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_06-12 02:16",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 90,
+        "date": "2026-06-12",
+        "time": "2026-06-12 02:34:00",
+        "direction": "Short",
+        "pnl": 196.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_06-12 02:16",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 91,
+        "date": "2026-06-12",
+        "time": "2026-06-12 02:34:00",
+        "direction": "Short",
+        "pnl": 19.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_06-12 02:16",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 92,
+        "date": "2026-06-12",
+        "time": "2026-06-12 08:10:00",
+        "direction": "Long",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-12 08:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 93,
+        "date": "2026-06-12",
+        "time": "2026-06-12 08:10:00",
+        "direction": "Long",
+        "pnl": -100.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-12 08:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 94,
+        "date": "2026-06-12",
+        "time": "2026-06-12 08:10:00",
+        "direction": "Long",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-12 08:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 95,
+        "date": "2026-06-12",
+        "time": "2026-06-12 10:54:00",
+        "direction": "Long",
+        "pnl": 23.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-12 10:52",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 96,
+        "date": "2026-06-12",
+        "time": "2026-06-12 10:54:00",
+        "direction": "Long",
+        "pnl": 47.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-12 10:52",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 97,
+        "date": "2026-06-12",
+        "time": "2026-06-12 10:54:00",
+        "direction": "Long",
+        "pnl": 23.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-12 10:52",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 98,
+        "date": "2026-06-15",
+        "time": "2026-06-15 03:18:00",
+        "direction": "Long",
+        "pnl": 21.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-15 03:16",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 99,
+        "date": "2026-06-15",
+        "time": "2026-06-15 03:18:00",
+        "direction": "Long",
+        "pnl": 93.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-15 03:16",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 100,
+        "date": "2026-06-15",
+        "time": "2026-06-15 03:18:00",
+        "direction": "Long",
+        "pnl": 22.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-15 03:16",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 101,
+        "date": "2026-06-15",
+        "time": "2026-06-15 08:42:00",
+        "direction": "Long",
+        "pnl": -49.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-15 08:40",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 102,
+        "date": "2026-06-15",
+        "time": "2026-06-15 08:42:00",
+        "direction": "Long",
+        "pnl": -99.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-15 08:40",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 103,
+        "date": "2026-06-15",
+        "time": "2026-06-15 08:42:00",
+        "direction": "Long",
+        "pnl": -49.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-15 08:40",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 104,
+        "date": "2026-06-16",
+        "time": "2026-06-16 02:04:00",
+        "direction": "Long",
+        "pnl": 93.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-16 02:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 105,
+        "date": "2026-06-16",
+        "time": "2026-06-16 02:04:00",
+        "direction": "Long",
+        "pnl": 187.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-16 02:02",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 106,
+        "date": "2026-06-16",
+        "time": "2026-06-16 02:04:00",
+        "direction": "Long",
+        "pnl": 79.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-16 02:02",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 107,
+        "date": "2026-06-16",
+        "time": "2026-06-16 04:02:00",
+        "direction": "Long",
+        "pnl": 8.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-16 02:02",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 108,
+        "date": "2026-06-16",
+        "time": "2026-06-16 04:02:00",
+        "direction": "Long",
+        "pnl": 159.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-16 02:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 109,
+        "date": "2026-06-16",
+        "time": "2026-06-16 04:02:00",
+        "direction": "Long",
+        "pnl": 196.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-16 02:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 110,
+        "date": "2026-06-16",
+        "time": "2026-06-16 09:28:00",
+        "direction": "Short",
+        "pnl": 53.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-16 09:26",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 111,
+        "date": "2026-06-16",
+        "time": "2026-06-16 09:28:00",
+        "direction": "Short",
+        "pnl": 79.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-16 09:26",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 112,
+        "date": "2026-06-16",
+        "time": "2026-06-16 09:28:00",
+        "direction": "Short",
+        "pnl": 285.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-16 09:26",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 113,
+        "date": "2026-06-16",
+        "time": "2026-06-16 09:58:00",
+        "direction": "Short",
+        "pnl": 88.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-16 09:56",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 114,
+        "date": "2026-06-16",
+        "time": "2026-06-16 09:58:00",
+        "direction": "Short",
+        "pnl": 10.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-16 09:56",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 115,
+        "date": "2026-06-16",
+        "time": "2026-06-16 09:58:00",
+        "direction": "Short",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-16 09:56",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 116,
+        "date": "2026-06-17",
+        "time": "2026-06-17 02:04:00",
+        "direction": "Long",
+        "pnl": 26.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-17 02:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 117,
+        "date": "2026-06-17",
+        "time": "2026-06-17 02:04:00",
+        "direction": "Long",
+        "pnl": 82.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-17 02:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 118,
+        "date": "2026-06-17",
+        "time": "2026-06-17 02:04:00",
+        "direction": "Long",
+        "pnl": 272.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-17 02:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 119,
+        "date": "2026-06-17",
+        "time": "2026-06-17 08:18:00",
+        "direction": "Short",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-17 08:16",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 120,
+        "date": "2026-06-17",
+        "time": "2026-06-17 08:18:00",
+        "direction": "Short",
+        "pnl": -100.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-17 08:16",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 121,
+        "date": "2026-06-17",
+        "time": "2026-06-17 08:18:00",
+        "direction": "Short",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-17 08:16",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 122,
+        "date": "2026-06-17",
+        "time": "2026-06-17 09:32:00",
+        "direction": "Short",
+        "pnl": 30.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-17 09:30",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 123,
+        "date": "2026-06-17",
+        "time": "2026-06-17 09:32:00",
+        "direction": "Short",
+        "pnl": 60.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-17 09:30",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 124,
+        "date": "2026-06-17",
+        "time": "2026-06-17 09:32:00",
+        "direction": "Short",
+        "pnl": 30.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-17 09:30",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 125,
+        "date": "2026-06-17",
+        "time": "2026-06-17 09:38:00",
+        "direction": "Short",
+        "pnl": -119.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_06-17 09:30",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 126,
+        "date": "2026-06-17",
+        "time": "2026-06-17 09:38:00",
+        "direction": "Short",
+        "pnl": -119.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_06-17 09:30",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 127,
+        "date": "2026-06-18",
+        "time": "2026-06-18 02:04:00",
+        "direction": "Long",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-18 02:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 128,
+        "date": "2026-06-18",
+        "time": "2026-06-18 02:04:00",
+        "direction": "Long",
+        "pnl": -101.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-18 02:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 129,
+        "date": "2026-06-18",
+        "time": "2026-06-18 02:04:00",
+        "direction": "Long",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-18 02:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 130,
+        "date": "2026-06-18",
+        "time": "2026-06-18 09:50:00",
+        "direction": "Long",
+        "pnl": 22.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-18 09:48",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 131,
+        "date": "2026-06-18",
+        "time": "2026-06-18 09:50:00",
+        "direction": "Long",
+        "pnl": -84.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-18 09:48",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 132,
+        "date": "2026-06-18",
+        "time": "2026-06-18 09:50:00",
+        "direction": "Long",
+        "pnl": -169.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-18 09:48",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 133,
+        "date": "2026-06-19",
+        "time": "2026-06-19 02:20:00",
+        "direction": "Short",
+        "pnl": -36.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-19 02:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 134,
+        "date": "2026-06-19",
+        "time": "2026-06-19 02:20:00",
+        "direction": "Short",
+        "pnl": -73.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-19 02:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 135,
+        "date": "2026-06-19",
+        "time": "2026-06-19 02:20:00",
+        "direction": "Short",
+        "pnl": -36.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-19 02:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 136,
+        "date": "2026-06-19",
+        "time": "2026-06-19 10:22:00",
+        "direction": "Long",
+        "pnl": 2.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-19 10:20",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 137,
+        "date": "2026-06-19",
+        "time": "2026-06-19 10:22:00",
+        "direction": "Long",
+        "pnl": 70.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-19 10:20",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 138,
+        "date": "2026-06-19",
+        "time": "2026-06-19 10:22:00",
+        "direction": "Long",
+        "pnl": 18.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-19 10:20",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 139,
+        "date": "2026-06-22",
+        "time": "2026-06-22 08:02:00",
+        "direction": "Long",
+        "pnl": 136.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-22 08:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 140,
+        "date": "2026-06-22",
+        "time": "2026-06-22 08:02:00",
+        "direction": "Long",
+        "pnl": 273.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-22 08:00",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 141,
+        "date": "2026-06-22",
+        "time": "2026-06-22 08:02:00",
+        "direction": "Long",
+        "pnl": 108.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-22 08:00",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 142,
+        "date": "2026-06-22",
+        "time": "2026-06-22 08:22:00",
+        "direction": "Long",
+        "pnl": 9.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-22 08:00",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 143,
+        "date": "2026-06-22",
+        "time": "2026-06-22 08:22:00",
+        "direction": "Long",
+        "pnl": 267.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-22 08:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 144,
+        "date": "2026-06-22",
+        "time": "2026-06-22 08:22:00",
+        "direction": "Long",
+        "pnl": -57.5,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon High)_06-22 08:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 145,
+        "date": "2026-06-23",
+        "time": "2026-06-23 08:06:00",
+        "direction": "Short",
+        "pnl": 121.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-23 08:04",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 146,
+        "date": "2026-06-23",
+        "time": "2026-06-23 08:06:00",
+        "direction": "Short",
+        "pnl": 230.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-23 08:04",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 147,
+        "date": "2026-06-23",
+        "time": "2026-06-23 08:06:00",
+        "direction": "Short",
+        "pnl": 461.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-23 08:04",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 148,
+        "date": "2026-06-23",
+        "time": "2026-06-23 08:18:00",
+        "direction": "Short",
+        "pnl": 19.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_06-23 08:04",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 149,
+        "date": "2026-06-23",
+        "time": "2026-06-23 08:18:00",
+        "direction": "Short",
+        "pnl": 537.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_06-23 08:04",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 150,
+        "date": "2026-06-23",
+        "time": "2026-06-23 10:38:00",
+        "direction": "Long",
+        "pnl": -171.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-23 10:36",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 151,
+        "date": "2026-06-23",
+        "time": "2026-06-23 10:38:00",
+        "direction": "Long",
+        "pnl": -343.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-23 10:36",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 152,
+        "date": "2026-06-23",
+        "time": "2026-06-23 10:38:00",
+        "direction": "Long",
+        "pnl": -171.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-23 10:36",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 153,
+        "date": "2026-06-24",
+        "time": "2026-06-24 02:10:00",
+        "direction": "Long",
+        "pnl": -49.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-24 02:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 154,
+        "date": "2026-06-24",
+        "time": "2026-06-24 02:10:00",
+        "direction": "Long",
+        "pnl": -98.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-24 02:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 155,
+        "date": "2026-06-24",
+        "time": "2026-06-24 02:10:00",
+        "direction": "Long",
+        "pnl": -49.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-24 02:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 156,
+        "date": "2026-06-24",
+        "time": "2026-06-24 08:22:00",
+        "direction": "Long",
+        "pnl": -62.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-24 08:20",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 157,
+        "date": "2026-06-24",
+        "time": "2026-06-24 08:22:00",
+        "direction": "Long",
+        "pnl": -124.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-24 08:20",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 158,
+        "date": "2026-06-24",
+        "time": "2026-06-24 08:22:00",
+        "direction": "Long",
+        "pnl": -62.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-24 08:20",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 159,
+        "date": "2026-06-24",
+        "time": "2026-06-24 09:34:00",
+        "direction": "Long",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-24 09:32",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 160,
+        "date": "2026-06-24",
+        "time": "2026-06-24 09:34:00",
+        "direction": "Long",
+        "pnl": -102.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-24 09:32",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 161,
+        "date": "2026-06-24",
+        "time": "2026-06-24 09:34:00",
+        "direction": "Long",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-24 09:32",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 162,
+        "date": "2026-06-25",
+        "time": "2026-06-25 02:02:00",
+        "direction": "Long",
+        "pnl": 70.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-25 02:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 163,
+        "date": "2026-06-25",
+        "time": "2026-06-25 02:02:00",
+        "direction": "Long",
+        "pnl": 136.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-25 02:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 164,
+        "date": "2026-06-25",
+        "time": "2026-06-25 02:02:00",
+        "direction": "Long",
+        "pnl": 273.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-25 02:00",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 165,
+        "date": "2026-06-25",
+        "time": "2026-06-25 03:16:00",
+        "direction": "Long",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-25 02:00",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 166,
+        "date": "2026-06-25",
+        "time": "2026-06-25 03:16:00",
+        "direction": "Long",
+        "pnl": -147.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-25 02:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 167,
+        "date": "2026-06-25",
+        "time": "2026-06-25 08:14:00",
+        "direction": "Short",
+        "pnl": -52.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-25 08:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 168,
+        "date": "2026-06-25",
+        "time": "2026-06-25 08:14:00",
+        "direction": "Short",
+        "pnl": -105.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-25 08:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 169,
+        "date": "2026-06-25",
+        "time": "2026-06-25 08:14:00",
+        "direction": "Short",
+        "pnl": -52.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_06-25 08:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 170,
+        "date": "2026-06-25",
+        "time": "2026-06-25 09:36:00",
+        "direction": "Short",
+        "pnl": 230.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-25 09:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 171,
+        "date": "2026-06-25",
+        "time": "2026-06-25 09:36:00",
+        "direction": "Short",
+        "pnl": 115.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-25 09:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 172,
+        "date": "2026-06-25",
+        "time": "2026-06-25 09:36:00",
+        "direction": "Short",
+        "pnl": 350.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-25 09:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 173,
+        "date": "2026-06-26",
+        "time": "2026-06-26 03:04:00",
+        "direction": "Short",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-26 03:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 174,
+        "date": "2026-06-26",
+        "time": "2026-06-26 03:04:00",
+        "direction": "Short",
+        "pnl": -100.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-26 03:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 175,
+        "date": "2026-06-26",
+        "time": "2026-06-26 03:04:00",
+        "direction": "Short",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_06-26 03:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 176,
+        "date": "2026-06-26",
+        "time": "2026-06-26 08:20:00",
+        "direction": "Short",
+        "pnl": 131.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-26 08:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 177,
+        "date": "2026-06-26",
+        "time": "2026-06-26 08:20:00",
+        "direction": "Short",
+        "pnl": 251.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-26 08:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 178,
+        "date": "2026-06-26",
+        "time": "2026-06-26 08:20:00",
+        "direction": "Short",
+        "pnl": 502.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-26 08:18",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 179,
+        "date": "2026-06-26",
+        "time": "2026-06-26 08:44:00",
+        "direction": "Short",
+        "pnl": 388.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_06-26 08:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 180,
+        "date": "2026-06-26",
+        "time": "2026-06-26 08:44:00",
+        "direction": "Short",
+        "pnl": 19.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_06-26 08:18",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 181,
+        "date": "2026-06-26",
+        "time": "2026-06-26 09:36:00",
+        "direction": "Short",
+        "pnl": 69.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-26 09:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 182,
+        "date": "2026-06-26",
+        "time": "2026-06-26 09:36:00",
+        "direction": "Short",
+        "pnl": 172.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-26 09:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 183,
+        "date": "2026-06-26",
+        "time": "2026-06-26 09:36:00",
+        "direction": "Short",
+        "pnl": 17.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_06-26 09:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 184,
+        "date": "2026-06-29",
+        "time": "2026-06-29 02:16:00",
+        "direction": "Long",
+        "pnl": 119.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-29 02:14",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 185,
+        "date": "2026-06-29",
+        "time": "2026-06-29 02:16:00",
+        "direction": "Long",
+        "pnl": 238.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-29 02:14",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 186,
+        "date": "2026-06-29",
+        "time": "2026-06-29 02:16:00",
+        "direction": "Long",
+        "pnl": 48.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_06-29 02:14",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 187,
+        "date": "2026-06-29",
+        "time": "2026-06-29 02:22:00",
+        "direction": "Long",
+        "pnl": 9.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-29 02:14",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 188,
+        "date": "2026-06-29",
+        "time": "2026-06-29 02:22:00",
+        "direction": "Long",
+        "pnl": -29.5,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-29 02:14",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 189,
+        "date": "2026-06-29",
+        "time": "2026-06-29 02:22:00",
+        "direction": "Long",
+        "pnl": -59.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Asia High)_06-29 02:14",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 190,
+        "date": "2026-06-29",
+        "time": "2026-06-29 08:04:00",
+        "direction": "Long",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-29 08:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 191,
+        "date": "2026-06-29",
+        "time": "2026-06-29 08:04:00",
+        "direction": "Long",
+        "pnl": -100.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-29 08:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 192,
+        "date": "2026-06-29",
+        "time": "2026-06-29 08:04:00",
+        "direction": "Long",
+        "pnl": -50.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-29 08:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 193,
+        "date": "2026-06-29",
+        "time": "2026-06-29 09:34:00",
+        "direction": "Long",
+        "pnl": 0.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-29 09:32",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 194,
+        "date": "2026-06-29",
+        "time": "2026-06-29 09:34:00",
+        "direction": "Long",
+        "pnl": 1.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-29 09:32",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 195,
+        "date": "2026-06-29",
+        "time": "2026-06-29 09:34:00",
+        "direction": "Long",
+        "pnl": 0.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_06-29 09:32",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 196,
+        "date": "2026-06-30",
+        "time": "2026-06-30 02:30:00",
+        "direction": "Long",
+        "pnl": -49.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-30 02:28",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 197,
+        "date": "2026-06-30",
+        "time": "2026-06-30 02:30:00",
+        "direction": "Long",
+        "pnl": -99.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-30 02:28",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 198,
+        "date": "2026-06-30",
+        "time": "2026-06-30 02:30:00",
+        "direction": "Long",
+        "pnl": -49.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_06-30 02:28",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 199,
+        "date": "2026-06-30",
+        "time": "2026-06-30 08:12:00",
+        "direction": "Long",
+        "pnl": -51.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-30 08:10",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 200,
+        "date": "2026-06-30",
+        "time": "2026-06-30 08:12:00",
+        "direction": "Long",
+        "pnl": -103.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-30 08:10",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 201,
+        "date": "2026-06-30",
+        "time": "2026-06-30 08:12:00",
+        "direction": "Long",
+        "pnl": -51.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_06-30 08:10",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 202,
+        "date": "2026-07-01",
+        "time": "2026-07-01 02:52:00",
+        "direction": "Short",
+        "pnl": 69.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-01 02:50",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 203,
+        "date": "2026-07-01",
+        "time": "2026-07-01 02:52:00",
+        "direction": "Short",
+        "pnl": 139.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-01 02:50",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 204,
+        "date": "2026-07-01",
+        "time": "2026-07-01 02:52:00",
+        "direction": "Short",
+        "pnl": 134.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-01 02:50",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 205,
+        "date": "2026-07-01",
+        "time": "2026-07-01 02:56:00",
+        "direction": "Short",
+        "pnl": 264.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_07-01 02:50",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 206,
+        "date": "2026-07-01",
+        "time": "2026-07-01 02:56:00",
+        "direction": "Short",
+        "pnl": 19.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Asia Low)_07-01 02:50",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 207,
+        "date": "2026-07-01",
+        "time": "2026-07-01 08:28:00",
+        "direction": "Short",
+        "pnl": -49.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_07-01 08:26",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 208,
+        "date": "2026-07-01",
+        "time": "2026-07-01 08:28:00",
+        "direction": "Short",
+        "pnl": -99.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_07-01 08:26",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 209,
+        "date": "2026-07-01",
+        "time": "2026-07-01 08:28:00",
+        "direction": "Short",
+        "pnl": -49.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_07-01 08:26",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 210,
+        "date": "2026-07-01",
+        "time": "2026-07-01 10:18:00",
+        "direction": "Short",
+        "pnl": 14.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-01 10:16",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 211,
+        "date": "2026-07-01",
+        "time": "2026-07-01 10:18:00",
+        "direction": "Short",
+        "pnl": 79.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-01 10:16",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 212,
+        "date": "2026-07-01",
+        "time": "2026-07-01 10:18:00",
+        "direction": "Short",
+        "pnl": 175.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-01 10:16",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 213,
+        "date": "2026-07-02",
+        "time": "2026-07-02 02:40:00",
+        "direction": "Short",
+        "pnl": 65.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-02 02:38",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 214,
+        "date": "2026-07-02",
+        "time": "2026-07-02 02:40:00",
+        "direction": "Short",
+        "pnl": 76.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-02 02:38",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 215,
+        "date": "2026-07-02",
+        "time": "2026-07-02 02:40:00",
+        "direction": "Short",
+        "pnl": 438.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-02 02:38",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 216,
+        "date": "2026-07-02",
+        "time": "2026-07-02 08:04:00",
+        "direction": "Long",
+        "pnl": 26.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-02 08:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 217,
+        "date": "2026-07-02",
+        "time": "2026-07-02 08:04:00",
+        "direction": "Long",
+        "pnl": 148.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-02 08:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 218,
+        "date": "2026-07-02",
+        "time": "2026-07-02 08:04:00",
+        "direction": "Long",
+        "pnl": 305.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-02 08:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 219,
+        "date": "2026-07-02",
+        "time": "2026-07-02 10:38:00",
+        "direction": "Long",
+        "pnl": -86.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-02 10:36",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 220,
+        "date": "2026-07-02",
+        "time": "2026-07-02 10:38:00",
+        "direction": "Long",
+        "pnl": -173.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-02 10:36",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 221,
+        "date": "2026-07-02",
+        "time": "2026-07-02 10:38:00",
+        "direction": "Long",
+        "pnl": -86.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-02 10:36",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 222,
+        "date": "2026-07-03",
+        "time": "2026-07-03 02:56:00",
+        "direction": "Long",
+        "pnl": -1.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_07-03 02:54",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 223,
+        "date": "2026-07-03",
+        "time": "2026-07-03 02:56:00",
+        "direction": "Long",
+        "pnl": 43.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-03 02:54",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 224,
+        "date": "2026-07-03",
+        "time": "2026-07-03 02:56:00",
+        "direction": "Long",
+        "pnl": 18.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-03 02:54",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 225,
+        "date": "2026-07-03",
+        "time": "2026-07-03 08:56:00",
+        "direction": "Long",
+        "pnl": 15.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-03 08:54",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 226,
+        "date": "2026-07-03",
+        "time": "2026-07-03 08:56:00",
+        "direction": "Long",
+        "pnl": 10.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-03 08:54",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 227,
+        "date": "2026-07-03",
+        "time": "2026-07-03 08:56:00",
+        "direction": "Long",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-03 08:54",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 228,
+        "date": "2026-07-03",
+        "time": "2026-07-03 10:20:00",
+        "direction": "Long",
+        "pnl": 5.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-03 10:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 229,
+        "date": "2026-07-03",
+        "time": "2026-07-03 10:20:00",
+        "direction": "Long",
+        "pnl": 46.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-03 10:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 230,
+        "date": "2026-07-03",
+        "time": "2026-07-03 10:20:00",
+        "direction": "Long",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-03 10:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 231,
+        "date": "2026-07-06",
+        "time": "2026-07-06 02:06:00",
+        "direction": "Short",
+        "pnl": -48.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-06 02:04",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 232,
+        "date": "2026-07-06",
+        "time": "2026-07-06 02:06:00",
+        "direction": "Short",
+        "pnl": -96.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-06 02:04",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 233,
+        "date": "2026-07-06",
+        "time": "2026-07-06 02:06:00",
+        "direction": "Short",
+        "pnl": -48.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-06 02:04",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 234,
+        "date": "2026-07-06",
+        "time": "2026-07-06 08:36:00",
+        "direction": "Long",
+        "pnl": 33.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-06 08:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 235,
+        "date": "2026-07-06",
+        "time": "2026-07-06 08:36:00",
+        "direction": "Long",
+        "pnl": -54.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-06 08:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 236,
+        "date": "2026-07-06",
+        "time": "2026-07-06 08:36:00",
+        "direction": "Long",
+        "pnl": -109.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-06 08:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 237,
+        "date": "2026-07-06",
+        "time": "2026-07-06 09:34:00",
+        "direction": "Long",
+        "pnl": -72.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-06 09:32",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 238,
+        "date": "2026-07-06",
+        "time": "2026-07-06 09:34:00",
+        "direction": "Long",
+        "pnl": -145.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-06 09:32",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 239,
+        "date": "2026-07-06",
+        "time": "2026-07-06 09:34:00",
+        "direction": "Long",
+        "pnl": -72.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-06 09:32",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 240,
+        "date": "2026-07-07",
+        "time": "2026-07-07 02:02:00",
+        "direction": "Short",
+        "pnl": 35.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-07 02:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 241,
+        "date": "2026-07-07",
+        "time": "2026-07-07 02:02:00",
+        "direction": "Short",
+        "pnl": 17.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-07 02:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 242,
+        "date": "2026-07-07",
+        "time": "2026-07-07 02:02:00",
+        "direction": "Short",
+        "pnl": 8.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-07 02:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 243,
+        "date": "2026-07-08",
+        "time": "2026-07-08 02:14:00",
+        "direction": "Short",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-08 02:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 244,
+        "date": "2026-07-08",
+        "time": "2026-07-08 02:14:00",
+        "direction": "Short",
+        "pnl": -101.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-08 02:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 245,
+        "date": "2026-07-08",
+        "time": "2026-07-08 02:14:00",
+        "direction": "Short",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-08 02:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 246,
+        "date": "2026-07-08",
+        "time": "2026-07-08 08:16:00",
+        "direction": "Short",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_07-08 08:14",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 247,
+        "date": "2026-07-08",
+        "time": "2026-07-08 08:16:00",
+        "direction": "Short",
+        "pnl": -101.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_07-08 08:14",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 248,
+        "date": "2026-07-08",
+        "time": "2026-07-08 08:16:00",
+        "direction": "Short",
+        "pnl": -50.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon Low)_07-08 08:14",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 249,
+        "date": "2026-07-08",
+        "time": "2026-07-08 13:52:00",
+        "direction": "Long",
+        "pnl": 85.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-08 13:50",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 250,
+        "date": "2026-07-08",
+        "time": "2026-07-08 13:52:00",
+        "direction": "Long",
+        "pnl": 94.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-08 13:50",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 251,
+        "date": "2026-07-08",
+        "time": "2026-07-08 13:52:00",
+        "direction": "Long",
+        "pnl": 22.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-08 13:50",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 252,
+        "date": "2026-07-09",
+        "time": "2026-07-09 07:00:00",
+        "direction": "Long",
+        "pnl": 35.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-09 06:58",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 253,
+        "date": "2026-07-09",
+        "time": "2026-07-09 07:00:00",
+        "direction": "Long",
+        "pnl": 249.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-09 06:58",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 254,
+        "date": "2026-07-09",
+        "time": "2026-07-09 07:00:00",
+        "direction": "Long",
+        "pnl": 125.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-09 06:58",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 255,
+        "date": "2026-07-09",
+        "time": "2026-07-09 08:10:00",
+        "direction": "Long",
+        "pnl": 30.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-09 08:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 256,
+        "date": "2026-07-09",
+        "time": "2026-07-09 08:10:00",
+        "direction": "Long",
+        "pnl": 232.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-09 08:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 257,
+        "date": "2026-07-09",
+        "time": "2026-07-09 08:10:00",
+        "direction": "Long",
+        "pnl": 10.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-09 08:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 258,
+        "date": "2026-07-09",
+        "time": "2026-07-09 10:26:00",
+        "direction": "Long",
+        "pnl": 82.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-09 10:24",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 259,
+        "date": "2026-07-09",
+        "time": "2026-07-09 10:26:00",
+        "direction": "Long",
+        "pnl": 272.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-09 10:24",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 260,
+        "date": "2026-07-09",
+        "time": "2026-07-09 10:26:00",
+        "direction": "Long",
+        "pnl": 307.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-09 10:24",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 261,
+        "date": "2026-07-10",
+        "time": "2026-07-10 02:56:00",
+        "direction": "Short",
+        "pnl": 29.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-10 02:54",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 262,
+        "date": "2026-07-10",
+        "time": "2026-07-10 02:56:00",
+        "direction": "Short",
+        "pnl": 9.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-10 02:54",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 263,
+        "date": "2026-07-10",
+        "time": "2026-07-10 02:56:00",
+        "direction": "Short",
+        "pnl": 18.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia Low)_07-10 02:54",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 264,
+        "date": "2026-07-10",
+        "time": "2026-07-10 08:14:00",
+        "direction": "Long",
+        "pnl": -77.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-10 08:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 265,
+        "date": "2026-07-10",
+        "time": "2026-07-10 08:14:00",
+        "direction": "Long",
+        "pnl": -154.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-10 08:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 266,
+        "date": "2026-07-10",
+        "time": "2026-07-10 08:14:00",
+        "direction": "Long",
+        "pnl": -77.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Lon High)_07-10 08:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 267,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:08:00",
+        "direction": "Long",
+        "pnl": 99.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-10 11:06",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 268,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:08:00",
+        "direction": "Long",
+        "pnl": 199.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-10 11:06",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 269,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:08:00",
+        "direction": "Long",
+        "pnl": 185.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-10 11:06",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 270,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:10:00",
+        "direction": "Long",
+        "pnl": 120.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_07-10 11:06",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 271,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:10:00",
+        "direction": "Long",
+        "pnl": 411.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_07-10 11:06",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 272,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:10:00",
+        "direction": "Long",
+        "pnl": -52.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon High)_07-10 11:06",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 273,
+        "date": "2026-07-13",
+        "time": "2026-07-13 02:34:00",
+        "direction": "Short",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-13 02:32",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 274,
+        "date": "2026-07-13",
+        "time": "2026-07-13 02:34:00",
+        "direction": "Short",
+        "pnl": -102.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-13 02:32",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 275,
+        "date": "2026-07-13",
+        "time": "2026-07-13 02:34:00",
+        "direction": "Short",
+        "pnl": -51.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia Low)_07-13 02:32",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 276,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:36:00",
+        "direction": "Short",
+        "pnl": 112.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-13 10:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 277,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:36:00",
+        "direction": "Short",
+        "pnl": 167.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-13 10:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 278,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:36:00",
+        "direction": "Short",
+        "pnl": 83.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-13 10:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 279,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:46:00",
+        "direction": "Short",
+        "pnl": -174.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_07-13 10:34",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 280,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:46:00",
+        "direction": "Short",
+        "pnl": -174.0,
+        "is_win": false,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_07-13 10:34",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 281,
+        "date": "2026-07-14",
+        "time": "2026-07-14 02:32:00",
+        "direction": "Long",
+        "pnl": 16.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-14 02:30",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 282,
+        "date": "2026-07-14",
+        "time": "2026-07-14 02:32:00",
+        "direction": "Long",
+        "pnl": -148.5,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_07-14 02:30",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 283,
+        "date": "2026-07-14",
+        "time": "2026-07-14 02:32:00",
+        "direction": "Long",
+        "pnl": -297.0,
+        "is_win": false,
+        "signals": [
+          "ALN1 (Asia High)_07-14 02:30",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 284,
+        "date": "2026-07-14",
+        "time": "2026-07-14 08:20:00",
+        "direction": "Long",
+        "pnl": 121.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-14 08:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 285,
+        "date": "2026-07-14",
+        "time": "2026-07-14 08:20:00",
+        "direction": "Long",
+        "pnl": 243.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-14 08:18",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 286,
+        "date": "2026-07-14",
+        "time": "2026-07-14 08:20:00",
+        "direction": "Long",
+        "pnl": 184.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-14 08:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 287,
+        "date": "2026-07-14",
+        "time": "2026-07-14 08:24:00",
+        "direction": "Long",
+        "pnl": 87.5,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_07-14 08:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 288,
+        "date": "2026-07-14",
+        "time": "2026-07-14 08:24:00",
+        "direction": "Long",
+        "pnl": 300.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_07-14 08:18",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 289,
+        "date": "2026-07-14",
+        "time": "2026-07-14 08:24:00",
+        "direction": "Long",
+        "pnl": 231.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon High)_07-14 08:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 290,
+        "date": "2026-07-14",
+        "time": "2026-07-14 10:20:00",
+        "direction": "Long",
+        "pnl": 80.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-14 10:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 291,
+        "date": "2026-07-14",
+        "time": "2026-07-14 10:20:00",
+        "direction": "Long",
+        "pnl": 285.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-14 10:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 292,
+        "date": "2026-07-14",
+        "time": "2026-07-14 10:20:00",
+        "direction": "Long",
+        "pnl": 205.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon High)_07-14 10:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 293,
+        "date": "2026-07-15",
+        "time": "2026-07-15 02:26:00",
+        "direction": "Long",
+        "pnl": 47.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-15 02:24",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 294,
+        "date": "2026-07-15",
+        "time": "2026-07-15 02:26:00",
+        "direction": "Long",
+        "pnl": 51.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-15 02:24",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 295,
+        "date": "2026-07-15",
+        "time": "2026-07-15 02:26:00",
+        "direction": "Long",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Asia High)_07-15 02:24",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 296,
+        "date": "2026-07-15",
+        "time": "2026-07-15 09:12:00",
+        "direction": "Short",
+        "pnl": 137.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-15 09:10",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 297,
+        "date": "2026-07-15",
+        "time": "2026-07-15 09:12:00",
+        "direction": "Short",
+        "pnl": 173.5,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-15 09:10",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 298,
+        "date": "2026-07-15",
+        "time": "2026-07-15 09:12:00",
+        "direction": "Short",
+        "pnl": 347.0,
+        "is_win": true,
+        "signals": [
+          "ALN1 (Lon Low)_07-15 09:10",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 299,
+        "date": "2026-07-15",
+        "time": "2026-07-15 09:36:00",
+        "direction": "Short",
+        "pnl": 267.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_07-15 09:10",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 300,
+        "date": "2026-07-15",
+        "time": "2026-07-15 09:36:00",
+        "direction": "Short",
+        "pnl": 458.0,
+        "is_win": true,
+        "signals": [
+          "Addon_ALN1 (Lon Low)_07-15 09:10",
+          "Exit_Addon_Runner"
+        ]
+      }
+    ]
+  },
+  "IB": {
+    "total_net_profit": 20373.5,
+    "win_rate": 60.91,
+    "profit_factor": 4.08,
+    "max_drawdown": -674.0,
+    "total_trades": 197,
+    "trades": [
+      {
+        "trade_num": 1,
+        "date": "2026-06-01",
+        "time": "2026-06-01 11:54:00",
+        "direction": "Long",
+        "pnl": -67.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-01 11:52",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 2,
+        "date": "2026-06-01",
+        "time": "2026-06-01 11:54:00",
+        "direction": "Long",
+        "pnl": -67.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-01 11:52",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 3,
+        "date": "2026-06-01",
+        "time": "2026-06-01 11:54:00",
+        "direction": "Long",
+        "pnl": -134.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-01 11:52",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 4,
+        "date": "2026-06-01",
+        "time": "2026-06-01 12:22:00",
+        "direction": "Long",
+        "pnl": 55.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-01 12:20",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 5,
+        "date": "2026-06-01",
+        "time": "2026-06-01 12:22:00",
+        "direction": "Long",
+        "pnl": 95.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-01 12:20",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 6,
+        "date": "2026-06-01",
+        "time": "2026-06-01 12:22:00",
+        "direction": "Long",
+        "pnl": 626.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-01 12:20",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 7,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:32:00",
+        "direction": "Long",
+        "pnl": 118.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 10:30",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 8,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:44:00",
+        "direction": "Long",
+        "pnl": 44.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-02 10:30",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 9,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:44:00",
+        "direction": "Long",
+        "pnl": 28.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-02 10:30",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 10,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:32:00",
+        "direction": "Long",
+        "pnl": 167.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 10:30",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 11,
+        "date": "2026-06-02",
+        "time": "2026-06-02 10:32:00",
+        "direction": "Long",
+        "pnl": 461.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 10:30",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 12,
+        "date": "2026-06-02",
+        "time": "2026-06-02 12:42:00",
+        "direction": "Long",
+        "pnl": 41.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 12:40",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 13,
+        "date": "2026-06-02",
+        "time": "2026-06-02 12:42:00",
+        "direction": "Long",
+        "pnl": 10.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 12:40",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 14,
+        "date": "2026-06-02",
+        "time": "2026-06-02 12:42:00",
+        "direction": "Long",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 12:40",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 15,
+        "date": "2026-06-02",
+        "time": "2026-06-02 15:36:00",
+        "direction": "Long",
+        "pnl": 51.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 15:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 16,
+        "date": "2026-06-02",
+        "time": "2026-06-02 15:36:00",
+        "direction": "Long",
+        "pnl": 53.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 15:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 17,
+        "date": "2026-06-02",
+        "time": "2026-06-02 15:36:00",
+        "direction": "Long",
+        "pnl": 143.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-02 15:34",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 18,
+        "date": "2026-06-03",
+        "time": "2026-06-03 11:02:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-03 11:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 19,
+        "date": "2026-06-03",
+        "time": "2026-06-03 11:02:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-03 11:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 20,
+        "date": "2026-06-03",
+        "time": "2026-06-03 11:02:00",
+        "direction": "Long",
+        "pnl": -140.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-03 11:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 21,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:52:00",
+        "direction": "Long",
+        "pnl": 76.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-04 10:50",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 22,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:56:00",
+        "direction": "Long",
+        "pnl": 42.0,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-04 10:50",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 23,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:52:00",
+        "direction": "Long",
+        "pnl": 177.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-04 10:50",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 24,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:52:00",
+        "direction": "Long",
+        "pnl": 366.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-04 10:50",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 25,
+        "date": "2026-06-04",
+        "time": "2026-06-04 10:56:00",
+        "direction": "Long",
+        "pnl": 763.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-04 10:50",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 26,
+        "date": "2026-06-08",
+        "time": "2026-06-08 11:38:00",
+        "direction": "Long",
+        "pnl": 62.0,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_06-08 11:36"
+        ]
+      },
+      {
+        "trade_num": 27,
+        "date": "2026-06-08",
+        "time": "2026-06-08 11:38:00",
+        "direction": "Long",
+        "pnl": 160.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-08 11:36",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 28,
+        "date": "2026-06-08",
+        "time": "2026-06-08 11:38:00",
+        "direction": "Long",
+        "pnl": 18.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-08 11:36",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 29,
+        "date": "2026-06-08",
+        "time": "2026-06-08 12:04:00",
+        "direction": "Long",
+        "pnl": -68.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-08 12:02",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 30,
+        "date": "2026-06-08",
+        "time": "2026-06-08 12:04:00",
+        "direction": "Long",
+        "pnl": -68.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-08 12:02",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 31,
+        "date": "2026-06-08",
+        "time": "2026-06-08 12:04:00",
+        "direction": "Long",
+        "pnl": -137.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-08 12:02",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 32,
+        "date": "2026-06-08",
+        "time": "2026-06-08 13:08:00",
+        "direction": "Long",
+        "pnl": -70.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-08 13:06",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 33,
+        "date": "2026-06-08",
+        "time": "2026-06-08 13:08:00",
+        "direction": "Long",
+        "pnl": -70.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-08 13:06",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 34,
+        "date": "2026-06-08",
+        "time": "2026-06-08 13:08:00",
+        "direction": "Long",
+        "pnl": -141.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-08 13:06",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 35,
+        "date": "2026-06-09",
+        "time": "2026-06-09 11:16:00",
+        "direction": "Short",
+        "pnl": 205.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-09 11:14",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 36,
+        "date": "2026-06-09",
+        "time": "2026-06-09 11:16:00",
+        "direction": "Short",
+        "pnl": 219.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-09 11:14",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 37,
+        "date": "2026-06-09",
+        "time": "2026-06-09 11:16:00",
+        "direction": "Short",
+        "pnl": 1870.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-09 11:14",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 38,
+        "date": "2026-06-10",
+        "time": "2026-06-10 11:30:00",
+        "direction": "Short",
+        "pnl": -70.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BEAR_06-10 11:28"
+        ]
+      },
+      {
+        "trade_num": 39,
+        "date": "2026-06-10",
+        "time": "2026-06-10 11:30:00",
+        "direction": "Short",
+        "pnl": -70.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BEAR_06-10 11:28"
+        ]
+      },
+      {
+        "trade_num": 40,
+        "date": "2026-06-10",
+        "time": "2026-06-10 11:30:00",
+        "direction": "Short",
+        "pnl": -141.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BEAR_06-10 11:28"
+        ]
+      },
+      {
+        "trade_num": 41,
+        "date": "2026-06-10",
+        "time": "2026-06-10 11:48:00",
+        "direction": "Short",
+        "pnl": 229.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-10 11:46",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 42,
+        "date": "2026-06-10",
+        "time": "2026-06-10 11:48:00",
+        "direction": "Short",
+        "pnl": 271.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-10 11:46",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 43,
+        "date": "2026-06-10",
+        "time": "2026-06-10 11:48:00",
+        "direction": "Short",
+        "pnl": 23.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-10 11:46",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 44,
+        "date": "2026-06-10",
+        "time": "2026-06-10 12:44:00",
+        "direction": "Short",
+        "pnl": 191.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-10 12:42",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 45,
+        "date": "2026-06-10",
+        "time": "2026-06-10 12:44:00",
+        "direction": "Short",
+        "pnl": 260.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-10 12:42",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 46,
+        "date": "2026-06-10",
+        "time": "2026-06-10 12:44:00",
+        "direction": "Short",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-10 12:42",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 47,
+        "date": "2026-06-11",
+        "time": "2026-06-11 10:46:00",
+        "direction": "Short",
+        "pnl": 329.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-11 10:44",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 48,
+        "date": "2026-06-11",
+        "time": "2026-06-11 10:54:00",
+        "direction": "Short",
+        "pnl": 79.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BEAR_06-11 10:44",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 49,
+        "date": "2026-06-11",
+        "time": "2026-06-11 10:54:00",
+        "direction": "Short",
+        "pnl": 28.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BEAR_06-11 10:44",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 50,
+        "date": "2026-06-11",
+        "time": "2026-06-11 10:46:00",
+        "direction": "Short",
+        "pnl": 90.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-11 10:44",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 51,
+        "date": "2026-06-11",
+        "time": "2026-06-11 10:46:00",
+        "direction": "Short",
+        "pnl": 180.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-11 10:44",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 52,
+        "date": "2026-06-11",
+        "time": "2026-06-11 14:00:00",
+        "direction": "Long",
+        "pnl": 66.0,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_06-11 13:58"
+        ]
+      },
+      {
+        "trade_num": 53,
+        "date": "2026-06-11",
+        "time": "2026-06-11 14:00:00",
+        "direction": "Long",
+        "pnl": -31.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-11 13:58",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 54,
+        "date": "2026-06-11",
+        "time": "2026-06-11 14:00:00",
+        "direction": "Long",
+        "pnl": -63.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-11 13:58",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 55,
+        "date": "2026-06-11",
+        "time": "2026-06-11 14:12:00",
+        "direction": "Long",
+        "pnl": 202.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-11 14:10",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 56,
+        "date": "2026-06-11",
+        "time": "2026-06-11 14:12:00",
+        "direction": "Long",
+        "pnl": 206.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-11 14:10",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 57,
+        "date": "2026-06-11",
+        "time": "2026-06-11 14:12:00",
+        "direction": "Long",
+        "pnl": 1404.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-11 14:10",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 58,
+        "date": "2026-06-12",
+        "time": "2026-06-12 10:54:00",
+        "direction": "Long",
+        "pnl": 146.0,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_06-12 10:52"
+        ]
+      },
+      {
+        "trade_num": 59,
+        "date": "2026-06-12",
+        "time": "2026-06-12 10:54:00",
+        "direction": "Long",
+        "pnl": 689.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-12 10:52",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 60,
+        "date": "2026-06-12",
+        "time": "2026-06-12 10:54:00",
+        "direction": "Long",
+        "pnl": 10.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-12 10:52",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 61,
+        "date": "2026-06-12",
+        "time": "2026-06-12 14:00:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-12 13:58",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 62,
+        "date": "2026-06-12",
+        "time": "2026-06-12 14:00:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-12 13:58",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 63,
+        "date": "2026-06-12",
+        "time": "2026-06-12 14:00:00",
+        "direction": "Long",
+        "pnl": -140.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-12 13:58",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 64,
+        "date": "2026-06-12",
+        "time": "2026-06-12 14:10:00",
+        "direction": "Long",
+        "pnl": 63.5,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BULL_06-12 14:08"
+        ]
+      },
+      {
+        "trade_num": 65,
+        "date": "2026-06-12",
+        "time": "2026-06-12 14:10:00",
+        "direction": "Long",
+        "pnl": 10.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-12 14:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 66,
+        "date": "2026-06-12",
+        "time": "2026-06-12 14:10:00",
+        "direction": "Long",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-12 14:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 67,
+        "date": "2026-06-15",
+        "time": "2026-06-15 10:48:00",
+        "direction": "Long",
+        "pnl": 104.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-15 10:46",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 68,
+        "date": "2026-06-15",
+        "time": "2026-06-15 10:48:00",
+        "direction": "Long",
+        "pnl": 143.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-15 10:46",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 69,
+        "date": "2026-06-15",
+        "time": "2026-06-15 10:56:00",
+        "direction": "Long",
+        "pnl": 39.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-15 10:46",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 70,
+        "date": "2026-06-15",
+        "time": "2026-06-15 10:48:00",
+        "direction": "Long",
+        "pnl": 486.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-15 10:46",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 71,
+        "date": "2026-06-15",
+        "time": "2026-06-15 10:56:00",
+        "direction": "Long",
+        "pnl": 714.0,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-15 10:46",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 72,
+        "date": "2026-06-15",
+        "time": "2026-06-15 13:02:00",
+        "direction": "Long",
+        "pnl": -62.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BULL_06-15 13:00"
+        ]
+      },
+      {
+        "trade_num": 73,
+        "date": "2026-06-15",
+        "time": "2026-06-15 13:02:00",
+        "direction": "Long",
+        "pnl": -62.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_06-15 13:00"
+        ]
+      },
+      {
+        "trade_num": 74,
+        "date": "2026-06-15",
+        "time": "2026-06-15 13:02:00",
+        "direction": "Long",
+        "pnl": -125.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BULL_06-15 13:00"
+        ]
+      },
+      {
+        "trade_num": 75,
+        "date": "2026-06-15",
+        "time": "2026-06-15 14:10:00",
+        "direction": "Long",
+        "pnl": -56.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-15 14:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 76,
+        "date": "2026-06-15",
+        "time": "2026-06-15 14:10:00",
+        "direction": "Long",
+        "pnl": -56.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-15 14:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 77,
+        "date": "2026-06-15",
+        "time": "2026-06-15 14:10:00",
+        "direction": "Long",
+        "pnl": -113.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-15 14:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 78,
+        "date": "2026-06-16",
+        "time": "2026-06-16 11:18:00",
+        "direction": "Short",
+        "pnl": 107.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-16 11:16",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 79,
+        "date": "2026-06-16",
+        "time": "2026-06-16 11:18:00",
+        "direction": "Short",
+        "pnl": 131.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-16 11:16",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 80,
+        "date": "2026-06-16",
+        "time": "2026-06-16 11:18:00",
+        "direction": "Short",
+        "pnl": 865.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-16 11:16",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 81,
+        "date": "2026-06-17",
+        "time": "2026-06-17 10:44:00",
+        "direction": "Long",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-17 10:42",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 82,
+        "date": "2026-06-17",
+        "time": "2026-06-17 10:44:00",
+        "direction": "Long",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-17 10:42",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 83,
+        "date": "2026-06-17",
+        "time": "2026-06-17 10:44:00",
+        "direction": "Long",
+        "pnl": -139.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-17 10:42",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 84,
+        "date": "2026-06-17",
+        "time": "2026-06-17 14:22:00",
+        "direction": "Short",
+        "pnl": 58.5,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BEAR_06-17 14:20"
+        ]
+      },
+      {
+        "trade_num": 85,
+        "date": "2026-06-17",
+        "time": "2026-06-17 14:22:00",
+        "direction": "Short",
+        "pnl": 132.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-17 14:20",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 86,
+        "date": "2026-06-17",
+        "time": "2026-06-17 14:22:00",
+        "direction": "Short",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-17 14:20",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 87,
+        "date": "2026-06-18",
+        "time": "2026-06-18 10:36:00",
+        "direction": "Long",
+        "pnl": 219.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-18 10:34",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 88,
+        "date": "2026-06-18",
+        "time": "2026-06-18 10:46:00",
+        "direction": "Long",
+        "pnl": 50.0,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-18 10:34",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 89,
+        "date": "2026-06-18",
+        "time": "2026-06-18 10:46:00",
+        "direction": "Long",
+        "pnl": 28.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-18 10:34",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 90,
+        "date": "2026-06-18",
+        "time": "2026-06-18 10:36:00",
+        "direction": "Long",
+        "pnl": 68.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-18 10:34",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 91,
+        "date": "2026-06-18",
+        "time": "2026-06-18 10:36:00",
+        "direction": "Long",
+        "pnl": 137.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-18 10:34",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 92,
+        "date": "2026-06-18",
+        "time": "2026-06-18 13:00:00",
+        "direction": "Long",
+        "pnl": 41.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-18 12:58",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 93,
+        "date": "2026-06-18",
+        "time": "2026-06-18 13:00:00",
+        "direction": "Long",
+        "pnl": 97.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-18 12:58",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 94,
+        "date": "2026-06-18",
+        "time": "2026-06-18 13:00:00",
+        "direction": "Long",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-18 12:58",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 95,
+        "date": "2026-06-18",
+        "time": "2026-06-18 14:24:00",
+        "direction": "Long",
+        "pnl": -56.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-18 14:22",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 96,
+        "date": "2026-06-18",
+        "time": "2026-06-18 14:24:00",
+        "direction": "Long",
+        "pnl": -56.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-18 14:22",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 97,
+        "date": "2026-06-18",
+        "time": "2026-06-18 14:24:00",
+        "direction": "Long",
+        "pnl": -112.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-18 14:22",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 98,
+        "date": "2026-06-19",
+        "time": "2026-06-19 11:22:00",
+        "direction": "Long",
+        "pnl": 11.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-19 11:20",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 99,
+        "date": "2026-06-19",
+        "time": "2026-06-19 11:22:00",
+        "direction": "Long",
+        "pnl": 11.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-19 11:20",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 100,
+        "date": "2026-06-19",
+        "time": "2026-06-19 11:22:00",
+        "direction": "Long",
+        "pnl": 22.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-19 11:20",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 101,
+        "date": "2026-06-22",
+        "time": "2026-06-22 11:48:00",
+        "direction": "Short",
+        "pnl": 95.0,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BEAR_06-22 11:46"
+        ]
+      },
+      {
+        "trade_num": 102,
+        "date": "2026-06-22",
+        "time": "2026-06-22 11:48:00",
+        "direction": "Short",
+        "pnl": 121.5,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BEAR_06-22 11:46"
+        ]
+      },
+      {
+        "trade_num": 103,
+        "date": "2026-06-22",
+        "time": "2026-06-22 11:48:00",
+        "direction": "Short",
+        "pnl": 21.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-22 11:46",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 104,
+        "date": "2026-06-23",
+        "time": "2026-06-23 10:38:00",
+        "direction": "Long",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BULL_06-23 10:36"
+        ]
+      },
+      {
+        "trade_num": 105,
+        "date": "2026-06-23",
+        "time": "2026-06-23 10:38:00",
+        "direction": "Long",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_06-23 10:36"
+        ]
+      },
+      {
+        "trade_num": 106,
+        "date": "2026-06-23",
+        "time": "2026-06-23 10:38:00",
+        "direction": "Long",
+        "pnl": -139.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BULL_06-23 10:36"
+        ]
+      },
+      {
+        "trade_num": 107,
+        "date": "2026-06-24",
+        "time": "2026-06-24 11:18:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BULL_06-24 11:16"
+        ]
+      },
+      {
+        "trade_num": 108,
+        "date": "2026-06-24",
+        "time": "2026-06-24 11:18:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_06-24 11:16"
+        ]
+      },
+      {
+        "trade_num": 109,
+        "date": "2026-06-24",
+        "time": "2026-06-24 11:18:00",
+        "direction": "Long",
+        "pnl": -140.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BULL_06-24 11:16"
+        ]
+      },
+      {
+        "trade_num": 110,
+        "date": "2026-06-24",
+        "time": "2026-06-24 14:34:00",
+        "direction": "Short",
+        "pnl": 112.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-24 14:32",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 111,
+        "date": "2026-06-24",
+        "time": "2026-06-24 14:34:00",
+        "direction": "Short",
+        "pnl": 167.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-24 14:32",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 112,
+        "date": "2026-06-24",
+        "time": "2026-06-24 14:34:00",
+        "direction": "Short",
+        "pnl": 155.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_06-24 14:32",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 113,
+        "date": "2026-06-25",
+        "time": "2026-06-25 10:58:00",
+        "direction": "Short",
+        "pnl": -69.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BEAR_06-25 10:56"
+        ]
+      },
+      {
+        "trade_num": 114,
+        "date": "2026-06-25",
+        "time": "2026-06-25 10:58:00",
+        "direction": "Short",
+        "pnl": -69.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BEAR_06-25 10:56"
+        ]
+      },
+      {
+        "trade_num": 115,
+        "date": "2026-06-25",
+        "time": "2026-06-25 10:58:00",
+        "direction": "Short",
+        "pnl": -138.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BEAR_06-25 10:56"
+        ]
+      },
+      {
+        "trade_num": 116,
+        "date": "2026-06-26",
+        "time": "2026-06-26 10:48:00",
+        "direction": "Long",
+        "pnl": -68.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-26 10:46",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 117,
+        "date": "2026-06-26",
+        "time": "2026-06-26 10:48:00",
+        "direction": "Long",
+        "pnl": -68.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-26 10:46",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 118,
+        "date": "2026-06-26",
+        "time": "2026-06-26 10:48:00",
+        "direction": "Long",
+        "pnl": -137.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_06-26 10:46",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 119,
+        "date": "2026-06-29",
+        "time": "2026-06-29 10:52:00",
+        "direction": "Long",
+        "pnl": 422.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-29 10:50",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 120,
+        "date": "2026-06-29",
+        "time": "2026-06-29 11:30:00",
+        "direction": "Long",
+        "pnl": 112.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-29 10:50",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 121,
+        "date": "2026-06-29",
+        "time": "2026-06-29 10:52:00",
+        "direction": "Long",
+        "pnl": 1410.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-29 10:50",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 122,
+        "date": "2026-06-29",
+        "time": "2026-06-29 11:30:00",
+        "direction": "Long",
+        "pnl": 1401.0,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-29 10:50",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 123,
+        "date": "2026-06-29",
+        "time": "2026-06-29 10:52:00",
+        "direction": "Long",
+        "pnl": 777.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-29 10:50",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 124,
+        "date": "2026-06-30",
+        "time": "2026-06-30 11:02:00",
+        "direction": "Long",
+        "pnl": 140.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-30 11:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 125,
+        "date": "2026-06-30",
+        "time": "2026-06-30 11:08:00",
+        "direction": "Long",
+        "pnl": 78.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-30 11:00",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 126,
+        "date": "2026-06-30",
+        "time": "2026-06-30 11:02:00",
+        "direction": "Long",
+        "pnl": 318.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-30 11:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 127,
+        "date": "2026-06-30",
+        "time": "2026-06-30 11:02:00",
+        "direction": "Long",
+        "pnl": 674.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_06-30 11:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 128,
+        "date": "2026-06-30",
+        "time": "2026-06-30 11:08:00",
+        "direction": "Long",
+        "pnl": 1182.0,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_06-30 11:00",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 129,
+        "date": "2026-07-01",
+        "time": "2026-07-01 10:40:00",
+        "direction": "Long",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BULL_07-01 10:38"
+        ]
+      },
+      {
+        "trade_num": 130,
+        "date": "2026-07-01",
+        "time": "2026-07-01 10:40:00",
+        "direction": "Long",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_07-01 10:38"
+        ]
+      },
+      {
+        "trade_num": 131,
+        "date": "2026-07-01",
+        "time": "2026-07-01 10:40:00",
+        "direction": "Long",
+        "pnl": -139.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BULL_07-01 10:38"
+        ]
+      },
+      {
+        "trade_num": 132,
+        "date": "2026-07-02",
+        "time": "2026-07-02 11:44:00",
+        "direction": "Short",
+        "pnl": 203.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-02 11:42",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 133,
+        "date": "2026-07-02",
+        "time": "2026-07-02 11:44:00",
+        "direction": "Short",
+        "pnl": 243.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-02 11:42",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 134,
+        "date": "2026-07-02",
+        "time": "2026-07-02 11:44:00",
+        "direction": "Short",
+        "pnl": 1554.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-02 11:42",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 135,
+        "date": "2026-07-03",
+        "time": "2026-07-03 11:02:00",
+        "direction": "Short",
+        "pnl": 49.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-03 11:00",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 136,
+        "date": "2026-07-03",
+        "time": "2026-07-03 11:30:00",
+        "direction": "Short",
+        "pnl": 13.0,
+        "is_win": true,
+        "signals": [
+          "Exit_Addon_Initial_Target",
+          "Addon_IB_BEAR_07-03 11:00"
+        ]
+      },
+      {
+        "trade_num": 137,
+        "date": "2026-07-03",
+        "time": "2026-07-03 11:02:00",
+        "direction": "Short",
+        "pnl": 63.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-03 11:00",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 138,
+        "date": "2026-07-03",
+        "time": "2026-07-03 11:02:00",
+        "direction": "Short",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-03 11:00",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 139,
+        "date": "2026-07-03",
+        "time": "2026-07-03 11:30:00",
+        "direction": "Short",
+        "pnl": -79.5,
+        "is_win": false,
+        "signals": [
+          "Addon_IB_BEAR_07-03 11:00",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 140,
+        "date": "2026-07-06",
+        "time": "2026-07-06 10:46:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-06 10:44",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 141,
+        "date": "2026-07-06",
+        "time": "2026-07-06 10:46:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-06 10:44",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 142,
+        "date": "2026-07-06",
+        "time": "2026-07-06 10:46:00",
+        "direction": "Long",
+        "pnl": -140.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-06 10:44",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 143,
+        "date": "2026-07-06",
+        "time": "2026-07-06 11:00:00",
+        "direction": "Long",
+        "pnl": 33.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-06 10:58",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 144,
+        "date": "2026-07-06",
+        "time": "2026-07-06 11:00:00",
+        "direction": "Long",
+        "pnl": 10.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-06 10:58",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 145,
+        "date": "2026-07-06",
+        "time": "2026-07-06 11:00:00",
+        "direction": "Long",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-06 10:58",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 146,
+        "date": "2026-07-07",
+        "time": "2026-07-07 11:16:00",
+        "direction": "Short",
+        "pnl": 93.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-07 11:14",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 147,
+        "date": "2026-07-07",
+        "time": "2026-07-07 11:16:00",
+        "direction": "Short",
+        "pnl": 10.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-07 11:14",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 148,
+        "date": "2026-07-07",
+        "time": "2026-07-07 11:16:00",
+        "direction": "Short",
+        "pnl": 20.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-07 11:14",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 149,
+        "date": "2026-07-08",
+        "time": "2026-07-08 12:26:00",
+        "direction": "Short",
+        "pnl": -65.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BEAR_07-08 12:24"
+        ]
+      },
+      {
+        "trade_num": 150,
+        "date": "2026-07-08",
+        "time": "2026-07-08 12:26:00",
+        "direction": "Short",
+        "pnl": -65.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BEAR_07-08 12:24"
+        ]
+      },
+      {
+        "trade_num": 151,
+        "date": "2026-07-08",
+        "time": "2026-07-08 12:26:00",
+        "direction": "Short",
+        "pnl": -130.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BEAR_07-08 12:24"
+        ]
+      },
+      {
+        "trade_num": 152,
+        "date": "2026-07-08",
+        "time": "2026-07-08 15:10:00",
+        "direction": "Long",
+        "pnl": 79.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-08 15:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 153,
+        "date": "2026-07-08",
+        "time": "2026-07-08 15:10:00",
+        "direction": "Long",
+        "pnl": 94.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-08 15:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 154,
+        "date": "2026-07-08",
+        "time": "2026-07-08 15:10:00",
+        "direction": "Long",
+        "pnl": 318.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-08 15:08",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 155,
+        "date": "2026-07-09",
+        "time": "2026-07-09 13:38:00",
+        "direction": "Long",
+        "pnl": -46.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 13:36",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 156,
+        "date": "2026-07-09",
+        "time": "2026-07-09 13:38:00",
+        "direction": "Long",
+        "pnl": -46.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 13:36",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 157,
+        "date": "2026-07-09",
+        "time": "2026-07-09 13:38:00",
+        "direction": "Long",
+        "pnl": -93.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 13:36",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 158,
+        "date": "2026-07-09",
+        "time": "2026-07-09 14:10:00",
+        "direction": "Long",
+        "pnl": -73.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 14:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 159,
+        "date": "2026-07-09",
+        "time": "2026-07-09 14:10:00",
+        "direction": "Long",
+        "pnl": -73.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 14:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 160,
+        "date": "2026-07-09",
+        "time": "2026-07-09 14:10:00",
+        "direction": "Long",
+        "pnl": -146.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 14:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 161,
+        "date": "2026-07-09",
+        "time": "2026-07-09 15:08:00",
+        "direction": "Long",
+        "pnl": 0.5,
+        "is_win": true,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BULL_07-09 15:06"
+        ]
+      },
+      {
+        "trade_num": 162,
+        "date": "2026-07-09",
+        "time": "2026-07-09 15:08:00",
+        "direction": "Long",
+        "pnl": -14.5,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 15:06",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 163,
+        "date": "2026-07-09",
+        "time": "2026-07-09 15:08:00",
+        "direction": "Long",
+        "pnl": -29.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-09 15:06",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 164,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:48:00",
+        "direction": "Long",
+        "pnl": 147.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-10 11:46",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 165,
+        "date": "2026-07-10",
+        "time": "2026-07-10 12:00:00",
+        "direction": "Long",
+        "pnl": 34.0,
+        "is_win": true,
+        "signals": [
+          "Exit_Addon_Initial_Target",
+          "Addon_IB_BULL_07-10 11:46"
+        ]
+      },
+      {
+        "trade_num": 166,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:48:00",
+        "direction": "Long",
+        "pnl": 466.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-10 11:46",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 167,
+        "date": "2026-07-10",
+        "time": "2026-07-10 12:00:00",
+        "direction": "Long",
+        "pnl": 618.0,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_07-10 11:46",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 168,
+        "date": "2026-07-10",
+        "time": "2026-07-10 11:48:00",
+        "direction": "Long",
+        "pnl": 292.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-10 11:46",
+          "EOD_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 169,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:50:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-13 10:48",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 170,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:50:00",
+        "direction": "Long",
+        "pnl": -70.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-13 10:48",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 171,
+        "date": "2026-07-13",
+        "time": "2026-07-13 10:50:00",
+        "direction": "Long",
+        "pnl": -140.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-13 10:48",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 172,
+        "date": "2026-07-13",
+        "time": "2026-07-13 14:12:00",
+        "direction": "Short",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "IB_BEAR_07-13 14:10",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 173,
+        "date": "2026-07-13",
+        "time": "2026-07-13 14:12:00",
+        "direction": "Short",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "IB_BEAR_07-13 14:10",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 174,
+        "date": "2026-07-13",
+        "time": "2026-07-13 14:12:00",
+        "direction": "Short",
+        "pnl": -139.0,
+        "is_win": false,
+        "signals": [
+          "IB_BEAR_07-13 14:10",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 175,
+        "date": "2026-07-13",
+        "time": "2026-07-13 15:10:00",
+        "direction": "Short",
+        "pnl": 93.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-13 15:08",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 176,
+        "date": "2026-07-13",
+        "time": "2026-07-13 15:10:00",
+        "direction": "Short",
+        "pnl": 127.5,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-13 15:08",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 177,
+        "date": "2026-07-13",
+        "time": "2026-07-13 15:10:00",
+        "direction": "Short",
+        "pnl": 18.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-13 15:08",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 178,
+        "date": "2026-07-14",
+        "time": "2026-07-14 10:54:00",
+        "direction": "Long",
+        "pnl": 160.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-14 10:52",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 179,
+        "date": "2026-07-14",
+        "time": "2026-07-14 11:00:00",
+        "direction": "Long",
+        "pnl": 49.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_07-14 10:52",
+          "Exit_Addon_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 180,
+        "date": "2026-07-14",
+        "time": "2026-07-14 10:54:00",
+        "direction": "Long",
+        "pnl": 568.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-14 10:52",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 181,
+        "date": "2026-07-14",
+        "time": "2026-07-14 11:00:00",
+        "direction": "Long",
+        "pnl": 28.5,
+        "is_win": true,
+        "signals": [
+          "Addon_IB_BULL_07-14 10:52",
+          "Exit_Addon_Runner"
+        ]
+      },
+      {
+        "trade_num": 182,
+        "date": "2026-07-14",
+        "time": "2026-07-14 10:54:00",
+        "direction": "Long",
+        "pnl": 11.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-14 10:52",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 183,
+        "date": "2026-07-14",
+        "time": "2026-07-14 13:20:00",
+        "direction": "Long",
+        "pnl": 83.5,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-14 13:18",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 184,
+        "date": "2026-07-14",
+        "time": "2026-07-14 13:20:00",
+        "direction": "Long",
+        "pnl": 84.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-14 13:18",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 185,
+        "date": "2026-07-14",
+        "time": "2026-07-14 13:20:00",
+        "direction": "Long",
+        "pnl": 22.0,
+        "is_win": true,
+        "signals": [
+          "IB_BULL_07-14 13:18",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 186,
+        "date": "2026-07-14",
+        "time": "2026-07-14 15:14:00",
+        "direction": "Long",
+        "pnl": -69.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-14 15:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 187,
+        "date": "2026-07-14",
+        "time": "2026-07-14 15:14:00",
+        "direction": "Long",
+        "pnl": -69.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-14 15:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 188,
+        "date": "2026-07-14",
+        "time": "2026-07-14 15:14:00",
+        "direction": "Long",
+        "pnl": -138.0,
+        "is_win": false,
+        "signals": [
+          "IB_BULL_07-14 15:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 189,
+        "date": "2026-07-15",
+        "time": "2026-07-15 11:14:00",
+        "direction": "Short",
+        "pnl": 125.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-15 11:12",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 190,
+        "date": "2026-07-15",
+        "time": "2026-07-15 11:14:00",
+        "direction": "Short",
+        "pnl": 129.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-15 11:12",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 191,
+        "date": "2026-07-15",
+        "time": "2026-07-15 11:14:00",
+        "direction": "Short",
+        "pnl": 22.0,
+        "is_win": true,
+        "signals": [
+          "IB_BEAR_07-15 11:12",
+          "Exit_Main_Runner"
+        ]
+      },
+      {
+        "trade_num": 192,
+        "date": "2026-07-15",
+        "time": "2026-07-15 11:36:00",
+        "direction": "Short",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Partial",
+          "IB_BEAR_07-15 11:34"
+        ]
+      },
+      {
+        "trade_num": 193,
+        "date": "2026-07-15",
+        "time": "2026-07-15 11:36:00",
+        "direction": "Short",
+        "pnl": -69.5,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Initial_Target",
+          "IB_BEAR_07-15 11:34"
+        ]
+      },
+      {
+        "trade_num": 194,
+        "date": "2026-07-15",
+        "time": "2026-07-15 11:36:00",
+        "direction": "Short",
+        "pnl": -139.0,
+        "is_win": false,
+        "signals": [
+          "Exit_Main_Runner",
+          "IB_BEAR_07-15 11:34"
+        ]
+      },
+      {
+        "trade_num": 195,
+        "date": "2026-07-15",
+        "time": "2026-07-15 14:16:00",
+        "direction": "Short",
+        "pnl": -61.0,
+        "is_win": false,
+        "signals": [
+          "IB_BEAR_07-15 14:14",
+          "Exit_Main_Partial"
+        ]
+      },
+      {
+        "trade_num": 196,
+        "date": "2026-07-15",
+        "time": "2026-07-15 14:16:00",
+        "direction": "Short",
+        "pnl": -61.0,
+        "is_win": false,
+        "signals": [
+          "IB_BEAR_07-15 14:14",
+          "Exit_Main_Initial_Target"
+        ]
+      },
+      {
+        "trade_num": 197,
+        "date": "2026-07-15",
+        "time": "2026-07-15 14:16:00",
+        "direction": "Short",
+        "pnl": -122.0,
+        "is_win": false,
+        "signals": [
+          "IB_BEAR_07-15 14:14",
+          "Exit_Main_Runner"
+        ]
+      }
+    ]
+  }
+}

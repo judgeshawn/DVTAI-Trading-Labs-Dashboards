@@ -1107,23 +1107,91 @@
 
         <!-- Sub Tab 3: ALN -->
         <div id="sh-sub-aln-strat" class="sh-sub-panel">
-          <div class="card" style="text-align:center; padding:40px 20px">
-            <h3 style="color:var(--green); margin-bottom:10px">ALN Breakout Strategy Performance</h3>
-            <p style="color:var(--text-muted); font-size:0.85rem; max-width:440px; margin:0 auto">
-              Sub-tab details for ALN London breakout strategies and pre-market signal classifications.
-            </p>
-            <span class="badge" style="background:var(--blue-dim); color:var(--blue); margin-top:15px; font-size:0.7rem; padding:4px 8px">Under Development</span>
+          <div class="grid-gap grid-cols-4">
+            <div class="card stat-card">
+              <div class="stat-label">ALN Net Profit</div>
+              <div class="stat-value green" id="sh-aln-pnl">$0.00</div>
+              <div class="stat-sub">Realized exits</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">ALN Win Rate</div>
+              <div class="stat-value" id="sh-aln-wr">0.0%</div>
+              <div class="stat-sub">Exited trades</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">ALN Profit Factor</div>
+              <div class="stat-value amber" id="sh-aln-pf">0.00</div>
+              <div class="stat-sub">Gross Win / Loss</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">ALN Max Drawdown</div>
+              <div class="stat-value red" id="sh-aln-dd">-$0.00</div>
+              <div class="stat-sub">Peak to Valley</div>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 20px;">
+            <h3 class="section-heading" style="margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase;">ALN Strategy Trade Log (June 1 - July 15)</h3>
+            <div class="table-container" style="overflow-x:auto">
+              <table style="width:100%; border-collapse:collapse; font-size:0.82rem">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--border-color); text-align: left;">
+                    <th style="padding:10px;">Trade #</th>
+                    <th style="padding:10px;">Time</th>
+                    <th style="padding:10px;">Type</th>
+                    <th style="padding:10px;">Signals</th>
+                    <th style="padding:10px;">PnL</th>
+                  </tr>
+                </thead>
+                <tbody id="sh-aln-trades-tbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
         <!-- Sub Tab 4: IB -->
         <div id="sh-sub-ib-strat" class="sh-sub-panel">
-          <div class="card" style="text-align:center; padding:40px 20px">
-            <h3 style="color:var(--green); margin-bottom:10px">IB Breakout Strategy Performance</h3>
-            <p style="color:var(--text-muted); font-size:0.85rem; max-width:440px; margin:0 auto">
-              Sub-tab details for Initial Balance breakout and retest target execution stats.
-            </p>
-            <span class="badge" style="background:var(--blue-dim); color:var(--blue); margin-top:15px; font-size:0.7rem; padding:4px 8px">Under Development</span>
+          <div class="grid-gap grid-cols-4">
+            <div class="card stat-card">
+              <div class="stat-label">IB Net Profit</div>
+              <div class="stat-value green" id="sh-ib-pnl">$0.00</div>
+              <div class="stat-sub">Realized exits</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">IB Win Rate</div>
+              <div class="stat-value" id="sh-ib-wr">0.0%</div>
+              <div class="stat-sub">Exited trades</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">IB Profit Factor</div>
+              <div class="stat-value amber" id="sh-ib-pf">0.00</div>
+              <div class="stat-sub">Gross Win / Loss</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-label">IB Max Drawdown</div>
+              <div class="stat-value red" id="sh-ib-dd">-$0.00</div>
+              <div class="stat-sub">Peak to Valley</div>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 20px;">
+            <h3 class="section-heading" style="margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase;">IB Strategy Trade Log (June 1 - July 15)</h3>
+            <div class="table-container" style="overflow-x:auto">
+              <table style="width:100%; border-collapse:collapse; font-size:0.82rem">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--border-color); text-align: left;">
+                    <th style="padding:10px;">Trade #</th>
+                    <th style="padding:10px;">Time</th>
+                    <th style="padding:10px;">Type</th>
+                    <th style="padding:10px;">Signals</th>
+                    <th style="padding:10px;">PnL</th>
+                  </tr>
+                </thead>
+                <tbody id="sh-ib-trades-tbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -1168,6 +1236,7 @@
     let sessionsData = null; // Stores parsed JSON database
     let activePeriod = 'all';
     let activeDayOffset = 0; // Index of selected day from the last 10 sessions (0 is latest, up to 9)
+    let strategyData = null; // Stores strategy_executions.json data
 
     // Multipliers for Points to Dollars scaling (USD per point per contract)
     const POINT_VALUES = {
@@ -1223,6 +1292,15 @@
         const response = await fetch('./data/sessions_db.json');
         if (!response.ok) throw new Error('Failed to load database file.');
         sessionsData = await response.json();
+        
+        try {
+          const resStrat = await fetch('./data/strategy_executions.json');
+          if (resStrat.ok) {
+            strategyData = await resStrat.json();
+          }
+        } catch (err) {
+          console.warn('Failed to load strategy executions database:', err);
+        }
         
         document.getElementById('last-updated').textContent = 'Last Updated: ' + 
           new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' +
@@ -1310,26 +1388,132 @@
       if (!strategyHubUnlocked) return;
       
       const pointValue = POINT_VALUES[currentInst] || 2.0;
-      const orPnLBase = 4080; // 30-Sec OR performance baseline (USD)
-      const scaledPnL = orPnLBase * selectedContracts;
       
-      if (displayMode === 'usd') {
-        document.getElementById('sh-or-pnl').textContent = '$' + Math.round(scaledPnL).toLocaleString();
-        document.getElementById('sh-overview-pnl').textContent = '$' + Math.round(scaledPnL).toLocaleString();
-        document.getElementById('sh-overview-dd').textContent = '-$' + Math.round(450 * selectedContracts).toLocaleString();
-      } else {
-        const pts = (scaledPnL / (pointValue * selectedContracts)).toFixed(1);
-        document.getElementById('sh-or-pnl').textContent = pts + ' pts';
-        document.getElementById('sh-overview-pnl').textContent = pts + ' pts';
-        document.getElementById('sh-overview-dd').textContent = '-' + (450 / pointValue).toFixed(1) + ' pts';
+      // OR Baseline Stats
+      const orPnLBase = 4080;
+      const orTrades = 12;
+      const orWr = 66.7;
+      const orPf = 2.45;
+      const orDdBase = -450;
+      
+      const orPnL = orPnLBase * selectedContracts;
+      const orDd = orDdBase * selectedContracts;
+      
+      // ALN Stats
+      let alnPnl = 0, alnWr = 0, alnPf = 0, alnDd = 0, alnTrades = 0;
+      if (strategyData && strategyData.ALN) {
+        alnPnl = strategyData.ALN.total_net_profit * selectedContracts;
+        alnWr = strategyData.ALN.win_rate;
+        alnPf = strategyData.ALN.profit_factor;
+        alnDd = strategyData.ALN.max_drawdown * selectedContracts;
+        alnTrades = strategyData.ALN.total_trades;
       }
       
-      document.getElementById('sh-overview-wr').textContent = '66.7%';
-      document.getElementById('sh-overview-pf').textContent = '2.45';
+      // IB Stats
+      let ibPnl = 0, ibWr = 0, ibPf = 0, ibDd = 0, ibTrades = 0;
+      if (strategyData && strategyData.IB) {
+        ibPnl = strategyData.IB.total_net_profit * selectedContracts;
+        ibWr = strategyData.IB.win_rate;
+        ibPf = strategyData.IB.profit_factor;
+        ibDd = strategyData.IB.max_drawdown * selectedContracts;
+        ibTrades = strategyData.IB.total_trades;
+      }
       
-      document.getElementById('sh-or-signals').textContent = '12';
-      document.getElementById('sh-or-wr').textContent = '66.7%';
-      document.getElementById('sh-or-pf').textContent = '2.45';
+      // Combined Stats
+      const combinedPnL = orPnL + alnPnl + ibPnl;
+      const totalCombinedTrades = orTrades + alnTrades + ibTrades;
+      const combinedWr = totalCombinedTrades > 0 ? 
+        (((orTrades * orWr) + (alnTrades * alnWr) + (ibTrades * ibWr)) / totalCombinedTrades) : 0;
+      const combinedPf = totalCombinedTrades > 0 ? 
+        (((orTrades * orPf) + (alnTrades * alnPf) + (ibTrades * ibPf)) / totalCombinedTrades) : 0;
+      const combinedDd = orDd + alnDd + ibDd;
+      
+      // Format helper
+      function formatVal(val, scaleToPoints = false) {
+        if (displayMode === 'usd') {
+          const prefix = val >= 0 ? '$' : '-$';
+          return prefix + Math.abs(Math.round(val)).toLocaleString();
+        } else {
+          const pts = scaleToPoints ? (val / (pointValue * selectedContracts)) : (val / pointValue);
+          return pts.toFixed(1) + ' pts';
+        }
+      }
+      
+      // Bind Overview
+      document.getElementById('sh-overview-pnl').textContent = formatVal(combinedPnL);
+      document.getElementById('sh-overview-pnl').className = combinedPnL >= 0 ? 'stat-value green' : 'stat-value red';
+      document.getElementById('sh-overview-wr').textContent = combinedWr.toFixed(1) + '%';
+      document.getElementById('sh-overview-pf').textContent = combinedPf.toFixed(2);
+      document.getElementById('sh-overview-dd').textContent = formatVal(combinedDd);
+      
+      // Bind 30-Sec OR
+      document.getElementById('sh-or-pnl').textContent = formatVal(orPnL);
+      document.getElementById('sh-or-pnl').className = orPnL >= 0 ? 'stat-value green' : 'stat-value red';
+      document.getElementById('sh-or-signals').textContent = orTrades;
+      document.getElementById('sh-or-wr').textContent = orWr.toFixed(1) + '%';
+      document.getElementById('sh-or-pf').textContent = orPf.toFixed(2);
+      
+      // Bind ALN
+      document.getElementById('sh-aln-pnl').textContent = formatVal(alnPnl);
+      document.getElementById('sh-aln-pnl').className = alnPnl >= 0 ? 'stat-value green' : 'stat-value red';
+      document.getElementById('sh-aln-wr').textContent = alnWr.toFixed(1) + '%';
+      document.getElementById('sh-aln-pf').textContent = alnPf.toFixed(2);
+      document.getElementById('sh-aln-dd').textContent = formatVal(alnDd);
+      
+      // Bind IB
+      document.getElementById('sh-ib-pnl').textContent = formatVal(ibPnl);
+      document.getElementById('sh-ib-pnl').className = ibPnl >= 0 ? 'stat-value green' : 'stat-value red';
+      document.getElementById('sh-ib-wr').textContent = ibWr.toFixed(1) + '%';
+      document.getElementById('sh-ib-pf').textContent = ibPf.toFixed(2);
+      document.getElementById('sh-ib-dd').textContent = formatVal(ibDd);
+      
+      // Populate ALN Trade Logs (last 10)
+      if (strategyData && strategyData.ALN && strategyData.ALN.trades) {
+        const tbody = document.getElementById('sh-aln-trades-tbody');
+        tbody.innerHTML = '';
+        const recent = strategyData.ALN.trades.slice(-10).reverse();
+        recent.forEach(t => {
+          const scaledP = t.pnl * selectedContracts;
+          const pnlText = scaledP >= 0 ? 
+            `<span style="color:var(--green); font-weight:600">+${formatVal(scaledP)}</span>` : 
+            `<span style="color:var(--red); font-weight:600">${formatVal(scaledP)}</span>`;
+          const dirClass = t.direction.toLowerCase() === 'long' ? 'positive' : 'negative';
+          
+          tbody.innerHTML += `
+            <tr style="border-bottom:1px solid var(--border-color)">
+              <td style="padding:10px; font-weight:600">#${t.trade_num}</td>
+              <td style="padding:10px; color:var(--text-muted)">${t.time}</td>
+              <td style="padding:10px"><span class="badge ${dirClass}">${t.direction}</span></td>
+              <td style="padding:10px; font-size:0.75rem">${t.signals.join(', ')}</td>
+              <td style="padding:10px">${pnlText}</td>
+            </tr>
+          `;
+        });
+      }
+      
+      // Populate IB Trade Logs (last 10)
+      if (strategyData && strategyData.IB && strategyData.IB.trades) {
+        const tbody = document.getElementById('sh-ib-trades-tbody');
+        tbody.innerHTML = '';
+        const recent = strategyData.IB.trades.slice(-10).reverse();
+        recent.forEach(t => {
+          const scaledP = t.pnl * selectedContracts;
+          const pnlText = scaledP >= 0 ? 
+            `<span style="color:var(--green); font-weight:600">+${formatVal(scaledP)}</span>` : 
+            `<span style="color:var(--red); font-weight:600">${formatVal(scaledP)}</span>`;
+          const dirClass = t.direction.toLowerCase() === 'long' ? 'positive' : 'negative';
+          
+          tbody.innerHTML += `
+            <tr style="border-bottom:1px solid var(--border-color)">
+              <td style="padding:10px; font-weight:600">#${t.trade_num}</td>
+              <td style="padding:10px; color:var(--text-muted)">${t.time}</td>
+              <td style="padding:10px"><span class="badge ${dirClass}">${t.direction}</span></td>
+              <td style="padding:10px; font-size:0.75rem">${t.signals.join(', ')}</td>
+              <td style="padding:10px">${pnlText}</td>
+            </tr>
+          `;
+        });
+      }
     }
 
     // ── TAB CONTROLLER ────────────────────────────────────────────────────────
