@@ -1653,7 +1653,7 @@
       if (!container) return;
       container.innerHTML = '';
       
-      const levels = ['25%', '50%', '75%', '100%'];
+      const levels = ['10%', '25%', '50%', '75%', '100%'];
       const times = isUp ? ulTimes : dlTimes;
       const badgeColor = isUp ? 'var(--green)' : 'var(--red)';
       const badgeBg = isUp ? 'var(--green-dim)' : 'var(--red-dim)';
@@ -2311,7 +2311,7 @@
 
       // 4. IB & Extensions
       let ibHigh, ibLow, ibMid, ibRangeVal, ibVolume, ibBreakTime, ibBreakSide, ibCloseHalf, ibMaxExt;
-      let ul25, ul50, ul75, ul100, dl25, dl50, dl75, dl100;
+      let ul10, ul25, ul50, ul75, ul100, dl10, dl25, dl50, dl75, dl100;
 
       if (latestSession && latestSession.or_ib) {
         ibHigh = latestSession.or_ib.ib_high || 0;
@@ -2325,15 +2325,23 @@
 
         const upExt = latestSession.or_ib.ib_max_ext_up || 0;
         const dnExt = latestSession.or_ib.ib_max_ext_dn || 0;
-        if (upExt > 0) ibMaxExt = `+${upExt}% (UL${upExt/25})`;
-        else if (dnExt > 0) ibMaxExt = `-${dnExt}% (DL${dnExt/25})`;
-        else ibMaxExt = 'None';
+        if (upExt > 0) {
+          if (upExt === 10) ibMaxExt = '+10% (UL10)';
+          else ibMaxExt = `+${upExt}% (UL${upExt/25})`;
+        } else if (dnExt > 0) {
+          if (dnExt === 10) ibMaxExt = '-10% (DL10)';
+          else ibMaxExt = `-${dnExt}% (DL${dnExt/25})`;
+        } else {
+          ibMaxExt = 'None';
+        }
 
+        ul10 = latestSession.or_ib.ib_ext_up10_break || 'None';
         ul25 = latestSession.or_ib.ib_ext_up25_break || 'None';
         ul50 = latestSession.or_ib.ib_ext_up50_break || 'None';
         ul75 = latestSession.or_ib.ib_ext_up75_break || 'None';
         ul100 = latestSession.or_ib.ib_ext_up100_break || 'None';
 
+        dl10 = latestSession.or_ib.ib_ext_dn10_break || 'None';
         dl25 = latestSession.or_ib.ib_ext_dn25_break || 'None';
         dl50 = latestSession.or_ib.ib_ext_dn50_break || 'None';
         dl75 = latestSession.or_ib.ib_ext_dn75_break || 'None';
@@ -2350,11 +2358,13 @@
         ibCloseHalf = 'Upper 50%';
         ibMaxExt = baseIb.max_extension;
 
+        ul10 = 'None';
         ul25 = '10:42:00';
         ul50 = '10:55:30';
         ul75 = 'None';
         ul100 = 'None';
 
+        dl10 = 'None';
         dl25 = 'None';
         dl50 = 'None';
         dl75 = 'None';
@@ -2432,8 +2442,8 @@
       document.getElementById('ib-10yr-prob').textContent = benchmarkStr;
       document.getElementById('ib-realized-prob').textContent = realizedStr;
 
-      renderDailyIbBadges('ib-daily-ul-badges', [ul25, ul50, ul75, ul100], [], true);
-      renderDailyIbBadges('ib-daily-dl-badges', [], [dl25, dl50, dl75, dl100], false);
+      renderDailyIbBadges('ib-daily-ul-badges', [ul10, ul25, ul50, ul75, ul100], [], true);
+      renderDailyIbBadges('ib-daily-dl-badges', [], [dl10, dl25, dl50, dl75, dl100], false);
 
       // 5. Strategy Recap (Calculated dynamically or fallback baseline)
       const stratRec = BASELINE_DATA[currentInst].strat;
