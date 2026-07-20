@@ -1130,7 +1130,21 @@
             </div>
           </div>
           <div class="card" style="margin-top: 20px;">
-            <h3 class="section-heading" style="margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase;">ALN Strategy Trade Log (June 1 - July 15)</h3>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap: wrap; gap: 8px;">
+              <h3 class="section-heading" style="margin: 0; font-size: 0.9rem; text-transform: uppercase;">ALN Strategy Trade Log (June 1 - July 15)</h3>
+              <div style="display:flex; gap:10px;">
+                <select id="sh-aln-dir-filter" onchange="updateStrategyHubStats()" style="background:var(--bg-card); color:var(--text-light); border:1px solid var(--border-color); border-radius:4px; padding:4px 8px; font-size:0.75rem;">
+                  <option value="all">All Directions</option>
+                  <option value="long">Longs Only</option>
+                  <option value="short">Shorts Only</option>
+                </select>
+                <select id="sh-aln-res-filter" onchange="updateStrategyHubStats()" style="background:var(--bg-card); color:var(--text-light); border:1px solid var(--border-color); border-radius:4px; padding:4px 8px; font-size:0.75rem;">
+                  <option value="all">All Results</option>
+                  <option value="win">Wins Only</option>
+                  <option value="loss">Losses Only</option>
+                </select>
+              </div>
+            </div>
             <div class="table-container" style="overflow-x:auto">
               <table style="width:100%; border-collapse:collapse; font-size:0.82rem">
                 <thead>
@@ -1175,7 +1189,21 @@
             </div>
           </div>
           <div class="card" style="margin-top: 20px;">
-            <h3 class="section-heading" style="margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase;">IB Strategy Trade Log (June 1 - July 15)</h3>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap: wrap; gap: 8px;">
+              <h3 class="section-heading" style="margin: 0; font-size: 0.9rem; text-transform: uppercase;">IB Strategy Trade Log (June 1 - July 15)</h3>
+              <div style="display:flex; gap:10px;">
+                <select id="sh-ib-dir-filter" onchange="updateStrategyHubStats()" style="background:var(--bg-card); color:var(--text-light); border:1px solid var(--border-color); border-radius:4px; padding:4px 8px; font-size:0.75rem;">
+                  <option value="all">All Directions</option>
+                  <option value="long">Longs Only</option>
+                  <option value="short">Shorts Only</option>
+                </select>
+                <select id="sh-ib-res-filter" onchange="updateStrategyHubStats()" style="background:var(--bg-card); color:var(--text-light); border:1px solid var(--border-color); border-radius:4px; padding:4px 8px; font-size:0.75rem;">
+                  <option value="all">All Results</option>
+                  <option value="win">Wins Only</option>
+                  <option value="loss">Losses Only</option>
+                </select>
+              </div>
+            </div>
             <div class="table-container" style="overflow-x:auto">
               <table style="width:100%; border-collapse:collapse; font-size:0.82rem">
                 <thead>
@@ -1467,52 +1495,80 @@
       document.getElementById('sh-ib-pf').textContent = ibPf.toFixed(2);
       document.getElementById('sh-ib-dd').textContent = formatVal(ibDd);
       
-      // Populate ALN Trade Logs (last 10)
+      // Populate ALN Trade Logs (filtered)
       if (strategyData && strategyData.ALN && strategyData.ALN.trades) {
         const tbody = document.getElementById('sh-aln-trades-tbody');
         tbody.innerHTML = '';
-        const recent = strategyData.ALN.trades.slice(-10).reverse();
-        recent.forEach(t => {
-          const scaledP = t.pnl * selectedContracts;
-          const pnlText = scaledP >= 0 ? 
-            `<span style="color:var(--green); font-weight:600">+${formatVal(scaledP)}</span>` : 
-            `<span style="color:var(--red); font-weight:600">${formatVal(scaledP)}</span>`;
-          const dirClass = t.direction.toLowerCase() === 'long' ? 'positive' : 'negative';
-          
-          tbody.innerHTML += `
-            <tr style="border-bottom:1px solid var(--border-color)">
-              <td style="padding:10px; font-weight:600">#${t.trade_num}</td>
-              <td style="padding:10px; color:var(--text-muted)">${t.time}</td>
-              <td style="padding:10px"><span class="badge ${dirClass}">${t.direction}</span></td>
-              <td style="padding:10px; font-size:0.75rem">${t.signals.join(', ')}</td>
-              <td style="padding:10px">${pnlText}</td>
-            </tr>
-          `;
+        
+        const dirFilter = document.getElementById('sh-aln-dir-filter')?.value || 'all';
+        const resFilter = document.getElementById('sh-aln-res-filter')?.value || 'all';
+        
+        let filtered = strategyData.ALN.trades.filter(t => {
+          const matchesDir = dirFilter === 'all' || t.direction.toLowerCase() === dirFilter;
+          const matchesRes = resFilter === 'all' || (resFilter === 'win' ? t.pnl >= 0 : t.pnl < 0);
+          return matchesDir && matchesRes;
         });
+        
+        const recent = filtered.slice(-30).reverse();
+        if (recent.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" style="padding:20px; text-align:center; color:var(--text-muted)">No matching trades found</td></tr>';
+        } else {
+          recent.forEach(t => {
+            const scaledP = t.pnl * selectedContracts;
+            const pnlText = scaledP >= 0 ? 
+              `<span style="color:var(--green); font-weight:600">+${formatVal(scaledP)}</span>` : 
+              `<span style="color:var(--red); font-weight:600">${formatVal(scaledP)}</span>`;
+            const dirClass = t.direction.toLowerCase() === 'long' ? 'positive' : 'negative';
+            
+            tbody.innerHTML += `
+              <tr style="border-bottom:1px solid var(--border-color)">
+                <td style="padding:10px; font-weight:600">#${t.trade_num}</td>
+                <td style="padding:10px; color:var(--text-muted)">${t.time}</td>
+                <td style="padding:10px"><span class="badge ${dirClass}">${t.direction}</span></td>
+                <td style="padding:10px; font-size:0.75rem">${t.signals.join(', ')}</td>
+                <td style="padding:10px">${pnlText}</td>
+              </tr>
+            `;
+          });
+        }
       }
       
-      // Populate IB Trade Logs (last 10)
+      // Populate IB Trade Logs (filtered)
       if (strategyData && strategyData.IB && strategyData.IB.trades) {
         const tbody = document.getElementById('sh-ib-trades-tbody');
         tbody.innerHTML = '';
-        const recent = strategyData.IB.trades.slice(-10).reverse();
-        recent.forEach(t => {
-          const scaledP = t.pnl * selectedContracts;
-          const pnlText = scaledP >= 0 ? 
-            `<span style="color:var(--green); font-weight:600">+${formatVal(scaledP)}</span>` : 
-            `<span style="color:var(--red); font-weight:600">${formatVal(scaledP)}</span>`;
-          const dirClass = t.direction.toLowerCase() === 'long' ? 'positive' : 'negative';
-          
-          tbody.innerHTML += `
-            <tr style="border-bottom:1px solid var(--border-color)">
-              <td style="padding:10px; font-weight:600">#${t.trade_num}</td>
-              <td style="padding:10px; color:var(--text-muted)">${t.time}</td>
-              <td style="padding:10px"><span class="badge ${dirClass}">${t.direction}</span></td>
-              <td style="padding:10px; font-size:0.75rem">${t.signals.join(', ')}</td>
-              <td style="padding:10px">${pnlText}</td>
-            </tr>
-          `;
+        
+        const dirFilter = document.getElementById('sh-ib-dir-filter')?.value || 'all';
+        const resFilter = document.getElementById('sh-ib-res-filter')?.value || 'all';
+        
+        let filtered = strategyData.IB.trades.filter(t => {
+          const matchesDir = dirFilter === 'all' || t.direction.toLowerCase() === dirFilter;
+          const matchesRes = resFilter === 'all' || (resFilter === 'win' ? t.pnl >= 0 : t.pnl < 0);
+          return matchesDir && matchesRes;
         });
+        
+        const recent = filtered.slice(-30).reverse();
+        if (recent.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" style="padding:20px; text-align:center; color:var(--text-muted)">No matching trades found</td></tr>';
+        } else {
+          recent.forEach(t => {
+            const scaledP = t.pnl * selectedContracts;
+            const pnlText = scaledP >= 0 ? 
+              `<span style="color:var(--green); font-weight:600">+${formatVal(scaledP)}</span>` : 
+              `<span style="color:var(--red); font-weight:600">${formatVal(scaledP)}</span>`;
+            const dirClass = t.direction.toLowerCase() === 'long' ? 'positive' : 'negative';
+            
+            tbody.innerHTML += `
+              <tr style="border-bottom:1px solid var(--border-color)">
+                <td style="padding:10px; font-weight:600">#${t.trade_num}</td>
+                <td style="padding:10px; color:var(--text-muted)">${t.time}</td>
+                <td style="padding:10px"><span class="badge ${dirClass}">${t.direction}</span></td>
+                <td style="padding:10px; font-size:0.75rem">${t.signals.join(', ')}</td>
+                <td style="padding:10px">${pnlText}</td>
+              </tr>
+            `;
+          });
+        }
       }
     }
 
@@ -2063,8 +2119,9 @@
       }
 
       // Populate ALN Session Segments Table
-      // Helper to format extensions with premium badge styling (green if upper, red if lower)
-      function formatExtensions(extStr, brokeStr) {
+      // Populate ALN Session Segments Table
+      // Helper to format extensions with premium badge styling and hit times printed underneath
+      function formatExtensionsWithTimes(levels, times, brokeStr) {
         const cleanBroke = brokeStr ? brokeStr.toLowerCase() : 'neither';
         if (cleanBroke.includes('neither') || cleanBroke.includes('none') || cleanBroke === 'no') {
           return '<span style="color:var(--text-dark); font-size:0.75rem; font-weight:600;">None</span>';
@@ -2074,8 +2131,16 @@
         const badgeBg = isUpper ? 'var(--green-dim)' : 'var(--red-dim)';
         const badgeBorder = isUpper ? 'rgba(0, 240, 153, 0.15)' : 'rgba(255, 75, 96, 0.15)';
         
-        return extStr.split('|').map(e => {
-          return `<span class="badge" style="background:${badgeBg}; color:${badgeColor}; border:1px solid ${badgeBorder}; font-size:0.7rem; font-weight:700; padding:2px 6px; border-radius:4px; margin-right:4px; display:inline-block;">${e.trim()}</span>`;
+        return levels.map((lvl, idx) => {
+          const tVal = times[idx] || 'None';
+          const opacity = (tVal && tVal !== 'None') ? '1.0' : '0.35';
+          const labelTime = (tVal && tVal !== 'None') ? tVal : '--';
+          return `
+            <div style="display:inline-flex; flex-direction:column; align-items:center; margin-right:8px; opacity:${opacity}">
+              <span class="badge" style="background:${badgeBg}; color:${badgeColor}; border:1px solid ${badgeBorder}; font-size:0.65rem; font-weight:700; padding:2px 4px; border-radius:3px;">${lvl}</span>
+              <span style="font-size:0.55rem; color:var(--text-muted); margin-top:2px;">${labelTime}</span>
+            </div>
+          `;
         }).join('');
       }
 
@@ -2083,9 +2148,16 @@
       const row1RangeVal = (asiaRange * selectedContracts).toFixed(2);
       const row1PosStr = (latestSession && latestSession.ohlc.c >= latestSession.ohlc.o) ? 'ABOVE MID' : 'BELOW MID';
       const row1ProbStr = row1PosStr === 'ABOVE MID' ? 'High: 65.4% | Low: 34.6%' : 'Low: 64.8% | High: 35.2%';
-      const row1BreakStr = row1PosStr === 'ABOVE MID' ? 'Hit High First' : 'Hit Low First';
-      const row1TimeStr = '20:15:30';
-      const row1ExtStr = '10% | 25% | 50%';
+      
+      const row1FirstBreak = latestSession && latestSession.aln ? latestSession.aln.ny_prev_first_break : 'None';
+      const row1BreakStr = row1FirstBreak === 'H' ? 'Hit High First' : (row1FirstBreak === 'L' ? 'Hit Low First' : 'Neither');
+      const row1TimeStr = latestSession && latestSession.aln ? latestSession.aln.ny_prev_break_time : 'None';
+      
+      const row1ExtTimes = latestSession && latestSession.aln ? [
+        latestSession.aln.row1_ext_10,
+        latestSession.aln.row1_ext_25,
+        latestSession.aln.row1_ext_50
+      ] : [];
 
       document.getElementById('aln-row1-range').textContent = `${row1RangeVal} pts`;
       const r1PosEl = document.getElementById('aln-row1-pos');
@@ -2094,19 +2166,25 @@
       document.getElementById('aln-row1-prob').textContent = row1ProbStr;
       const r1BreakEl = document.getElementById('aln-row1-break');
       r1BreakEl.textContent = row1BreakStr;
-      r1BreakEl.className = row1BreakStr.includes('High') ? 'positive' : 'negative';
+      r1BreakEl.className = row1BreakStr.includes('High') ? 'positive' : (row1BreakStr.includes('Low') ? 'negative' : 'neutral');
       document.getElementById('aln-row1-time').textContent = row1TimeStr;
-      document.getElementById('aln-row1-ext').innerHTML = formatExtensions(row1ExtStr, row1BreakStr);
+      document.getElementById('aln-row1-ext').innerHTML = formatExtensionsWithTimes(['10%', '25%', '50%'], row1ExtTimes, row1BreakStr);
 
       // Row 2: London vs Asia
       const row2RangeVal = (londonRange * selectedContracts).toFixed(2);
       const row2PosStr = (pattern === 'P1' || pattern === 'P4') ? 'ABOVE MID' : 'BELOW MID';
       const row2ProbStr = row2PosStr === 'ABOVE MID' ? 'High: 73.84% | Low: 20.39%' : 'Low: 68.75% | High: 25.54%';
-      const row2BreakStr = (latestSession && latestSession.aln && latestSession.aln.ny_broke_asia_h === 1) ? 'Hit High First' : 
-                           ((latestSession && latestSession.aln && latestSession.aln.ny_broke_asia_l === 1) ? 'Hit Low First' : 'Neither');
-      const row2TimeStr = (row2BreakStr === 'Hit High First') ? (asiaHBreakTime !== 'None' ? asiaHBreakTime : '03:14:15') : 
-                           ((row2BreakStr === 'Hit Low First') ? (asiaLBreakTime !== 'None' ? asiaLBreakTime : '04:02:30') : 'None');
-      const row2ExtStr = (londonRange > 120) ? '10% | 25% | 50% | 75%' : '10% | 25%';
+      
+      const row2FirstBreak = latestSession && latestSession.aln ? latestSession.aln.ny_asia_first_break : 'None';
+      const row2BreakStr = row2FirstBreak === 'H' ? 'Hit High First' : (row2FirstBreak === 'L' ? 'Hit Low First' : 'Neither');
+      const row2TimeStr = latestSession && latestSession.aln ? latestSession.aln.ny_asia_break_time : 'None';
+      
+      const row2ExtTimes = latestSession && latestSession.aln ? [
+        latestSession.aln.row2_ext_10,
+        latestSession.aln.row2_ext_25,
+        latestSession.aln.row2_ext_50,
+        latestSession.aln.row2_ext_75
+      ] : [];
 
       document.getElementById('aln-row2-range').textContent = `${row2RangeVal} pts`;
       const r2PosEl = document.getElementById('aln-row2-pos');
@@ -2117,7 +2195,7 @@
       r2BreakEl.textContent = row2BreakStr;
       r2BreakEl.className = row2BreakStr === 'Hit High First' ? 'positive' : (row2BreakStr === 'Hit Low First' ? 'negative' : 'neutral');
       document.getElementById('aln-row2-time').textContent = row2TimeStr;
-      document.getElementById('aln-row2-ext').innerHTML = formatExtensions(row2ExtStr, row2BreakStr);
+      document.getElementById('aln-row2-ext').innerHTML = formatExtensionsWithTimes(['10%', '25%', '50%', '75%'], row2ExtTimes, row2BreakStr);
 
       // Row 3: NY PM vs London
       const row3RangeVal = (ovnRange * selectedContracts).toFixed(2);
@@ -2126,7 +2204,11 @@
       const row3BreakStr = (firstBreak === 'H') ? 'Hit High First' : ((firstBreak === 'L') ? 'Hit Low First' : 'Neither');
       const row3TimeStr = (row3BreakStr === 'Hit High First') ? (lonHBreakTime !== 'None' ? lonHBreakTime : 'None') : 
                            ((row3BreakStr === 'Hit Low First') ? (lonLBreakTime !== 'None' ? lonLBreakTime : 'None') : 'None');
-      const row3ExtStr = '10% | 25%';
+      
+      const row3ExtTimes = latestSession && latestSession.aln ? [
+        latestSession.aln.row3_ext_10,
+        latestSession.aln.row3_ext_25
+      ] : [];
 
       document.getElementById('aln-row3-range').textContent = `${row3RangeVal} pts`;
       const r3PosEl = document.getElementById('aln-row3-pos');
@@ -2137,7 +2219,7 @@
       r3BreakEl.textContent = row3BreakStr;
       r3BreakEl.className = row3BreakStr === 'Hit High First' ? 'positive' : (row3BreakStr === 'Hit Low First' ? 'negative' : 'neutral');
       document.getElementById('aln-row3-time').textContent = row3TimeStr;
-      document.getElementById('aln-row3-ext').innerHTML = formatExtensions(row3ExtStr, row3BreakStr);
+      document.getElementById('aln-row3-ext').innerHTML = formatExtensionsWithTimes(['10%', '25%'], row3ExtTimes, row3BreakStr);
 
       // Row 4: NY Cash vs London
       const row4RangeVal = (nyRange * selectedContracts).toFixed(2);
@@ -2149,7 +2231,14 @@
       
       const row4BreakStr = (nyCashFirstBreak === 'H') ? 'Hit High First' : ((nyCashFirstBreak === 'L') ? 'Hit Low First' : 'Neither');
       const row4TimeStr = nyCashBreakTime;
-      const row4ExtStr = (nyRange > 180) ? '10% | 25% | 50% | 75% | 100%' : '10% | 25% | 50%';
+      
+      const row4ExtTimes = latestSession && latestSession.aln ? [
+        latestSession.aln.row4_ext_10,
+        latestSession.aln.row4_ext_25,
+        latestSession.aln.row4_ext_50,
+        latestSession.aln.row4_ext_75,
+        latestSession.aln.row4_ext_100
+      ] : [];
 
       document.getElementById('aln-row4-range').textContent = `${row4RangeVal} pts`;
       const r4PosEl = document.getElementById('aln-row4-pos');
@@ -2160,7 +2249,7 @@
       r4BreakEl.textContent = row4BreakStr;
       r4BreakEl.className = row4BreakStr === 'Hit High First' ? 'positive' : (row4BreakStr === 'Hit Low First' ? 'negative' : 'neutral');
       document.getElementById('aln-row4-time').textContent = row4TimeStr;
-      document.getElementById('aln-row4-ext').innerHTML = formatExtensions(row4ExtStr, row4BreakStr);
+      document.getElementById('aln-row4-ext').innerHTML = formatExtensionsWithTimes(['10%', '25%', '50%', '75%', '100%'], row4ExtTimes, row4BreakStr);
 
       // 2. Gaps Analysis
       let gapDir, gapSize, gapOpen, gapClose, fill100, fillPct;
