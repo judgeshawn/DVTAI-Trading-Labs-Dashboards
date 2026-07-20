@@ -1416,35 +1416,87 @@
       if (!strategyHubUnlocked) return;
       
       const pointValue = POINT_VALUES[currentInst] || 2.0;
+      const activeFiltered = getFilteredSessions(currentInst);
+      const allowedDates = new Set(activeFiltered.map(s => s.date));
       
-      // OR Baseline Stats
-      const orPnLBase = 4080;
-      const orTrades = 12;
+      // OR Baseline Stats (proportional scaling based on session dates in period)
+      const totalSessions = 55;
+      const periodRatio = activeFiltered.length > 0 ? (activeFiltered.length / totalSessions) : 0;
+      const orTrades = Math.max(0, Math.round(12 * periodRatio));
       const orWr = 66.7;
       const orPf = 2.45;
-      const orDdBase = -450;
+      const orPnL = 4080 * periodRatio * selectedContracts;
+      const orDd = -450 * selectedContracts;
       
-      const orPnL = orPnLBase * selectedContracts;
-      const orDd = orDdBase * selectedContracts;
-      
+      // Dynamic Stats Helper
+      function calculateDynamicStats(tradesList) {
+        if (!tradesList) return { netProfit: 0, winRate: 0, profitFactor: 0, maxDrawdown: 0, totalTrades: 0 };
+        const filteredTrades = tradesList.filter(t => allowedDates.has(t.date));
+        
+        let netProfit = 0;
+        let wins = 0;
+        let losses = 0;
+        let grossWin = 0;
+        let grossLoss = 0;
+        let totalTrades = filteredTrades.length;
+        
+        filteredTrades.forEach(t => {
+          netProfit += t.pnl;
+          if (t.pnl >= 0) {
+            wins++;
+            grossWin += t.pnl;
+          } else {
+            losses++;
+            grossLoss += Math.abs(t.pnl);
+          }
+        });
+        
+        let maxDd = 0;
+        let peak = 0;
+        let runningPnl = 0;
+        filteredTrades.forEach(t => {
+          runningPnl += t.pnl;
+          if (runningPnl > peak) {
+            peak = runningPnl;
+          }
+          const dd = runningPnl - peak;
+          if (dd < maxDd) {
+            maxDd = dd;
+          }
+        });
+        
+        const wr = totalTrades > 0 ? (wins / totalTrades) * 100 : 0;
+        const pf = grossLoss > 0 ? (grossWin / grossLoss) : (grossWin > 0 ? 99.9 : 0.0);
+        
+        return {
+          netProfit,
+          winRate: wr,
+          profitFactor: pf,
+          maxDrawdown: maxDd,
+          totalTrades
+        };
+      }
+
       // ALN Stats
       let alnPnl = 0, alnWr = 0, alnPf = 0, alnDd = 0, alnTrades = 0;
       if (strategyData && strategyData.ALN) {
-        alnPnl = strategyData.ALN.total_net_profit * selectedContracts;
-        alnWr = strategyData.ALN.win_rate;
-        alnPf = strategyData.ALN.profit_factor;
-        alnDd = strategyData.ALN.max_drawdown * selectedContracts;
-        alnTrades = strategyData.ALN.total_trades;
+        const stats = calculateDynamicStats(strategyData.ALN.trades);
+        alnPnl = stats.netProfit * selectedContracts;
+        alnWr = stats.winRate;
+        alnPf = stats.profitFactor;
+        alnDd = stats.maxDrawdown * selectedContracts;
+        alnTrades = stats.totalTrades;
       }
       
       // IB Stats
       let ibPnl = 0, ibWr = 0, ibPf = 0, ibDd = 0, ibTrades = 0;
       if (strategyData && strategyData.IB) {
-        ibPnl = strategyData.IB.total_net_profit * selectedContracts;
-        ibWr = strategyData.IB.win_rate;
-        ibPf = strategyData.IB.profit_factor;
-        ibDd = strategyData.IB.max_drawdown * selectedContracts;
-        ibTrades = strategyData.IB.total_trades;
+        const stats = calculateDynamicStats(strategyData.IB.trades);
+        ibPnl = stats.netProfit * selectedContracts;
+        ibWr = stats.winRate;
+        ibPf = stats.profitFactor;
+        ibDd = stats.maxDrawdown * selectedContracts;
+        ibTrades = stats.totalTrades;
       }
       
       // Combined Stats
@@ -2665,6 +2717,9 @@
       // Call Probability Tab Renderers
       renderAlnProbabilities(activeFiltered);
       renderIbProbabilities(activeFiltered);
+      
+      // Update Strategy Hub statistics dynamically
+      updateStrategyHubStats();
     }
 
     function renderAlnProbabilities(activeFiltered) {
