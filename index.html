@@ -1197,6 +1197,16 @@
       }
     };
 
+    // ── LOCAL DATE PARSER (PREVENT TIMEZONE OFFSETS) ─────────────────────────
+    function parseLocalDate(dateStr) {
+      if (!dateStr) return new Date();
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      }
+      return new Date(dateStr);
+    }
+
     // ── ISO WEEK HELPER ───────────────────────────────────────────────────────
     function getWeekNo(date) {
       const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
@@ -1253,7 +1263,7 @@
       
       container.innerHTML = '';
       last10.forEach((session, idx) => {
-        const dateObj = new Date(session.date);
+        const dateObj = parseLocalDate(session.date);
         const dayStr = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
         const dateStr = dateObj.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' });
         const label = `${dayStr} ${dateStr}`;
