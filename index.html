@@ -2123,9 +2123,9 @@
       const row3RangeVal = (ovnRange * selectedContracts).toFixed(2);
       const row3PosStr = (pattern === 'P1' || pattern === 'P2') ? 'ABOVE MID' : 'BELOW MID';
       const row3ProbStr = row3PosStr === 'ABOVE MID' ? 'High: 76.68% | Low: 22.48%' : 'Low: 73.32% | High: 25.94%';
-      const row3BreakStr = (firstBreak === 'London High') ? 'Hit High First' : ((firstBreak === 'London Low') ? 'Hit Low First' : 'Neither');
-      const row3TimeStr = (row3BreakStr === 'Hit High First') ? (lonHBreakTime !== 'None' ? lonHBreakTime : '13:42:00') : 
-                           ((row3BreakStr === 'Hit Low First') ? (lonLBreakTime !== 'None' ? lonLBreakTime : '14:10:30') : 'None');
+      const row3BreakStr = (firstBreak === 'H') ? 'Hit High First' : ((firstBreak === 'L') ? 'Hit Low First' : 'Neither');
+      const row3TimeStr = (row3BreakStr === 'Hit High First') ? (lonHBreakTime !== 'None' ? lonHBreakTime : 'None') : 
+                           ((row3BreakStr === 'Hit Low First') ? (lonLBreakTime !== 'None' ? lonLBreakTime : 'None') : 'None');
       const row3ExtStr = '10% | 25%';
 
       document.getElementById('aln-row3-range').textContent = `${row3RangeVal} pts`;
@@ -2143,9 +2143,12 @@
       const row4RangeVal = (nyRange * selectedContracts).toFixed(2);
       const row4PosStr = (latestSession && latestSession.gap && latestSession.gap.direction === 'GAP UP') ? 'ABOVE MID' : 'BELOW MID';
       const row4ProbStr = row4PosStr === 'ABOVE MID' ? 'High: 76.68% | Low: 22.48%' : 'Low: 73.32% | High: 25.94%';
-      const row4BreakStr = (firstBreak === 'London High') ? 'Hit High First' : ((firstBreak === 'London Low') ? 'Hit Low First' : 'Neither');
-      const row4TimeStr = (row4BreakStr === 'Hit High First') ? (lonHBreakTime !== 'None' ? lonHBreakTime : '09:42:00') : 
-                           ((row4BreakStr === 'Hit Low First') ? (lonLBreakTime !== 'None' ? lonLBreakTime : '09:55:30') : 'None');
+      
+      const nyCashFirstBreak = latestSession && latestSession.aln ? latestSession.aln.ny_cash_first_break : 'None';
+      const nyCashBreakTime = latestSession && latestSession.aln ? latestSession.aln.ny_cash_break_time : 'None';
+      
+      const row4BreakStr = (nyCashFirstBreak === 'H') ? 'Hit High First' : ((nyCashFirstBreak === 'L') ? 'Hit Low First' : 'Neither');
+      const row4TimeStr = nyCashBreakTime;
       const row4ExtStr = (nyRange > 180) ? '10% | 25% | 50% | 75% | 100%' : '10% | 25% | 50%';
 
       document.getElementById('aln-row4-range').textContent = `${row4RangeVal} pts`;
@@ -2195,7 +2198,7 @@
 
       const gapDirEl = document.getElementById('gap-dir');
       gapDirEl.textContent = gapDir.toUpperCase();
-      gapDirEl.className = gapDir.toLowerCase() === 'up' ? 'list-item-value positive' : 'list-item-value negative';
+      gapDirEl.className = gapDir.toLowerCase().includes('up') ? 'list-item-value positive' : (gapDir.toLowerCase().includes('down') ? 'list-item-value negative' : 'list-item-value neutral');
 
       document.getElementById('gap-size').textContent = `${(gapSize * selectedContracts).toFixed(2)} pts`;
       document.getElementById('gap-rth-open').textContent = gapOpen ? gapOpen.toLocaleString(undefined, {minimumFractionDigits:2}) : '--';
@@ -2418,7 +2421,7 @@
       
       const ibBreakEl = document.getElementById('ib-break-side');
       ibBreakEl.textContent = ibBreakSide ? ibBreakSide.toUpperCase() : 'NO BREAK';
-      ibBreakEl.className = (ibBreakSide && ibBreakSide.toLowerCase().includes('h')) ? 'list-item-value positive' : (ibBreakSide && !ibBreakSide.toLowerCase().includes('n') ? 'list-item-value negative' : 'list-item-value neutral');
+      ibBreakEl.className = (ibBreakSide && ibBreakSide.toLowerCase().includes('up')) ? 'list-item-value positive' : (ibBreakSide && ibBreakSide.toLowerCase().includes('down') ? 'list-item-value negative' : 'list-item-value neutral');
 
       document.getElementById('ib-close-half').textContent = ibCloseHalf;
       
